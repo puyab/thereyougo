@@ -45,6 +45,7 @@ class RegisteredUserController extends Controller
             'last_name' => $request->last_name,
             'linkedin' => $request->linkedin,
             'user_id' => $user->id,
+            'referred_from' => $request->referred_from ?? null
         ]);
 
         event(new Registered($user));
