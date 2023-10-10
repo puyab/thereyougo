@@ -15,7 +15,12 @@ export default {
     ],
 
     theme: {
-        extend: {},
+        extend: {
+            fontFamily: {
+                'crimson-pro': ['Crimson Pro', 'serif'],
+                'inter': ['Inter', 'serif']
+            }
+        },
     },
 
     plugins: [forms, typography],
