@@ -29,14 +29,11 @@ Route::middleware('splade')->group(function () {
 
     Route::view('/', 'welcome')->name('home');
 
-    Route::middleware('auth')->group(function () {
-        Route::get('/dashboard', function () {
-            return view('dashboard');
-        })->middleware(['verified'])->name('dashboard');
-
-        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::middleware('auth')->controller(ProfileController::class)->group(function () {
+        Route::view('/profile', 'pages.profile')->name('profile');
+        Route::patch('/profile/details', 'updateDetails')->name('profile.details.update');
+        Route::patch('/profile/features', 'updateFeatures')->name('profile.features.update');
+        Route::post('/profile/images', 'uploadImages')->name('profile.images.upload');
     });
 
     require __DIR__.'/auth.php';

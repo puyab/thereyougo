@@ -11,9 +11,9 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\Uid\Ulid;
 
-class Profile extends Model implements HasMedia
+class Profile extends Model
 {
-    use HasFactory, InteractsWithMedia, HasUlids;
+    use HasFactory;
 
     protected $fillable = [
         'role',
@@ -21,7 +21,7 @@ class Profile extends Model implements HasMedia
         'telephone',
         'location',
         'accommodation_type',
-        'rooms',
+        'bedrooms',
         'sleep_rooms',
         'high_speed_wifi',
         'features',
@@ -31,18 +31,23 @@ class Profile extends Model implements HasMedia
         'user_id',
         'status',
         'referral_code',
-        'referred_from'
+        'referred_from',
+        'images'
     ];
 
     protected $casts = [
         'features' => 'array',
+        'images' => 'array',
+        'high_speed_wifi' => 'boolean'
     ];
 
     protected static function boot()
     {
         parent::boot();
-        self::creating(function(Profile $model) {
+        self::creating(function (Profile $model) {
             $model->referral_code = Ulid::generate();
+            $model->images = ["avatar" => "", "pic_1" => "", "pic_2" => "", "pic_3" => ""];
+            $model->features = [];
             return $model;
         });
     }
@@ -50,11 +55,5 @@ class Profile extends Model implements HasMedia
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function registerMediaConversions(Media $media = null): void
-    {
-        $this->addMediaConversion('avatar')->optimize()->withResponsiveImages()->queued();
-        $this->addMediaConversion('gallery')->optimize()->withResponsiveImages()->queued();
     }
 }

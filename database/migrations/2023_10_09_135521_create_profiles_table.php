@@ -13,23 +13,24 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('profiles', function (Blueprint $table) {
-            $table->ulid('id')->primary();
+            $table->id();
             $table->string('role')->nullable();
             $table->string('company')->nullable();
             $table->string('telephone')->nullable();
             $table->string('location')->nullable();
             $table->string('accommodation_type')->nullable();
-            $table->integer('rooms')->nullable();
+            $table->integer('bedrooms')->nullable();
             $table->integer('sleep_rooms')->nullable();
             $table->boolean('high_speed_wifi')->nullable();
-            $table->string('features')->default('[]')->nullable();
+            $table->json('features')->nullable();
             $table->string('first_name');
             $table->string('last_name');
             $table->string('linkedin')->unique();
             $table->foreignIdFor(User::class, 'user_id');
             $table->enum('status', ['not_sent', 'pending', 'approved', 'rejected'])->default('not_sent');
-            $table->uuid('referral_code');
+            $table->string('referral_code');
             $table->string('referred_from')->nullable();
+            $table->json('images');
             $table->timestamps();
         });
     }

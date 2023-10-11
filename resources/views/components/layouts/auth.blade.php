@@ -7,7 +7,7 @@
         </Link>
     </div>
     <div class="w-full h-max flex flex-col gap-20 lg:gap-40 items-center">
-        <span class="text-[#292D32] text-4xl lg:text-6xl font-normal">Insert your details here</span>
+        <span class="text-[#292D32] text-4xl lg:text-6xl font-normal">Insert your details here</span>
         <div class="w-full h-max max-w-[451px] px-3 sm:px-0">
             {{$slot}}
         </div>

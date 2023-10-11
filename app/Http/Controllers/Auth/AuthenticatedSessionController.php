@@ -32,7 +32,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
         Toast::success('You logged in')->leftBottom();
-        return redirect(route('home'));
+        return redirect(route('profile'));
     }
 
     /**
