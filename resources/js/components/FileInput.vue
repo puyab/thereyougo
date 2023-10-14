@@ -18,6 +18,11 @@ defineProps({
     form: {
         type: Object,
         required: true,
+    },
+    max: {
+      type: Number,
+      required: false,
+      default: '425px'
     }
 })
 let input = ref(null)
@@ -26,15 +31,15 @@ let currentImageUrl = ref('')
 </script>
 
 <template>
-    <div class="w-full h-full min-w-[364px] min-h-[202px] max-h-[425px]">
+    <div class="w-full h-full min-w-[364px] min-h-[202px]" :style="{maxHeight: max}">
         <input :id="name" :name="name" ref="input" type="file" :data-validation-key="name" class="hidden"
                @change="(event) => {form[name] = event.target.files[0]; currentImageUrl = window.URL.createObjectURL(event.target.files[0])}"
-        >
+        />
         <div v-if="Boolean(data[name]) || Boolean(currentImageUrl)"
              @click="input.click()"
              class="relative w-full h-full bg-[#f1f1f1] border-[0.75px] border-black transition-colors duration-300 hover:bg-gray-200 flex flex-col items-center justify-center gap-6 cursor-pointer">
             <img class="w-full h-full object-fill"
-                 :src="data[name] ? `${window.location.protocol}//${window.location.host}/${data[name]}` : currentImageUrl"/>
+                 :src="data[name] ? data[name] : currentImageUrl" alt=""/>
         </div>
         <div
             @click="input.click()"

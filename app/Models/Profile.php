@@ -11,9 +11,9 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\Uid\Ulid;
 
-class Profile extends Model
+class Profile extends Model implements HasMedia
 {
-    use HasFactory;
+    use HasFactory, InteractsWithMedia;
 
     protected $fillable = [
         'role',
@@ -46,8 +46,8 @@ class Profile extends Model
         parent::boot();
         self::creating(function (Profile $model) {
             $model->referral_code = Ulid::generate();
-            $model->images = ["avatar" => "", "pic_1" => "", "pic_2" => "", "pic_3" => ""];
-            $model->features = [];
+            if(!$model->features)
+              $model->features = [];
             return $model;
         });
     }
@@ -56,4 +56,11 @@ class Profile extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+   public function registerMediaConversions(Media $media = null): void
+   {
+     foreach(['avatar', 'pic_1', 'pic_2', 'pic_3'] as $collection) {
+       $this->addMediaConversion($collection)->withResponsiveImages()->queued()->performOnCollections($collection);
+     }
+   }
 }

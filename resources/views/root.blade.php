@@ -10,13 +10,8 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"
-
-        <!-- Styles -->
-        @vite('resources/css/main.scss')
-
-        <!-- Scripts -->
-        @vite(['resources/js/app.js'])
+        <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+        @vite(['resources/js/app.ts'])
         @spladeHead
     </head>
     <body class="font-sans antialiased">

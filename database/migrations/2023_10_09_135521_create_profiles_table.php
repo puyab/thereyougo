@@ -14,11 +14,11 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('role')->nullable();
+            $table->enum('role', ['customer', 'admin'])->nullable()->default('customer');
             $table->string('company')->nullable();
             $table->string('telephone')->nullable();
             $table->string('location')->nullable();
-            $table->string('accommodation_type')->nullable();
+            $table->enum('accommodation_type', ['house', 'apartment', 'room'])->nullable();
             $table->integer('bedrooms')->nullable();
             $table->integer('sleep_rooms')->nullable();
             $table->boolean('high_speed_wifi')->nullable();
@@ -30,7 +30,6 @@ return new class extends Migration
             $table->enum('status', ['not_sent', 'pending', 'approved', 'rejected'])->default('not_sent');
             $table->string('referral_code');
             $table->string('referred_from')->nullable();
-            $table->json('images');
             $table->timestamps();
         });
     }

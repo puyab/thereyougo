@@ -1,8 +1,12 @@
 @php
     $profile = \App\Models\Profile::query()
     ->where('id', auth()->user()->id)
-    ->select(['role', 'company', 'location', 'telephone', 'accommodation_type', 'bedrooms', 'sleep_rooms', 'high_speed_wifi', 'features', 'images'])
+    ->select(['role', 'company', 'location', 'telephone', 'accommodation_type', 'bedrooms', 'sleep_rooms', 'high_speed_wifi', 'features'])
     ->first();
+    $images = [];
+    foreach(['avatar', 'pic_1', 'pic_2', 'pic_3'] as $collection) {
+        $images[$collection] = auth()->user()->profile->getFirstMediaUrl($collection);
+    }
 @endphp
 
 <div class="w-full h-max">
@@ -67,7 +71,7 @@
         </x-accordion>
         <x-accordion title="3- Upload pictures of you and your place">
             <x-splade-data
-                default="{{json_encode($profile->images)}}">
+                default="{{json_encode($images)}}">
                 <x-splade-form
                     action="{{route('profile.images.upload')}}"
                     method="POST"
@@ -77,8 +81,8 @@
                         class="relative w-full h-max lg:h-[425px] max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-4 place-items-center place-content-center">
                         <file-input title="Your place 1" name="pic_1" :data="data" :form="form"></file-input>
                         <div class="w-full h-max grid grid-cols-1 gap-5 place-content-center place-items-center">
-                            <file-input class="h-[202px]" title="Your place 2" name="pic_2" :data="data" :form="form"></file-input>
-                            <file-input class="h-[202px]" title="Your place 3" name="pic_3" :data="data" :form="form"></file-input>
+                            <file-input max="202px" class="h-[202px] max-h-[202px]" title="Your place 2" name="pic_2" :data="data" :form="form"></file-input>
+                            <file-input max="202px" class="h-[202px] max-h-[202px]" title="Your place 3" name="pic_3" :data="data" :form="form"></file-input>
                         </div>
                         <div
                             class="w-full h-[202px] flex items-center justify-center lg:rounded-full lg:overflow-hidden lg:w-[275px] lg:h-[265px] lg:border-[0.75px] lg:border-black lg:absolute z-20 left-0 top-[70%]">
