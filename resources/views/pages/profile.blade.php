@@ -1,99 +1,107 @@
 @php
-    $profile = \App\Models\Profile::query()
-    ->where('id', auth()->user()->id)
-    ->select(['role', 'company', 'location', 'telephone', 'accommodation_type', 'bedrooms', 'sleep_rooms', 'high_speed_wifi', 'features'])
-    ->first();
-    $images = [];
-    foreach(['avatar', 'pic_1', 'pic_2', 'pic_3'] as $collection) {
-        $images[$collection] = auth()->user()->profile->getFirstMediaUrl($collection);
-    }
+  $profile = auth()->user()->profile;
+  $images = [];
+  foreach(['avatar', 'pic_1', 'pic_2', 'pic_3'] as $collection) {
+      $images[$collection] = auth()->user()->profile->getFirstMediaUrl($collection);
+  }
+  $refs_count = \App\Models\Profile::query()->where('referred_from', $profile->referral_code)->count();
 @endphp
 
-<div class="w-full h-max">
-    <div class="w-full h-max bg-[#d29a9a80] py-7 px-14 lg:py-14 lg:px-28">
-        <span class="font-normal text-[#292D32] text-4xl lg:text-6xl">You’re in, {{auth()->user()->profile->first_name}}.</span>
+<x-navbar/>
+<section
+  class="w-full h-max bg-[#D29A9A80] flex flex-col-reverse lg:flex-row items-center justify-center lg:gap-20 gap-5 px-7 lg:px-14 py-[52.5px] lg:py-[105px]">
+  <div class="w-full h-max flex flex-col items-start justify-start gap-8 max-w-[600px]">
+    <h2 class="font-normal text-2xl sm:text-3xl md:text-4xl lg:text-6xl text-[#292D32]">Start referring your friends to
+      win the dream office.</h2>
+    <x-button>Refer your friends now</x-button>
+  </div>
+  <figure class="w-full max-w-[587px]">
+    <img class="w-full aspect-auto" src="{{asset('images/profile_cover.png')}}"/>
+  </figure>
+</section>
+<section class="w-max max-w-full h-max mx-auto px-7 lg:px-14 py-[41px] lg:py-[82px] flex flex-col items-start justify-start">
+  <div
+    class="relative w-max max-w-full mx-auto h-max lg:h-[425px] lg:mt-[82px] lg:max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-4 place-items-center place-content-center">
+    <figure class="w-full h-full min-w-[364px] min-h-[202px]">
+      <img class="w-full h-full object-fill" src="{{$images['pic_1']}}"/>
+    </figure>
+    <div class="w-full h-max grid grid-cols-1 gap-5 place-content-center place-items-center">
+      <figure class="w-full min-w-[364px] h-[202px] max-h-[202px]">
+        <img class="w-full h-full object-fill" src="{{$images['pic_2']}}"/>
+      </figure>
+      <figure class="w-full min-w-[364px] h-[202px] max-h-[202px]">
+        <img class="w-full h-full object-fill" src="{{$images['pic_3']}}"/>
+      </figure>
     </div>
-    <div class="flex flex-col items-center gap-11 mt-24 px-[46px] lg:px-[106px]">
-        <x-accordion title="1- Submit Minimum Details">
-            <x-splade-form default="{{$profile->toJson()}}" action="{{route('profile.details.update')}}" method="PATCH"
-                           class="flex flex-col items-center gap-20">
-                <div class="w-full h-max grid grid-cols-1 md:grid-cols-2 place-items-center gap-x-[105px]">
-                    <div class="w-full flex flex-col gap-4">
-                        <x-input id="role" type="text" name="role" v-model="form.role" placeholder="Current Role *"
-                                 required/>
-                        <x-input id="company" type="text" name="company" v-model="form.company"
-                                 placeholder="Current Company *" required/>
-                        <x-input id="telephone" type="text" name="telephone" v-model="form.telephone"
-                                 placeholder="Telephone Number *" required/>
-                        <x-input id="location" type="text" name="location" v-model="form.location" placeholder="City *"
-                                 required/>
-                    </div>
-                    <div class="w-full flex flex-col gap-4">
-                        <x-input id="accommodation_type" type="text" name="accommodation_type"
-                                 type="select"
-                                 options="[['house','House'], ['apartment', 'Apartment'], ['room', 'Room']]"
-                                 placeholder="Type of accommodation"/>
-                        <x-input id="bedrooms" type="number" min="1" step="1" name="bedrooms" v-model="form.bedrooms"
-                                 placeholder="Number of bedrooms"/>
-                        <x-input id="sleep_rooms" type="number" min="1" step="1" name="sleep_rooms"
-                                 v-model="form.sleep_rooms"
-                                 placeholder="How many sleeps"/>
-                        <x-input id="high_speed_wifi" type="select" options="[[true, 'Yes'], [false, 'No']]"
-                                 name="high_speed_wifi"
-                                 key="high_speed_wifi"
-                                 placeholder="High speed wi-fi"/>
-                    </div>
-                </div>
-                <x-button>Save and continue</x-button>
-            </x-splade-form>
-        </x-accordion>
-        <x-accordion title="2- Tick the box and tell us more about your place">
-            <x-splade-data
-                default="{options: ['Workstation', 'terrace', 'TV', 'Hair Dryer', 'Studio', 'Pool', 'AC', 'Towels', 'Ergonomic Chair', 'Garden', 'Oven', 'Shampoo', '2nd Screen', 'BBQ', 'Microwave', 'Bodywash', 'Co-working', 'Bicycle', 'Dishwasher', 'Coffee Machine']}">
-                <x-splade-form default="{{json_encode(['features' => $profile->features])}}"
-                               action="{{route('profile.features.update')}}" method="PATCH"
-                               class="flex flex-col items-center gap-20"
-                >
-                    <div
-                        class="w-full h-max grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-y-5 gap-x-4 place-items-center place-content-center">
-                        <div
-                            class="flex items-center justify-center border-[0.72px] border-black rounded-full cursor-pointer py-2 w-[192px] transition-colors duration-300 hover:bg-gray-100 data-[active=true]:bg-gray-200"
-                            v-for="feature in data.options"
-                            :data-active="form.features.includes(feature.toLowerCase())"
-                            @click="form.features.includes(feature.toLowerCase()) ? form.features = form.features.filter(f => f !== feature.toLowerCase()) : form.features.push(feature.toLowerCase())"
-                        >
-                            <span class="text-2xl font-light text-[#292D32]" v-text="feature"></span>
-                        </div>
-                    </div>
-                    <x-button>Save and continue</x-button>
-                </x-splade-form>
-            </x-splade-data>
-        </x-accordion>
-        <x-accordion title="3- Upload pictures of you and your place">
-            <x-splade-data
-                default="{{json_encode($images)}}">
-                <x-splade-form
-                    action="{{route('profile.images.upload')}}"
-                    method="POST"
-                    class="flex flex-col items-center gap-20 pb-[51.5px] lg:pb-[103px]"
-                >
-                    <div
-                        class="relative w-full h-max lg:h-[425px] max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-4 place-items-center place-content-center">
-                        <file-input title="Your place 1" name="pic_1" :data="data" :form="form"></file-input>
-                        <div class="w-full h-max grid grid-cols-1 gap-5 place-content-center place-items-center">
-                            <file-input max="202px" class="h-[202px] max-h-[202px]" title="Your place 2" name="pic_2" :data="data" :form="form"></file-input>
-                            <file-input max="202px" class="h-[202px] max-h-[202px]" title="Your place 3" name="pic_3" :data="data" :form="form"></file-input>
-                        </div>
-                        <div
-                            class="w-full h-[202px] flex items-center justify-center lg:rounded-full lg:overflow-hidden lg:w-[275px] lg:h-[265px] lg:border-[0.75px] lg:border-black lg:absolute z-20 left-0 top-[70%]">
-                            <file-input title="Your picture" name="avatar"
-                                        class="lg:min-w-[unset] lg:min-h-[unset] lg:w-[150%] lg:h-[120%]" :data="data"
-                                        :form="form"></file-input>
-                        </div>
-                    </div>
-                    <x-button>Save and continue</x-button>
-                </x-splade-form>
-            </x-splade-data>
-        </x-accordion>
+    <div
+      class="w-full h-[202px] flex items-center justify-center lg:rounded-full lg:overflow-hidden lg:w-[275px] lg:h-[265px] lg:border-[0.75px] lg:border-black lg:absolute z-20 left-0 top-[50%]">
+      <figure
+        class="w-full h-full min-w-[364px] min-h-[202px] lg:min-w-[unset] lg:min-h-[unset] lg:w-[150%] lg:h-[120%]">
+        <img class="w-full h-full object-fill" src="{{$images['avatar']}}"/>
+      </figure>
     </div>
-</div>
+    <div class="w-full flex flex-col gap-2 lg:ml-[38rem] font-light text-xl md:text-2xl lg:text-4xl text-[#292D32]">
+      <span>{{$profile->first_name}} {{$profile->last_name}}.</span>
+      <span>{{$profile->role}}</span>
+      <span>{{$profile->location}}</span>
+    </div>
+  </div>
+  <div class="lg:mt-[11rem] w-full flex flex-col gap-4 lg:flex-row lg:gap-8 lg:items-center lg:justify-between">
+    <div class="w-max max-w-full h-max flex flex-col gap-6">
+      <div class="w-full h-max flex flex-col gap-4 font-light text-xl md:text-2xl lg:text-3xl text-[#292D32]">
+        <span>Type of accommodation: {{ucfirst($profile->accommodation_type ?? '-')}}</span>
+        <span>Number of bedrooms: {{$profile->sleep_rooms ?? '-'}}</span>
+        <span>Number of people: {{$profile->rooms ?? '-'}}</span>
+        <x-splade-data default="{show: false}">
+          <div class="w-full flex flex-row items-center justify-start gap-2">
+            <span>Amenties: </span>
+            <div v-if="data.show" class="w-full flex flex-row flex-wrap gap-2">
+              @foreach($profile->features as $key => $feature)
+                <span>{{$feature}}{{$key + 1 === count($profile->features) ? '' : ' - '}}</span>
+              @endforeach
+            </div>
+            <span v-else @click="data.show = true" class="underline cursor-pointer">Show</span>
+          </div>
+        </x-splade-data>
+
+      </div>
+      <div class="w-full h-max flex flex-col gap-4 font-light text-xl md:text-2xl lg:text-3xl text-[#292D32]">
+        <span>Telephone Number: {{$profile->telephone ?? '-'}}</span>
+        <span>LinkedIn URL: <a class="underline text-lg md:text-xl lg:text-2xl" href="{{$profile->linkedin}}"
+                               target="_blank">Open</a></span>
+        <span>Email: {{auth()->user()->email}}</span>
+        <span>Password: ********</span>
+      </div>
+    </div>
+    <figure class="w-full max-w-[410px]">
+      <img class="w-full aspect-auto" src="{{asset('images/googlemaps.png')}}" alt="Google maps"/>
+    </figure>
+  </div>
+</section>
+<section class="w-full px-7 lg:px-14 py-[102px] lg:py-[204px] bg-[#D0E3E4B2] flex flex-col gap-7 lg:gap-14">
+  <h2 class="font-light text-[#292D32] text-2xl sm:text-3xl md:text-4xl lg:text-6xl">The Dream Office Referrals’ counter</h2>
+  <div class="w-full flex flex-col gap-5 lg:flex-row items-center justify-between">
+    <div class="w-full flex flex-col gap-6 font-light text-xl md:text-2xl lg:text-3xl">
+      <span>The tracker  will help you understand</span>
+      <span>how many of your referrals registered.</span>
+      <span>The more you refer, the higher the change of winning </span>
+      <span>2 weeks stay in an amazing  villa in Italy.</span>
+      <span>Don’t miss out.</span>
+    </div>
+    <div class="w-max h-full flex flex-col gap-4 lg:gap-8 ">
+      <div class="w-full h-[113px] md:h-[226px] md:w-[416px] bg-white flex items-center justify-center">
+        <span class="font-light text-4xl text-[#292D32] lg:text-9xl">{{$refs_count}}</span>
+      </div>
+      <x-button>Refer your friends now</x-button>
+    </div>
+  </div>
+</section>
+<section class="w-full px-7 lg:px-14 py-[102px] lg:py-[204px] flex flex-col gap-6 lg:gap-11">
+  <h2 class="font-light text-[#292D32] text-2xl sm:text-3xl md:text-4xl lg:text-6xl">What happens now?</h2>
+  <div class="w-full h-max flex flex-col gap-6 font-light text-xl md:text-2xl lg:text-3xl">
+    <span>1- Wait for your profile to be verified and approved</span>
+    <span>2- Keep referring your friends and peers to increase the chances of winning the Dream Office</span>
+    <span>3- Be ready to start travelling for $0/night once the platform opens for swaps!</span>
+  </div>
+</section>
+<x-footer/>

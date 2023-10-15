@@ -15,26 +15,32 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('splade')->group(function () {
-    // Registers routes to support the interactive components...
-    Route::spladeWithVueBridge();
+  // Registers routes to support the interactive components...
+  Route::spladeWithVueBridge();
 
-    // Registers routes to support password confirmation in Form and Link components...
-    Route::spladePasswordConfirmation();
+  // Registers routes to support password confirmation in Form and Link components...
+  Route::spladePasswordConfirmation();
 
-    // Registers routes to support Table Bulk Actions and Exports...
-    Route::spladeTable();
+  // Registers routes to support Table Bulk Actions and Exports...
+  Route::spladeTable();
 
-    // Registers routes to support async File Uploads with Filepond...
-    Route::spladeUploads();
+  // Registers routes to support async File Uploads with Filepond...
+  Route::spladeUploads();
 
-    Route::view('/', 'pages.index')->name('home');
+  Route::view('/', 'pages.index')->name('home');
 
-    Route::middleware('auth')->controller(ProfileController::class)->group(function () {
-        Route::view('/profile', 'pages.profile')->name('profile');
-        Route::patch('/profile/details', 'updateDetails')->name('profile.details.update');
-        Route::patch('/profile/features', 'updateFeatures')->name('profile.features.update');
-        Route::post('/profile/images', 'uploadImages')->name('profile.images.upload');
+  Route::middleware('auth')->controller(ProfileController::class)->group(function () {
+    Route::view('/profile', 'pages.profile')->name('profile.global');
+    Route::view('/settings', 'pages.settings')->name('profile');
+    Route::patch('/profile/details', 'updateDetails')->name('profile.details.update');
+    Route::patch('/profile/features', 'updateFeatures')->name('profile.features.update');
+    Route::post('/profile/images', 'uploadImages')->name('profile.images.upload');
+    Route::get('logout', function () {
+      \Illuminate\Support\Facades\Auth::logout();
+      \ProtoneMedia\Splade\Facades\Toast::success('You logged out successfully');
+      return redirect()->route('home');
     });
+  });
 
-    require __DIR__.'/auth.php';
+  require __DIR__ . '/auth.php';
 });
