@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->enum('role', ['customer', 'admin'])->nullable()->default('customer');
+            $table->string('role')->nullable();
             $table->string('company')->nullable();
             $table->string('telephone')->nullable();
             $table->string('location')->nullable();
