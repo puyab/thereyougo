@@ -21,6 +21,9 @@
         "vue": "^3.3.4"
     },
     "dependencies": {
+        "@mahdikhashan/vue3-click-outside": "^0.1.2",
+        "@types/google.maps": "^3.54.3",
+        "click-outside-vue3": "^4.0.1",
         "normalize.css": "^8.0.1",
         "swiper": "^10.3.1",
         "vue3-carousel": "^0.3.1"

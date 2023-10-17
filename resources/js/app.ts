@@ -7,11 +7,12 @@ import { renderSpladeApp, SpladePlugin } from "@protonemedia/laravel-splade";
 import FileInput from "@/components/FileInput.vue";
 
 import 'swiper/css/bundle';
-import {Swiper as SwiperCore} from 'swiper';
 import {Autoplay} from "swiper/modules"
 
+import vClickOutside from "click-outside-vue3";
 
 import {Swiper,  SwiperSlide} from "swiper/vue"
+import AddressAutocomplete from "@/components/AddressAutocomplete.vue";
 
 const el = document.getElementById("app");
 
@@ -27,9 +28,10 @@ const app = createApp({
             Swiper,
             SwiperSlide,
             'file-input': FileInput,
+            'address-input': AddressAutocomplete
 
-        }
-    });
+        },
+    }).use(vClickOutside);
 app.config.globalProperties.window = window;
 app.config.globalProperties.SwiperModules = [Autoplay];
 app.mount(el)

@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\{ProfileController};
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\{RedirectIfNotAuthenticated};
 
 /*
 |--------------------------------------------------------------------------
@@ -29,12 +30,13 @@ Route::middleware('splade')->group(function () {
 
   Route::view('/', 'pages.index')->name('home');
 
-  Route::middleware('auth')->controller(ProfileController::class)->group(function () {
+  Route::middleware(['auth',RedirectIfNotAuthenticated::class])->controller(ProfileController::class)->group(function () {
     Route::view('/profile', 'pages.profile')->name('profile.global');
     Route::view('/settings', 'pages.settings')->name('profile');
-    Route::patch('/profile/details', 'updateDetails')->name('profile.details.update');
-    Route::patch('/profile/features', 'updateFeatures')->name('profile.features.update');
-    Route::post('/profile/images', 'uploadImages')->name('profile.images.upload');
+    Route::view('/referral_code', 'pages.referral-code')->name('referral_code');
+    Route::patch('/settings/details', 'updateDetails')->name('profile.details.update');
+    Route::patch('/settings/features', 'updateFeatures')->name('profile.features.update');
+    Route::post('/settings/images', 'uploadImages')->name('profile.images.upload');
     Route::get('logout', function () {
       \Illuminate\Support\Facades\Auth::logout();
       \ProtoneMedia\Splade\Facades\Toast::success('You logged out successfully');

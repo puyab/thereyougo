@@ -20,6 +20,8 @@ class Profile extends Model implements HasMedia
         'company',
         'telephone',
         'location',
+        'latitude',
+        'longitude',
         'accommodation_type',
         'bedrooms',
         'sleep_rooms',

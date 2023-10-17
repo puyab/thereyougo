@@ -6,10 +6,12 @@ storage/framework/cache/*
 storage/framework/sessions/*
 storage/framework/views/*
 storage/logs/*
+storage/clockwork/*
 storage_/framework/cache/*
 storage_/framework/sessions/*
 storage_/framework/views/*
 storage_/logs/*
+storage_/clockwork/*
 *.env*
 .rr.yml
 rr

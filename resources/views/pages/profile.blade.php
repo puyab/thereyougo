@@ -2,7 +2,7 @@
   $profile = auth()->user()->profile;
   $images = [];
   foreach(['avatar', 'pic_1', 'pic_2', 'pic_3'] as $collection) {
-      $images[$collection] = auth()->user()->profile->getFirstMediaUrl($collection);
+      $images[$collection] = $profile->getFirstMediaUrl($collection);
   }
   $refs_count = \App\Models\Profile::query()->where('referred_from', $profile->referral_code)->count();
 @endphp
@@ -13,7 +13,7 @@
   <div class="w-full h-max flex flex-col items-start justify-start gap-8 max-w-[600px]">
     <h2 class="font-normal text-2xl sm:text-3xl md:text-4xl lg:text-6xl text-[#292D32]">Start referring your friends to
       win the dream office.</h2>
-    <x-button>Refer your friends now</x-button>
+    <Link href="{{route('referral_code')}}"><x-button>Refer your friends now</x-button></Link>
   </div>
   <figure class="w-full max-w-[587px]">
     <img class="w-full aspect-auto" src="{{asset('images/profile_cover.png')}}"/>
@@ -34,7 +34,7 @@
       </figure>
     </div>
     <div
-      class="w-full h-[202px] flex items-center justify-center lg:rounded-full lg:overflow-hidden lg:w-[275px] lg:h-[265px] lg:border-[0.75px] lg:border-black lg:absolute z-20 left-0 top-[50%]">
+      class="w-full h-[202px] flex items-center justify-center lg:rounded-full lg:overflow-hidden lg:w-[275px] lg:h-[265px] lg:border-[3px] lg:border-white lg:absolute z-20 left-0 top-[50%]">
       <figure
         class="w-full h-full min-w-[364px] min-h-[202px] lg:min-w-[unset] lg:min-h-[unset] lg:w-[150%] lg:h-[120%]">
         <img class="w-full h-full object-fill" src="{{$images['avatar']}}"/>
@@ -44,16 +44,19 @@
       <span>{{$profile->first_name}} {{$profile->last_name}}.</span>
       <span>{{$profile->role}}</span>
       <span>{{$profile->location}}</span>
+      <div data-status="{{$profile->status}}" class="w-max flex items-center justify-center border-[1px] border-black rounded-full px-3.5 py-1.5 bg-amber-200 data-[status='rejected']:bg-red-400 data-[status='approved']:bg-[#B5DCAE] data-[status='pending']:bg-[#D7DC9C]">
+        <span class="text-black font-inter text-xs font-semibold" v-text="{rejected: 'Rejected', approved: 'Approved', pending: 'Pending', 'not_sent' : 'Not Completed'}[@js($profile->status)]"></span>
+      </div>
     </div>
   </div>
   <div class="lg:mt-[11rem] w-full flex flex-col gap-4 lg:flex-row lg:gap-8 lg:items-center lg:justify-between">
-    <div class="w-max max-w-full h-max flex flex-col gap-6">
+    <div class="w-max max-w-full h-max flex flex-col gap-6 lg:max-w-2xl">
       <div class="w-full h-max flex flex-col gap-4 font-light text-xl md:text-2xl lg:text-3xl text-[#292D32]">
         <span>Type of accommodation: {{ucfirst($profile->accommodation_type ?? '-')}}</span>
         <span>Number of bedrooms: {{$profile->sleep_rooms ?? '-'}}</span>
         <span>Number of people: {{$profile->rooms ?? '-'}}</span>
         <x-splade-data default="{show: false}">
-          <div class="w-full flex flex-row items-center justify-start gap-2">
+          <div class="w-full flex flex-row items-start justify-start gap-2">
             <span>Amenties: </span>
             <div v-if="data.show" class="w-full flex flex-row flex-wrap gap-2">
               @foreach($profile->features as $key => $feature)
@@ -73,9 +76,16 @@
         <span>Password: ********</span>
       </div>
     </div>
-    <figure class="w-full max-w-[410px]">
-      <img class="w-full aspect-auto" src="{{asset('images/googlemaps.png')}}" alt="Google maps"/>
-    </figure>
+    <iframe
+      class="w-full h-[380px] max-w-[410px] "
+      frameborder="0"
+      scrolling="no"
+      marginheight="0"
+      marginwidth="0"
+      src="https://maps.google.com/maps?key={{env('google.key')}}&q={{$profile->latitude}},{{$profile->longitude}}&hl=es&z=14&amp;output=embed"></iframe>
+{{--    <figure class="w-full max-w-[410px]">--}}
+{{--      <img class="w-full aspect-auto" src="{{asset('images/googlemaps.png')}}" alt="Google maps"/>--}}
+{{--    </figure>--}}
   </div>
 </section>
 <section class="w-full px-7 lg:px-14 py-[102px] lg:py-[204px] bg-[#D0E3E4B2] flex flex-col gap-7 lg:gap-14">
@@ -92,7 +102,7 @@
       <div class="w-full h-[113px] md:h-[226px] md:w-[416px] bg-white flex items-center justify-center">
         <span class="font-light text-4xl text-[#292D32] lg:text-9xl">{{$refs_count}}</span>
       </div>
-      <x-button>Refer your friends now</x-button>
+      <Link href="{{route('referral_code')}}"><x-button>Refer your friends now</x-button></Link>
     </div>
   </div>
 </section>

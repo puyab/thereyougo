@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('company')->nullable();
             $table->string('telephone')->nullable();
             $table->string('location')->nullable();
+            $table->double('latitude')->nullable();
+            $table->double('longitude')->nullable();
             $table->enum('accommodation_type', ['house', 'apartment', 'room'])->nullable();
             $table->integer('bedrooms')->nullable();
             $table->integer('sleep_rooms')->nullable();
