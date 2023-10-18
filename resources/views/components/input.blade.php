@@ -14,7 +14,7 @@
         @click="data.open=!data.open"
       >
         <div class="pl-2.5">
-          <span v-if="!form[data.name]">{{$attributes->get('placeholder')}}</span>
+          <span v-if="form[data.name] === null">{{$attributes->get('placeholder')}}</span>
           <span v-else v-text="data.options.filter((option) => option[0] === form[data.name])[0][1]"></span>
         </div>
         <div :class="{'rotate-180': data.open}">

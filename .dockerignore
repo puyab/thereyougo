@@ -3,15 +3,19 @@
 # 1. Ignore Laravel-specific files we don't need
 bootstrap/cache/*
 storage/framework/cache/*
+storage/app/*
 storage/framework/sessions/*
 storage/framework/views/*
 storage/logs/*
 storage/clockwork/*
+storage/media-library/*
 storage_/framework/cache/*
 storage_/framework/sessions/*
 storage_/framework/views/*
 storage_/logs/*
+storage_/app/*
 storage_/clockwork/*
+storage_/media-library/*
 *.env*
 .rr.yml
 rr
