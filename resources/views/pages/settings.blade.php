@@ -25,7 +25,7 @@
                      required/>
             <x-input id="company" type="text" name="company" v-model="form.company"
                      placeholder="Current Company *" required/>
-            <x-input id="telephone" type="number" name="telephone" v-model="form.telephone"
+            <x-input id="telephone" type="text" name="telephone" v-model="form.telephone"
                      placeholder="Telephone Number *" required/>
             <address-input :form="form" :data="data" placeholder="Location" name="location"></address-input>
           </div>

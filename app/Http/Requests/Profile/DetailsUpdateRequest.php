@@ -25,7 +25,7 @@ class DetailsUpdateRequest extends FormRequest
         return [
             'role' => ['required'],
             'company' => ['required'],
-            'telephone' => ['required'],
+            'telephone' => ['required', 'phone'],
             'location' => ['required'],
             'accommodation_type' => ['nullable', Rule::in(['house', 'apartment', 'room'])],
             'bedrooms' => ['nullable', 'numeric', 'gte:1'],
