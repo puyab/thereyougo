@@ -4,12 +4,12 @@
   </figure>
   <p>Privacy Policy | T&C | The Dream Office Campaing | Swap Guidelines</p>
   <div class="w-full flex flex-row items-center justify-center gap-5 md:gap-10 flex-wrap mt-2">
-    <Link href="#">
+    <a href="https://instagram.com/thereyougo.eu?igshid=MzRlODBiNWFlZA==" target="_blank">
       <x-feathericon-instagram class="w-6 h-6"/>
-    </Link>
-    <Link href="#">
-      <x-feathericon-twitter class="w-6 h-6"/>
-    </Link>
+    </a>
+    <a href="https://www.linkedin.com/company/thereyougoeurope/" target="_blank">
+      <x-feathericon-linkedin class="w-6 h-6"/>
+    </a>
     <Link href="#">
       <x-fab-tumblr class="w-6 h-6" />
     </Link>

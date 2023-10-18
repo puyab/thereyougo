@@ -22,7 +22,7 @@ class ProfileController extends Controller
     if (Profile::query()->where('user_id', Auth::user()->id)->update($data))
       Toast::success('Details updated successfully');
     else Toast::danger('Details not updated');
-    return redirect()->back();
+    return redirect()->route('profile.global');
   }
 
   public function updateFeatures(UpdateFeaturesRequest $request)
@@ -32,7 +32,7 @@ class ProfileController extends Controller
     if (Profile::query()->where('user_id', Auth::user()->id)->update($data))
       Toast::success('Details updated successfully');
     else Toast::danger('Details not updated');
-    return redirect()->back();
+    return redirect()->route('profile.global');
   }
 
   public function uploadImages(Request $request)
@@ -47,6 +47,6 @@ class ProfileController extends Controller
     } catch(Exception $e) {
       Toast::danger('Images not uploaded');
     }
-    return redirect()->back();
+    return redirect()->route('profile.global');
   }
 }

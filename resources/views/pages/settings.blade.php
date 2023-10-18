@@ -10,9 +10,10 @@
 @endphp
 
 <div class="w-full h-max">
-  <div class="w-full h-max bg-[#d29a9a80] py-7 px-14 lg:py-14 lg:px-28">
+  <div class="w-full h-max bg-[#d29a9a80] py-7 px-14 lg:py-14 lg:px-28 flex flex-row items-center justify-between">
     <span
       class="font-normal text-[#292D32] text-4xl lg:text-6xl">You’re in, {{auth()->user()->profile->first_name}}.</span>
+    <Link href="{{route('profile.global')}}"><x-feathericon-user class="w-8 h-8 text-black bg-white rounded-full p-2" /></Link>
   </div>
   <div class="flex flex-col items-center gap-11 mt-24 px-[46px] lg:px-[106px]">
     <x-accordion title="1- Submit Minimum Details">

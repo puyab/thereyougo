@@ -3,7 +3,8 @@
   <div class="w-max h-max flex items-center justify-center gap-7 lg:gap-14">
     @if(auth()->check())
       <x-link class="font-bold text-base text-black" href="{{route('logout')}}">Log-out</x-link>
-      <Link href="{{route('profile')}}"><x-button class=""><x-feathericon-user class="w-6 h-6 text-white" /></x-button></Link>
+      <Link href="{{route('profile')}}" class="font-bold text-base text-black">Settings</Link>
+      <Link href="{{route('profile.global')}}"><x-button class=""><x-feathericon-user class="w-6 h-6 text-white" /></x-button></Link>
     @else
       <x-link class="font-bold text-xs sm:text-base text-black">The Dream Office</x-link>
       <x-link :href="route('login')" class="font-bold text-xs sm:text-base text-black">Login</x-link>
