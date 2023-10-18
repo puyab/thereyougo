@@ -37,6 +37,17 @@ class ProfileController extends Controller
 
   public function uploadImages(Request $request)
   {
+    $validated = $request->validate([
+      'avatar' => ['max:5000'],
+      'pic_1' => ['max:5000'],
+      'pic_2' => ['max:5000'],
+      'pic_3' => ['max:5000'],
+    ]);
+    if(!$validated)
+    {
+      Toast::danger('Files you sent is bigger than 5mb');
+      return redirect()->back();
+    }
     try {
       $profile = Auth::user()->profile;
       foreach ($request->allFiles() as $key => $file) {
@@ -48,5 +59,10 @@ class ProfileController extends Controller
       Toast::danger('Images not uploaded');
     }
     return redirect()->route('profile.global');
+  }
+
+  public function notify() {
+    Toast::success('URL Copied');
+    return redirect()->back();
   }
 }

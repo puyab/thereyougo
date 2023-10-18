@@ -37,6 +37,7 @@ Route::middleware('splade')->group(function () {
     Route::patch('/settings/details', 'updateDetails')->name('profile.details.update');
     Route::patch('/settings/features', 'updateFeatures')->name('profile.features.update');
     Route::post('/settings/images', 'uploadImages')->name('profile.images.upload');
+    Route::post('/referral_code/notify', 'notify')->name('referral_code.notify');
     Route::get('logout', function () {
       \Illuminate\Support\Facades\Auth::logout();
       \ProtoneMedia\Splade\Facades\Toast::success('You logged out successfully');

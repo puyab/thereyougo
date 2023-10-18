@@ -39,7 +39,7 @@ let currentImageUrl = ref('')
              @click="input.click()"
              class="relative w-full h-full bg-[#f1f1f1] border-[0.75px] border-black transition-colors duration-300 hover:bg-gray-200 flex flex-col items-center justify-center gap-6 cursor-pointer">
             <img class="w-full h-full object-fill"
-                 :src="data[name] ? data[name] : currentImageUrl" alt=""/>
+                 :src="data[name] && !currentImageUrl? data[name] : currentImageUrl" alt=""/>
         </div>
         <div
             @click="input.click()"

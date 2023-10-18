@@ -7,3 +7,14 @@ html, body {
     font-family: 'Crimson Pro', serif;
     box-sizing: border-box;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

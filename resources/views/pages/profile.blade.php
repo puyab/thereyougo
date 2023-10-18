@@ -54,7 +54,7 @@
       <div class="w-full h-max flex flex-col gap-4 font-light text-xl md:text-2xl lg:text-3xl text-[#292D32]">
         <span>Type of accommodation: {{ucfirst($profile->accommodation_type ?? '-')}}</span>
         <span>Number of bedrooms: {{$profile->sleep_rooms ?? '-'}}</span>
-        <span>Number of people: {{$profile->rooms ?? '-'}}</span>
+        <span>Number of people: {{$profile->bedrooms ?? '-'}}</span>
         <x-splade-data default="{show: false}">
           <div class="w-full flex flex-row items-start justify-start gap-2">
             <span>Amenties: </span>
