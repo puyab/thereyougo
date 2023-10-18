@@ -38,10 +38,10 @@ class ProfileController extends Controller
   public function uploadImages(Request $request)
   {
     $validated = $request->validate([
-      'avatar' => ['max:5000'],
-      'pic_1' => ['max:5000'],
-      'pic_2' => ['max:5000'],
-      'pic_3' => ['max:5000'],
+      'avatar' => ['max:5000', 'nullable'],
+      'pic_1' => ['max:5000', 'nullable'],
+      'pic_2' => ['max:5000', 'nullable'],
+      'pic_3' => ['max:5000', 'nullable'],
     ]);
     if(!$validated)
     {
