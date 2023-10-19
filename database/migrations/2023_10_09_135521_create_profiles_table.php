@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('linkedin')->unique();
             $table->foreignIdFor(User::class, 'user_id');
-            $table->enum('status', ['not_sent', 'pending', 'approved', 'rejected'])->default('not_sent');
+            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->string('referral_code');
             $table->string('referred_from')->nullable();
             $table->timestamps();

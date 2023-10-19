@@ -62,7 +62,7 @@ class Profile extends Model implements HasMedia
    public function registerMediaConversions(Media $media = null): void
    {
      foreach(['avatar', 'pic_1', 'pic_2', 'pic_3'] as $collection) {
-       $this->addMediaConversion($collection)->withResponsiveImages()->queued()->performOnCollections($collection);
+       $this->addMediaConversion($collection)->withResponsiveImages()->optimize()->queued()->performOnCollections($collection);
      }
    }
 }

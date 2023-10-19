@@ -37,7 +37,7 @@ class ProfileFactory extends Factory
           'first_name' => $faker->firstName(),
           'last_name' => $faker->lastName(),
           'linkedin' => $faker->url(),
-          'status' => $faker->randomElement(['not_sent', 'pending', 'approved', 'rejected'])
+          'status' => $faker->randomElement(['pending', 'approved', 'rejected'])
         ];
     }
     public function configure()
