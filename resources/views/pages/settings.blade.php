@@ -13,14 +13,14 @@
   <div class="w-full h-max bg-[#d29a9a80] py-7 px-14 lg:py-14 lg:px-28 flex flex-row items-center justify-between">
     <span
       class="font-normal text-[#292D32] text-4xl lg:text-6xl">You’re in, {{auth()->user()->profile->first_name}}.</span>
-    <Link href="{{route('profile.global')}}"><x-feathericon-user class="w-8 h-8 text-black bg-white rounded-full p-2" /></Link>
+    <Link href="{{route('profile.global')}}"><x-feathericon-user class="w-8 h-8 text-white bg-black rounded-full p-2" /></Link>
   </div>
   <div class="flex flex-col items-center gap-11 mt-24 px-[46px] lg:px-[106px]">
     <x-accordion title="1- Submit Minimum Details">
       <x-splade-form default="{{$profile->toJson()}}" action="{{route('profile.details.update')}}" method="PATCH"
                      class="flex flex-col items-center gap-20">
         <div class="w-full h-max grid grid-cols-1 md:grid-cols-2 place-items-center gap-x-[105px]">
-          <div class="w-full min-h-max h-full flex flex-col gap-4 justify-between">
+          <div class="w-full h-max flex flex-col gap-4 justify-between">
             <x-input id="role" type="text" name="role" v-model="form.role" placeholder="Current Role *"
                      required/>
             <x-input id="company" type="text" name="company" v-model="form.company"
@@ -29,7 +29,7 @@
                      placeholder="Telephone Number *" required/>
             <address-input :form="form" :data="data" placeholder="Location" name="location"></address-input>
           </div>
-          <div class="w-full min-h-max h-full flex flex-col justify-between gap-4">
+          <div class="w-full h-max flex flex-col justify-between gap-4">
             <x-input id="accommodation_type" type="text" name="accommodation_type"
                      type="select"
                      options="[['house','House'], ['apartment', 'Apartment'], ['room', 'Room']]"

@@ -4,6 +4,7 @@ namespace App\Http\Requests\Profile;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Propaganistas\LaravelPhone\Rules\Phone;
 
 class DetailsUpdateRequest extends FormRequest
 {
@@ -25,7 +26,7 @@ class DetailsUpdateRequest extends FormRequest
         return [
             'role' => ['required'],
             'company' => ['required'],
-            'telephone' => ['required', 'phone'],
+            'telephone' => ['required', (new Phone)],
             'location' => ['required'],
             'accommodation_type' => ['nullable', Rule::in(['house', 'apartment', 'room'])],
             'bedrooms' => ['nullable', 'numeric', 'gte:1'],
