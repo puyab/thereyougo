@@ -86,7 +86,6 @@ class UserResource extends Resource
           ->limit(14),
         Tables\Columns\TextColumn::make('profile')
           ->formatStateUsing(fn(User $record) => Profile::query()->where('referred_from', $record->profile->referral_code)->count())
-          ->sortable()
           ->label('Referred'),
       ])
       ->filters([
