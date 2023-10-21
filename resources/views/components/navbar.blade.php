@@ -1,5 +1,5 @@
 <nav class="w-full h-20 bg-[#D29A9A80] flex items-center justify-between px-6 py-4 lg:py-9 lg:px-24">
-  <span class="font-normal text-[#717171] text-lg lg:text-2xl ">Logo to share</span>
+  <Link href="{{route('home')}}"><span class="font-normal text-[#717171] text-lg lg:text-2xl uppercase font-encode-sans-expanded font-light">ThereYouGo</span></Link>
   <div class="w-max h-max flex items-center justify-center gap-7 lg:gap-14">
     @if(auth()->check())
       <x-link class="font-bold text-base text-black" href="{{route('logout')}}">Log-out</x-link>
