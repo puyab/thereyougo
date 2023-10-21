@@ -34,7 +34,10 @@ class Profile extends Model implements HasMedia
         'status',
         'referral_code',
         'referred_from',
-        'images'
+        'images',
+        'details_submitted',
+        'features_submitted',
+        'pictures_submitted',
     ];
 
     protected $casts = [
@@ -64,5 +67,9 @@ class Profile extends Model implements HasMedia
      foreach(['avatar', 'pic_1', 'pic_2', 'pic_3'] as $collection) {
        $this->addMediaConversion($collection)->withResponsiveImages()->optimize()->queued()->performOnCollections($collection);
      }
+   }
+
+   public function canAccessProfile(): bool {
+      return $this->details_submitted && $this->features_submitted && $this->pictures_submitted;
    }
 }

@@ -18,7 +18,7 @@
           <span v-else v-text="data.options.filter((option) => option[0] === form[data.name])[0][1]"></span>
         </div>
         <div :class="{'rotate-180': data.open}">
-          <x-feathericon-chevron-up/>
+          <x-feathericon-chevron-up />
         </div>
       </div>
       <div v-show="data.open"

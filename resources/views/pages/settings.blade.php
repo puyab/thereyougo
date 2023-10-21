@@ -13,7 +13,7 @@
   <div class="w-full h-max bg-[#d29a9a80] py-7 px-14 lg:py-14 lg:px-28 flex flex-row items-center justify-between">
     <span
       class="font-normal text-[#292D32] text-4xl lg:text-6xl">You’re in, {{auth()->user()->profile->first_name}}.</span>
-    <Link href="{{route('profile.global')}}"><x-feathericon-user class="w-8 h-8 text-white bg-black rounded-full p-2" /></Link>
+    <Link href="{{$profile->canAccessProfile() ? route('profile.global') : '#'}}"><x-feathericon-user class="w-10 h-10 text-white bg-black rounded-full p-2" /></Link>
   </div>
   <div class="flex flex-col items-center gap-11 mt-24 px-[46px] lg:px-[106px]">
     <x-accordion title="1- Submit Minimum Details">
@@ -34,11 +34,11 @@
                      type="select"
                      options="[['house','House'], ['apartment', 'Apartment'], ['room', 'Room']]"
                      placeholder="Type of accommodation"/>
-            <x-input id="bedrooms" type="select" options="[[1,'1'], [2, '2'], [3, '3'], [4, '4'], [5, '5+']]"
+            <x-input id="bedrooms" type="select" options="[[0, '0'], [1,'1'], [2, '2'], [3, '3'], [4, '4'], [5, '5+']]"
                      name="bedrooms" key="bedrooms"
                      placeholder="Number of bedrooms"/>
             <x-input id="sleep_rooms" name="sleep_rooms"
-                     type="select" options="[[1,'1'], [2, '2'], [3, '3'], [4, '4'], [5, '5+']]"
+                     type="select" options="[[0, '0'], [1,'1'], [2, '2'], [3, '3'], [4, '4'], [5, '5+']]"
                      key="sleep_rooms"
                      placeholder="How many sleeps"/>
             <x-input id="high_speed_wifi" type="select" options="[[true, 'Yes'], [false, 'No']]"

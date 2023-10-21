@@ -18,7 +18,7 @@ $breakpoints = [
     ]
 ];
 @endphp
-  <Swiper class="w-full mx-auto max-w-[1920px]" :loop="@js(true)" :autoplay="@js(2000)" v-bind:modules="SwiperModules" :breakpoints="@js($breakpoints)">
+  <Swiper class="w-full mx-auto max-w-[1920px]" :loop="@js(true)" :autoplay="@js(true)" v-bind:modules="SwiperModules" :breakpoints="@js($breakpoints)">
     @foreach($profiles as $profile)
       <SwiperSlide key="{{$profile->id}} "
                      class="w-full min-w-[300px] relative pb-[48p] flex flex-col gap-1">

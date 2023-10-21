@@ -19,8 +19,12 @@ class ProfileController extends Controller
   {
     $data = $request->validationData();
     unset($data['_method']);
-    if (Profile::query()->where('user_id', Auth::user()->id)->update($data))
+    $profile = Auth::user()->profile;
+    if (Profile::query()->where('id', $profile->id)->update($data)) {
+      if(!$profile->details_submitted)
+        Profile::query()->where('id', $profile->id)->update(['details_submitted' => true]);
       Toast::success('Details updated successfully');
+    }
     else Toast::danger('Details not updated');
     return redirect()->route('profile.global');
   }
@@ -29,9 +33,12 @@ class ProfileController extends Controller
   {
     $data = $request->validationData();
     unset($data['_method']);
-    if (Profile::query()->where('user_id', Auth::user()->id)->update($data))
+    $profile = Auth::user()->profile;
+    if (Profile::query()->where('id', $profile->id)->update($data)) {
+      if(!$profile->features_submitted)
+        Profile::query()->where('id', $profile->id)->update(['features_submitted' => true]);
       Toast::success('Details updated successfully');
-    else Toast::danger('Details not updated');
+    } else Toast::danger('Details not updated');
     return redirect()->route('profile.global');
   }
 
@@ -43,8 +50,7 @@ class ProfileController extends Controller
       'pic_2' => ['max:5000', 'nullable'],
       'pic_3' => ['max:5000', 'nullable'],
     ]);
-    if(!$validated)
-    {
+    if (!$validated) {
       Toast::danger('Files you sent is bigger than 5mb');
       return redirect()->back();
     }
@@ -54,14 +60,17 @@ class ProfileController extends Controller
         $profile->clearMediaCollection($key);
         $profile->addMediaFromRequest($key)->toMediaCollection($key);
       }
+      if (!$profile->pictures_submitted)
+        Profile::query()->where('id', $profile->id)->update(['pictures_submitted' => true]);
       Toast::success('Images uploaded successfully');
-    } catch(Exception $e) {
+    } catch (Exception $e) {
       Toast::danger('Images not uploaded');
     }
     return redirect()->route('profile.global');
   }
 
-  public function notify() {
+  public function notify()
+  {
     Toast::success('URL Copied');
     return redirect()->back();
   }

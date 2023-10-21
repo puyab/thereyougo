@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\{ProfileController};
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\{RedirectIfNotAuthenticated};
+use App\Http\Middleware\{RedirectIfNotAuthenticated, CanAccessProfile};
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +31,7 @@ Route::middleware('splade')->group(function () {
   Route::view('/', 'pages.index')->name('home');
 
   Route::middleware(['auth',RedirectIfNotAuthenticated::class])->controller(ProfileController::class)->group(function () {
-    Route::view('/profile', 'pages.profile')->name('profile.global');
+    Route::view('/profile', 'pages.profile')->middleware(CanAccessProfile::class)->name('profile.global');
     Route::view('/settings', 'pages.settings')->name('profile');
     Route::view('/referral_code', 'pages.referral-code')->name('referral_code');
     Route::patch('/settings/details', 'updateDetails')->name('profile.details.update');

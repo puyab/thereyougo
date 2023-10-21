@@ -59,7 +59,7 @@ surrounded by nature is waiting for you.</span>
 </section>
 <section class="w-full h-max px-7 lg:px-14 py-[102px] lg:py-[204px] flex flex-col gap-[81px] lg:gap-[162px]">
   <h2 class="font-light text-3xl sm:text-3xl md:text-4xl lg:text-6xl">How does it work</h2>
-  <div class="w-full h-max grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center place-content-center gap-y-4">
+  <div class="w-full h-max grid grid-cols-1 md:grid-cols-2 lg:flex lg:flex-row lg:items-center lg:justify-between place-items-center place-content-center gap-y-4">
     @foreach($work_steps as $key => $step)
       <div class="w-full flex items-start justify-center gap-7 lg:gap-14 max-w-[500px]">
         <span class="font-medium text-2xl md:text-3xl lg:text-5xl text-black">{{$key+1}}</span>
