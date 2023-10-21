@@ -19,7 +19,8 @@ export default {
     extend: {
       fontFamily: {
         'crimson-pro': ['Crimson Pro', 'serif'],
-        'inter': ['Inter', 'serif']
+        'inter': ['Inter', 'serif'],
+        'encode-sans-expanded': ['Encode Sans Expanded', 'serif']
       }
     },
   },
