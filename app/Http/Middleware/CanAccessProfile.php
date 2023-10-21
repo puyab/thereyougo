@@ -17,7 +17,7 @@ class CanAccessProfile
    */
   public function handle(Request $request, Closure $next): Response
   {
-    if (!Auth::user()->profile->canAccessProfile()) {
+    if (Auth::check() && !Auth::user()?->profile?->canAccessProfile()) {
       Toast::danger('Your profile is not completed');
       return redirect()->route('profile');
     }
