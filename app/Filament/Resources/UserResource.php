@@ -26,12 +26,18 @@ class UserResource extends Resource
       ->schema([
         Forms\Components\TextInput::make('id')
           ->label('ID')
-          ->disabled(),
+          ->readOnly(),
         Forms\Components\TextInput::make('email')
           ->email()
           ->required()
           ->unique()
-          ->label('Email')
+          ->label('Email'),
+        Forms\Components\Select::make('role')
+          ->required()
+          ->options(['admin' => 'Admin', 'customer' => 'Customer', 'super_admin' => 'Super Admin'])
+          ->label('Type')
+          ->helperText('This is the role of the user in system')
+          ->disabled(fn (User $record) => $record->role !== 'super_admin')
       ]);
   }
 
@@ -49,6 +55,9 @@ class UserResource extends Resource
         Tables\Columns\TextColumn::make('profile.last_name')
           ->searchable()
           ->label('Last Name'),
+        Tables\Columns\TextColumn::make('role')
+          ->sortable()
+          ->label('Type'),
         Tables\Columns\TextColumn::make('email')
           ->searchable()
           ->label('Email'),
@@ -93,6 +102,9 @@ class UserResource extends Resource
           ->options(['pending' => 'Pending', 'approved' => 'Approved', 'rejected' => 'Rejected'])
           ->query(fn(Builder $query, array $data) => $data['value'] ? $query->whereHas('profile', fn(Builder $query) => $query->where('status', $data['value'])) : null)
           ->label('Status'),
+        Tables\Filters\SelectFilter::make('role')
+          ->options(['admin' => 'Admin', 'customer' => 'Customer'])
+          ->label('Type'),
       ])
       ->actions([
         Tables\Actions\EditAction::make(),

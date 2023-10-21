@@ -21,11 +21,12 @@ class ProfileController extends Controller
     unset($data['_method']);
     $profile = Auth::user()->profile;
     if (Profile::query()->where('id', $profile->id)->update($data)) {
-      if(!$profile->details_submitted)
+      if (!$profile->details_submitted)
         Profile::query()->where('id', $profile->id)->update(['details_submitted' => true]);
       Toast::success('Details updated successfully');
-    }
-    else Toast::danger('Details not updated');
+    } else Toast::danger('Details not updated');
+    if (!$profile->canAccessProfile())
+      return redirect()->back();
     return redirect()->route('profile.global');
   }
 
@@ -35,10 +36,12 @@ class ProfileController extends Controller
     unset($data['_method']);
     $profile = Auth::user()->profile;
     if (Profile::query()->where('id', $profile->id)->update($data)) {
-      if(!$profile->features_submitted)
+      if (!$profile->features_submitted)
         Profile::query()->where('id', $profile->id)->update(['features_submitted' => true]);
       Toast::success('Details updated successfully');
     } else Toast::danger('Details not updated');
+    if (!$profile->canAccessProfile())
+      return redirect()->back();
     return redirect()->route('profile.global');
   }
 
@@ -54,8 +57,8 @@ class ProfileController extends Controller
       Toast::danger('Files you sent is bigger than 5mb');
       return redirect()->back();
     }
+    $profile = Auth::user()->profile;
     try {
-      $profile = Auth::user()->profile;
       foreach ($request->allFiles() as $key => $file) {
         $profile->clearMediaCollection($key);
         $profile->addMediaFromRequest($key)->toMediaCollection($key);
@@ -66,6 +69,8 @@ class ProfileController extends Controller
     } catch (Exception $e) {
       Toast::danger('Images not uploaded');
     }
+    if (!$profile->canAccessProfile())
+      return redirect()->back();
     return redirect()->route('profile.global');
   }
 
