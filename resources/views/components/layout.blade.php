@@ -1,6 +1,4 @@
 <div class="min-h-screen bg-gray-100">
-    <x-navigation />
-
     <!-- Page Heading -->
     @if(isset($header))
         <header class="bg-white shadow">
