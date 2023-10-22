@@ -36,8 +36,6 @@ class ProfileController extends Controller
     unset($data['_method']);
     $profile = Auth::user()->profile;
     if (Profile::query()->where('id', $profile->id)->update($data)) {
-      if (!$profile->features_submitted)
-        Profile::query()->where('id', $profile->id)->update(['features_submitted' => true]);
       Toast::success('Details updated successfully');
     } else Toast::danger('Details not updated');
     if (!$profile->canAccessProfile())
@@ -63,8 +61,6 @@ class ProfileController extends Controller
         $profile->clearMediaCollection($key);
         $profile->addMediaFromRequest($key)->toMediaCollection($key);
       }
-      if (!$profile->pictures_submitted)
-        Profile::query()->where('id', $profile->id)->update(['pictures_submitted' => true]);
       Toast::success('Images uploaded successfully');
     } catch (Exception $e) {
       Toast::danger('Images not uploaded');

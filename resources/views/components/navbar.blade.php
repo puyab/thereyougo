@@ -6,7 +6,7 @@
       <Link href="{{route('profile')}}" class="font-bold text-base text-black">Settings</Link>
       <Link href="{{route('profile.global')}}"><x-button class=""><x-feathericon-user class="w-6 h-6 text-white" /></x-button></Link>
     @else
-      <x-link class="font-bold text-xs sm:text-base text-black">The Dream Office</x-link>
+      <x-link class="font-bold text-xs sm:text-base text-black hidden md:block">The Dream Office</x-link>
       <x-link :href="route('login')" class="font-bold text-xs sm:text-base text-black">Login</x-link>
       <x-link :href="route('register')">
         <x-button class="text-xs md:text-base py-1.5 px-2 md:py-3.5 md:px-7 md:rounded-full w-max rounded-md">Apply now</x-button>

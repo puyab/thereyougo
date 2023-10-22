@@ -12,8 +12,6 @@ return new class extends Migration {
   {
     Schema::table('profiles', function (Blueprint $table) {
       $table->boolean('details_submitted')->default(false);
-      $table->boolean('features_submitted')->default(false);
-      $table->boolean('pictures_submitted')->default(false);
     });
   }
 

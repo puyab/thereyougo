@@ -70,6 +70,6 @@ class Profile extends Model implements HasMedia
    }
 
    public function canAccessProfile(): bool {
-      return $this->details_submitted && $this->features_submitted && $this->pictures_submitted;
+      return $this->details_submitted;
    }
 }

@@ -1,4 +1,4 @@
-<footer class="w-full h-max flex flex-col gap-4 items-center justify-center bg-[#D29A9A80] text-[#717171] py-20">
+<footer class="w-full h-max flex flex-col gap-4 items-center justify-center bg-[#D29A9A80] text-[#717171] py-20 px-4 lg:px-0">
   <figure>
     <img src="{{asset('images/logo.png')}}" alt="Logo"/>
   </figure>
