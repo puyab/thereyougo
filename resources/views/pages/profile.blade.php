@@ -13,39 +13,45 @@
   <div class="w-full h-max flex flex-col items-start justify-start gap-8 max-w-[600px]">
     <h2 class="font-normal text-2xl sm:text-3xl md:text-4xl lg:text-6xl text-[#292D32]">Start referring your friends to
       win the dream office.</h2>
-    <Link href="{{route('referral_code')}}"><x-button>Refer your friends now</x-button></Link>
+    <Link href="{{route('referral_code')}}">
+    <x-button>Refer your friends now</x-button>
+    </Link>
   </div>
   <figure class="w-full max-w-[587px]">
     <img class="w-full aspect-auto" src="{{asset('images/profile_cover.png')}}"/>
   </figure>
 </section>
-<section class="w-max max-w-full h-max mx-auto px-7 lg:px-14 py-[41px] lg:py-[82px] flex flex-col items-start justify-start">
+<section
+  class="w-max max-w-full h-max mx-auto px-7 lg:px-14 py-[41px] lg:py-[82px] flex flex-col items-start justify-start">
   <div
-    class="relative w-max max-w-full mx-auto h-max lg:h-[425px] lg:mt-[82px] lg:max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-4 place-items-center place-content-center">
+    class="relative w-max max-w-full mx-auto h-max lg:h-[425px] lg:mt-[82px] lg:max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-4 place-items-center place-content-center data-[safari=true]:h-[1100px]  data-[safari=true]:lg:h-max"
+    :data-safari="window.navigator.userAgent.indexOf('Safari') !== -1">
     <figure class="w-full h-full min-w-[364px] min-h-[202px]">
-      <img class="w-full h-full object-fill" src="{{$images['pic_1']}}"/>
+      <img class="w-full h-full object-fill" src="{{$images['pic_1'] === '' ? asset('images/not-found.jpg') : $images['pic_1']}}"/>
     </figure>
     <div class="w-full h-max grid grid-cols-1 gap-5 place-content-center place-items-center">
       <figure class="w-full min-w-[364px] h-[202px] max-h-[202px]">
-        <img class="w-full h-full object-fill" src="{{$images['pic_2']}}"/>
+        <img class="w-full h-full object-fill" src="{{$images['pic_2'] === '' ? asset('images/not-found.jpg') : $images['pic_2']}}"/>
       </figure>
       <figure class="w-full min-w-[364px] h-[202px] max-h-[202px]">
-        <img class="w-full h-full object-fill" src="{{$images['pic_3']}}"/>
+        <img class="w-full h-full object-fill" src="{{$images['pic_3'] === '' ? asset('images/not-found.jpg') : $images['pic_3']}}"/>
       </figure>
     </div>
     <div
       class="w-full h-[202px] flex items-center justify-center lg:rounded-full lg:overflow-hidden lg:w-[275px] lg:h-[265px] lg:border-[3px] lg:border-white lg:absolute z-20 left-0 top-[50%]">
       <figure
         class="w-full h-full min-w-[364px] min-h-[202px] lg:min-w-[unset] lg:min-h-[unset] lg:w-[150%] lg:h-[120%]">
-        <img class="w-full h-full object-fill" src="{{$images['avatar']}}"/>
+        <img class="w-full h-full object-fill" src="{{$images['avatar'] === '' ? asset('images/not-found.jpg') : $images['avatar']}}"/>
       </figure>
     </div>
     <div class="w-full flex flex-col gap-2 lg:ml-[38rem] font-light text-xl md:text-2xl lg:text-4xl text-[#292D32]">
       <span>{{$profile->first_name}} {{$profile->last_name}}.</span>
       <span>{{$profile->role}}</span>
       <span>{{$profile->location}}</span>
-      <div data-status="{{$profile->status}}" class="w-max flex items-center justify-center border-[1px] border-black rounded-full px-3.5 py-1.5 bg-amber-200 data-[status='rejected']:bg-red-400 data-[status='approved']:bg-[#B5DCAE] data-[status='pending']:bg-[#D7DC9C]">
-        <span class="text-black font-inter text-xs font-semibold" v-text="{rejected: 'Rejected', approved: 'Approved', pending: 'Pending', 'not_sent' : 'Not Completed'}[@js($profile->status)]"></span>
+      <div data-status="{{$profile->status}}"
+           class="w-max flex items-center justify-center border-[1px] border-black rounded-full px-3.5 py-1.5 bg-amber-200 data-[status='rejected']:bg-red-400 data-[status='approved']:bg-[#B5DCAE] data-[status='pending']:bg-[#D7DC9C]">
+        <span class="text-black font-inter text-xs font-semibold"
+              v-text="{rejected: 'Rejected', approved: 'Approved', pending: 'Pending', 'not_sent' : 'Not Completed'}[@js($profile->status)]"></span>
       </div>
     </div>
   </div>
@@ -83,13 +89,14 @@
       marginheight="0"
       marginwidth="0"
       src="https://maps.google.com/maps?key={{env('google.key')}}&q={{$profile->latitude}},{{$profile->longitude}}&hl=es&z=14&amp;output=embed"></iframe>
-{{--    <figure class="w-full max-w-[410px]">--}}
-{{--      <img class="w-full aspect-auto" src="{{asset('images/googlemaps.png')}}" alt="Google maps"/>--}}
-{{--    </figure>--}}
+    {{--    <figure class="w-full max-w-[410px]">--}}
+    {{--      <img class="w-full aspect-auto" src="{{asset('images/googlemaps.png')}}" alt="Google maps"/>--}}
+    {{--    </figure>--}}
   </div>
 </section>
 <section class="w-full px-7 lg:px-14 py-[102px] lg:py-[204px] bg-[#D0E3E4B2] flex flex-col gap-7 lg:gap-14">
-  <h2 class="font-light text-[#292D32] text-2xl sm:text-3xl md:text-4xl lg:text-6xl">The Dream Office Referrals’ counter</h2>
+  <h2 class="font-light text-[#292D32] text-2xl sm:text-3xl md:text-4xl lg:text-6xl">The Dream Office Referrals’
+    counter</h2>
   <div class="w-full flex flex-col gap-5 lg:flex-row items-center justify-between">
     <div class="w-full flex flex-col gap-6 font-light text-xl md:text-2xl lg:text-3xl">
       <span>The tracker  will help you understand</span>
@@ -102,7 +109,9 @@
       <div class="w-full h-[113px] md:h-[226px] md:w-[416px] bg-white flex items-center justify-center">
         <span class="font-light text-4xl text-[#292D32] lg:text-9xl">{{$refs_count}}</span>
       </div>
-      <Link href="{{route('referral_code')}}"><x-button>Refer your friends now</x-button></Link>
+      <Link href="{{route('referral_code')}}">
+      <x-button>Refer your friends now</x-button>
+      </Link>
     </div>
   </div>
 </section>

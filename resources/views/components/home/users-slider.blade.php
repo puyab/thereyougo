@@ -20,10 +20,16 @@ $breakpoints = [
 @endphp
   <Swiper class="w-full mx-auto max-w-[1920px]" :loop="@js(true)" :autoplay="@js(true)" v-bind:modules="SwiperModules" :breakpoints="@js($breakpoints)">
     @foreach($profiles as $profile)
+      @php
+        $pic_1 = $profile->getFirstMediaUrl('pic_1');
+        $avatar = $profile->getFirstMediaUrl('avatar');
+        if($pic_1 === '' || $avatar === '')
+        continue;
+      @endphp
       <SwiperSlide key="{{$profile->id}} "
                      class="w-full min-w-[300px] relative pb-[48p] flex flex-col gap-1">
         <figure class="relative w-full h-[205px]">
-          <img class="w-full h-full object-fill" src="{{$profile->getFirstMediaUrl('pic_1')}}"
+          <img class="w-full h-full object-fill" src="{{ $pic_1 !== '' ? $pic_1 : asset('images/not-found.jpg')}}"
                alt="{{$profile->first_name}} {{$profile->last_name}}"/>
         </figure>
         <div class="w-full pl-[8rem] flex flex-col items-start justify-start">
@@ -32,7 +38,7 @@ $breakpoints = [
         </div>
         <figure
           class="absolute w-[97px] h-[100px] -bottom-0 left-6 rounded-full overflow-hidden border-[1px] border-white">
-          <img class="w-full h-full object-fill" src="{{$profile->getFirstMediaUrl('avatar')}}"
+          <img class="w-full h-full object-fill" src="{{$avatar !== '' ? $avatar : asset('images/not-found.jpg')}}"
                alt="{{$profile->first_name}} {{$profile->last_name}}"/>
         </figure>
       </SwiperSlide>

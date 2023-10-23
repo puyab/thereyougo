@@ -23,6 +23,7 @@ class ProfileController extends Controller
     if (Profile::query()->where('id', $profile->id)->update($data)) {
       if (!$profile->details_submitted)
         Profile::query()->where('id', $profile->id)->update(['details_submitted' => true]);
+      $profile->refresh();
       Toast::success('Details updated successfully');
     } else Toast::danger('Details not updated');
     if (!$profile->canAccessProfile())
@@ -36,6 +37,7 @@ class ProfileController extends Controller
     unset($data['_method']);
     $profile = Auth::user()->profile;
     if (Profile::query()->where('id', $profile->id)->update($data)) {
+      $profile->refresh();
       Toast::success('Details updated successfully');
     } else Toast::danger('Details not updated');
     if (!$profile->canAccessProfile())

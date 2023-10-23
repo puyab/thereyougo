@@ -81,7 +81,7 @@
           class="flex flex-col items-center gap-20 pb-[51.5px] lg:pb-[103px]"
         >
           <div
-            class="relative w-full h-max lg:h-[425px] max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-4 place-items-center place-content-center">
+            class="relative w-full h-[820px] lg:h-[425px] max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-4 place-items-center place-content-center">
             <file-input title="Your place 1" name="pic_1" :data="data" :form="form"></file-input>
             <div class="w-full h-max grid grid-cols-1 gap-5 place-content-center place-items-center">
               <file-input max="202px" class="h-[202px] max-h-[202px]" title="Your place 2" name="pic_2" :data="data"
