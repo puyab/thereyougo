@@ -44,7 +44,7 @@
         <img class="w-full h-full object-fill" src="{{$images['avatar'] === '' ? asset('images/not-found.jpg') : $images['avatar']}}"/>
       </figure>
     </div>
-    <div class="w-full flex flex-col gap-2 lg:ml-[38rem] font-light text-xl md:text-2xl lg:text-4xl text-[#292D32]">
+    <div class="w-full flex flex-col gap-2 mb-2 lg:mb-0 lg:ml-[38rem] font-light text-xl md:text-2xl lg:text-4xl text-[#292D32]">
       <span>{{$profile->first_name}} {{$profile->last_name}}.</span>
       <span>{{$profile->role}}</span>
       <span>{{$profile->location}}</span>

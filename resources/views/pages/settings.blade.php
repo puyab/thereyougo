@@ -1,8 +1,9 @@
 @php
   $profile = \App\Models\Profile::query()
   ->where('id', auth()->user()->profile->id)
-  ->select(['role', 'company', 'location', 'telephone', 'accommodation_type', 'bedrooms', 'sleep_rooms', 'high_speed_wifi', 'features', 'longitude', 'latitude'])
+  ->select(['first_name', 'last_name', 'linkedin', 'role', 'company', 'location', 'telephone', 'accommodation_type', 'bedrooms', 'sleep_rooms', 'high_speed_wifi', 'features', 'longitude', 'latitude'])
   ->firstOrFail();
+  $user = auth()->user();
   $images = [];
   foreach(['avatar', 'pic_1', 'pic_2', 'pic_3'] as $collection) {
       $images[$collection] = auth()->user()->profile->getFirstMediaUrl($collection);
@@ -13,20 +14,61 @@
   <div class="w-full h-max bg-[#d29a9a80] py-7 px-14 lg:py-14 lg:px-28 flex flex-row items-center justify-between">
     <span
       class="font-normal text-[#292D32] text-4xl lg:text-6xl">You’re in, {{auth()->user()->profile->first_name}}.</span>
-    <Link href="{{auth()->user()->profile->canAccessProfile() ? route('profile.global') : '#'}}"><x-feathericon-user class="w-10 h-10 text-white bg-black rounded-full p-2" /></Link>
+    <Link href="{{auth()->user()->profile->canAccessProfile() ? route('profile.global') : '#'}}">
+    <x-feathericon-user class="w-12 h-12 text-white bg-black rounded-full p-2"/>
+    </Link>
   </div>
   <div class="flex flex-col items-center gap-11 mt-24 px-[46px] lg:px-[106px]">
-    <x-accordion title="1- Submit Minimum Details">
+    <x-accordion title="1- Personal Information">
+      <x-splade-form
+        action="{{route('profile.personal_information.update')}}"
+        class="flex flex-col items-center gap-20"
+        default="{{json_encode(['first_name' => $profile->first_name, 'last_name' => $profile->last_name, 'linkedin' => $profile->linkedin, 'email' => $user->email])}}"
+      >
+        <div
+          class="w-full h-max grid grid-cols-1 md:grid-cols-2 place-content-center place-items-start gap-y-6 gap-x-[105px]">
+          <x-input id="first_name" type="text" name="first_name" v-model="form.first_name" placeholder="First Name *"
+                   required/>
+          <x-input id="last_name" type="text" name="last_name" v-model="form.last_name" placeholder="Last Name *"
+                   required/>
+          <x-input id="linkedin" type="text" name="linkedin" v-model="form.linkedin" placeholder="Linkedin *"
+                   required/>
+          <x-input id="email" type="email" name="email" v-model="form.email" placeholder="Email *"
+                   required/>
+        </div>
+        <x-button>Save and continue</x-button>
+      </x-splade-form>
+    </x-accordion>
+    <x-accordion title="2- Change Password">
+      <x-splade-form
+        class="flex flex-col items-center gap-20"
+        action="{{route('profile.password.update')}}"
+        method="patch"
+        confirm
+      >
+        <div
+          class="w-full h-max grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-center place-items-start gap-y-6 gap-x-[105px]">
+          <x-input id="current_password" type="text" name="current_password" v-model="form.current_password" placeholder="Current Password *"
+                   required/>
+          <x-input id="password" type="text" name="password" v-model="form.password" placeholder="Password *"
+                   required/>
+          <x-input id="password_confirmation" type="text" name="password_confirmation" v-model="form.password_confirmation" placeholder="Confirm Password *"
+                   required/>
+        </div>
+        <x-button>Save and continue</x-button>
+      </x-splade-form>
+    </x-accordion>
+    <x-accordion title="3- Submit Minimum Details">
       <x-splade-form default="{{$profile->toJson()}}" action="{{route('profile.details.update')}}" method="PATCH"
                      class="flex flex-col items-center gap-20">
         <div class="w-full h-max grid grid-cols-1 md:grid-cols-2 place-items-center gap-x-[105px]">
-          <div class="w-full h-max flex flex-col gap-4 justify-between">
+          <div class="w-full h-full flex flex-col gap-4 justify-between">
             <x-input id="role" type="text" name="role" v-model="form.role" placeholder="Current Role *"
                      required/>
             <x-input id="company" type="text" name="company" v-model="form.company"
                      placeholder="Current Company *" required/>
             <x-input id="telephone" type="text" name="telephone" v-model="form.telephone"
-                     placeholder="Telephone Number *" required/>
+                     placeholder="+" required/>
             <address-input :form="form" :data="data" placeholder="Location" name="location"></address-input>
           </div>
           <div class="w-full h-max flex flex-col justify-between gap-4">
@@ -50,7 +92,7 @@
         <x-button>Save and continue</x-button>
       </x-splade-form>
     </x-accordion>
-    <x-accordion title="2- Tick the box and tell us more about your place">
+    <x-accordion title="4- Tick the box and tell us more about your place">
       <x-splade-data
         default="{options: ['Workstation', 'terrace', 'TV', 'Hair Dryer', 'Studio', 'Pool', 'AC', 'Towels', 'Ergonomic Chair', 'Garden', 'Oven', 'Shampoo', '2nd Screen', 'BBQ', 'Microwave', 'Bodywash', 'Co-working', 'Bicycle', 'Dishwasher', 'Coffee Machine']}">
         <x-splade-form default="{{json_encode(['features' => $profile->features])}}"
@@ -72,7 +114,7 @@
         </x-splade-form>
       </x-splade-data>
     </x-accordion>
-    <x-accordion title="3- Upload pictures of you and your place">
+    <x-accordion title="5- Upload pictures of you and your place">
       <x-splade-data
         default="{{json_encode($images)}}">
         <x-splade-form

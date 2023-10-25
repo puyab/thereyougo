@@ -37,6 +37,8 @@ Route::middleware('splade')->group(function () {
     Route::patch('/settings/details', 'updateDetails')->name('profile.details.update');
     Route::patch('/settings/features', 'updateFeatures')->name('profile.features.update');
     Route::post('/settings/images', 'uploadImages')->name('profile.images.upload');
+    Route::post('/settings/personal_information', 'updatePersonalInformation')->name('profile.personal_information.update');
+    Route::patch('/settings/password', 'updatePassword')->name('profile.password.update');
     Route::post('/referral_code/notify', 'notify')->name('referral_code.notify');
     Route::get('logout', function () {
       \Illuminate\Support\Facades\Auth::logout();

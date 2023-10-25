@@ -1,5 +1,5 @@
 @props(['title' => ''])
-<x-splade-data default="{open: true}">
+<x-splade-data default="{open: false}">
     <div class="w-full pb-11 h-max flex items-center justify-between border-b-[0.72px] border-b-black cursor-pointer"
          @click="data.open = !data.open">
       <span class="font-light text-4xl lg:text-6xl">{{$title}}</span>
