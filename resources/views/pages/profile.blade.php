@@ -46,7 +46,7 @@
     </div>
     <div class="w-full flex flex-col gap-2 mb-2 lg:mb-0 lg:ml-[38rem] font-light text-xl md:text-2xl lg:text-4xl text-[#292D32]">
       <span>{{$profile->first_name}} {{$profile->last_name}}.</span>
-      <span>{{$profile->role}}</span>
+      <span>{{$profile->role}}, {{$profile->company}}</span>
       <span>{{$profile->location}}</span>
       <div data-status="{{$profile->status}}"
            class="w-max flex items-center justify-center border-[1px] border-black rounded-full px-3.5 py-1.5 bg-amber-200 data-[status='rejected']:bg-red-400 data-[status='approved']:bg-[#B5DCAE] data-[status='pending']:bg-[#D7DC9C]">
