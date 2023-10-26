@@ -1,5 +1,5 @@
 @php
-  $profile = \App\Models\Profile::query()
+  use App\Models\Profile;$profile = Profile::query()
   ->where('id', auth()->user()->profile->id)
   ->select(['first_name', 'last_name', 'linkedin', 'role', 'company', 'location', 'telephone', 'accommodation_type', 'bedrooms', 'sleep_rooms', 'high_speed_wifi', 'features', 'longitude', 'latitude'])
   ->firstOrFail();
@@ -8,6 +8,7 @@
   foreach(['avatar', 'pic_1', 'pic_2', 'pic_3'] as $collection) {
       $images[$collection] = auth()->user()->profile->getFirstMediaUrl($collection);
   }
+  $firstLogin = request()->cookie('first_login', true);
 @endphp
 
 <div class="w-full h-max">
@@ -19,46 +20,50 @@
     </Link>
   </div>
   <div class="flex flex-col items-center gap-11 mt-24 px-[46px] lg:px-[106px]">
-    <x-accordion title="1- Personal Information">
-      <x-splade-form
-        action="{{route('profile.personal_information.update')}}"
-        class="flex flex-col items-center gap-20"
-        default="{{json_encode(['first_name' => $profile->first_name, 'last_name' => $profile->last_name, 'linkedin' => $profile->linkedin, 'email' => $user->email])}}"
-      >
-        <div
-          class="w-full h-max grid grid-cols-1 md:grid-cols-2 place-content-center place-items-start gap-y-6 gap-x-[105px]">
-          <x-input id="first_name" type="text" name="first_name" v-model="form.first_name" placeholder="First Name *"
-                   required/>
-          <x-input id="last_name" type="text" name="last_name" v-model="form.last_name" placeholder="Last Name *"
-                   required/>
-          <x-input id="linkedin" type="text" name="linkedin" v-model="form.linkedin" placeholder="Linkedin *"
-                   required/>
-          <x-input id="email" type="email" name="email" v-model="form.email" placeholder="Email *"
-                   required/>
-        </div>
-        <x-button>Save and continue</x-button>
-      </x-splade-form>
-    </x-accordion>
-    <x-accordion title="2- Change Password">
-      <x-splade-form
-        class="flex flex-col items-center gap-20"
-        action="{{route('profile.password.update')}}"
-        method="patch"
-        confirm
-      >
-        <div
-          class="w-full h-max grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-center place-items-start gap-y-6 gap-x-[105px]">
-          <x-input id="current_password" type="text" name="current_password" v-model="form.current_password" placeholder="Current Password *"
-                   required/>
-          <x-input id="password" type="text" name="password" v-model="form.password" placeholder="Password *"
-                   required/>
-          <x-input id="password_confirmation" type="text" name="password_confirmation" v-model="form.password_confirmation" placeholder="Confirm Password *"
-                   required/>
-        </div>
-        <x-button>Save and continue</x-button>
-      </x-splade-form>
-    </x-accordion>
-    <x-accordion title="3- Submit Minimum Details">
+    @if(!$firstLogin)
+      <x-accordion title="1- Personal Information">
+        <x-splade-form
+          action="{{route('profile.personal_information.update')}}"
+          class="flex flex-col items-center gap-20"
+          default="{{json_encode(['first_name' => $profile->first_name, 'last_name' => $profile->last_name, 'linkedin' => $profile->linkedin, 'email' => $user->email])}}"
+        >
+          <div
+            class="w-full h-max grid grid-cols-1 md:grid-cols-2 place-content-center place-items-start gap-y-6 gap-x-[105px]">
+            <x-input id="first_name" type="text" name="first_name" v-model="form.first_name" placeholder="First Name *"
+                     required/>
+            <x-input id="last_name" type="text" name="last_name" v-model="form.last_name" placeholder="Last Name *"
+                     required/>
+            <x-input id="linkedin" type="text" name="linkedin" v-model="form.linkedin" placeholder="Linkedin *"
+                     required/>
+            <x-input id="email" type="email" name="email" v-model="form.email" placeholder="Email *"
+                     required/>
+          </div>
+          <x-button>Save and continue</x-button>
+        </x-splade-form>
+      </x-accordion>
+      <x-accordion title="2- Change Password">
+        <x-splade-form
+          class="flex flex-col items-center gap-20"
+          action="{{route('profile.password.update')}}"
+          method="patch"
+          confirm
+        >
+          <div
+            class="w-full h-max grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-center place-items-start gap-y-6 gap-x-[105px]">
+            <x-input id="current_password" type="text" name="current_password" v-model="form.current_password"
+                     placeholder="Current Password *"
+                     required/>
+            <x-input id="password" type="text" name="password" v-model="form.password" placeholder="Password *"
+                     required/>
+            <x-input id="password_confirmation" type="text" name="password_confirmation"
+                     v-model="form.password_confirmation" placeholder="Confirm Password *"
+                     required/>
+          </div>
+          <x-button>Save and continue</x-button>
+        </x-splade-form>
+      </x-accordion>
+    @endif
+    <x-accordion title="{{$firstLogin ? '1' : '3'}} - Submit Minimum Details">
       <x-splade-form default="{{$profile->toJson()}}" action="{{route('profile.details.update')}}" method="PATCH"
                      class="flex flex-col items-center gap-20">
         <div class="w-full h-max grid grid-cols-1 md:grid-cols-2 place-items-center gap-x-[105px]">
@@ -76,7 +81,8 @@
                      type="select"
                      options="[['house','House'], ['apartment', 'Apartment'], ['room', 'Room']]"
                      placeholder="Type of accommodation"/>
-            <x-input id="bedrooms" type="select" options="[[0, '0'], [1,'1'], [2, '2'], [3, '3'], [4, '4'], [5, '5+']]"
+            <x-input id="bedrooms" type="select"
+                     options="[[0, '0'], [1,'1'], [2, '2'], [3, '3'], [4, '4'], [5, '5+']]"
                      name="bedrooms" key="bedrooms"
                      placeholder="Number of bedrooms"/>
             <x-input id="sleep_rooms" name="sleep_rooms"
@@ -92,7 +98,7 @@
         <x-button>Save and continue</x-button>
       </x-splade-form>
     </x-accordion>
-    <x-accordion title="4- Tick the box and tell us more about your place">
+    <x-accordion title="{{$firstLogin ? '2' : '4'}} - Tick the box and tell us more about your place">
       <x-splade-data
         default="{options: ['Workstation', 'terrace', 'TV', 'Hair Dryer', 'Studio', 'Pool', 'AC', 'Towels', 'Ergonomic Chair', 'Garden', 'Oven', 'Shampoo', '2nd Screen', 'BBQ', 'Microwave', 'Bodywash', 'Co-working', 'Bicycle', 'Dishwasher', 'Coffee Machine']}">
         <x-splade-form default="{{json_encode(['features' => $profile->features])}}"
@@ -114,7 +120,7 @@
         </x-splade-form>
       </x-splade-data>
     </x-accordion>
-    <x-accordion title="5- Upload pictures of you and your place">
+    <x-accordion title="{{$firstLogin ? '3' : '5'}} - Upload pictures of you and your place">
       <x-splade-data
         default="{{json_encode($images)}}">
         <x-splade-form

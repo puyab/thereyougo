@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rules;
 use ProtoneMedia\Splade\Facades\Toast;
 
@@ -53,12 +54,11 @@ class RegisteredUserController extends Controller
           Profile::query()
             ->where('referral_code', $request->referred_from)
             ->increment('referral_count');
-
         event(new Registered($user));
 
         Auth::login($user);
 
         Toast::success('Your account created')->leftBottom();
-        return redirect(route('profile'));
+        return redirect(route('profile'))->withCookie(cookie('first_login', true, 5));
     }
 }

@@ -58,7 +58,6 @@ let currentImageUrl = ref('')
                         fill="#1C1B1F"/>
                 </g>
             </svg>
-            <span v-text="currentImageUrl ? currentImageUrl : 'non'"></span>
         </div>
     </div>
 </template>
