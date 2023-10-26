@@ -10,6 +10,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use ProtoneMedia\Splade\Facades\Toast;
@@ -47,6 +48,11 @@ class RegisteredUserController extends Controller
             'user_id' => $user->id,
             'referred_from' => $request->referred_from ?? null
         ]);
+
+        if($request->referred_from)
+          Profile::query()
+            ->where('referral_code', $request->referred_from)
+            ->increment('referral_count');
 
         event(new Registered($user));
 

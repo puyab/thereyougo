@@ -38,6 +38,7 @@ class Profile extends Model implements HasMedia
         'details_submitted',
         'features_submitted',
         'pictures_submitted',
+        'referral_count'
     ];
 
     protected $casts = [

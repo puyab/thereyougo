@@ -93,8 +93,8 @@ class UserResource extends Resource
           ->searchable()
           ->label('Referral Code')
           ->limit(14),
-        Tables\Columns\TextColumn::make('profile')
-          ->formatStateUsing(fn(User $record) => Profile::query()->where('referred_from', $record->profile->referral_code)->count())
+        Tables\Columns\TextColumn::make('profile.referral_count')
+          ->sortable()
           ->label('Referred'),
       ])
       ->filters([
@@ -108,6 +108,25 @@ class UserResource extends Resource
       ])
       ->actions([
         Tables\Actions\EditAction::make(),
+        Tables\Actions\Action::make('linkedin')
+          ->icon('heroicon-o-link')
+          ->url(fn(User $record) => $record->profile->linkedin ?? '#')
+          ->openUrlInNewTab()
+          ->color('primary')
+          ->label('Linkedin'),
+        Tables\Actions\Action::make('user_status')
+          ->label('Status')
+          ->icon('heroicon-o-bars-3-bottom-right')
+          ->form([
+            Forms\Components\Select::make('status')
+              ->label('Status')
+              ->required()
+              ->options(['approved' => 'Approved', 'rejected' => 'Rejected', 'pending' => 'Pending'])
+              ->default(fn(User $record) => $record->profile->status)
+              ->helperText('You can change the user status here'),
+          ])->action(function (array $data, User $record) {
+            Profile::query()->where('user_id', $record->id)->update(['status' =>  $data['status']]);
+          })
       ])
       ->bulkActions([
         Tables\Actions\BulkActionGroup::make([
