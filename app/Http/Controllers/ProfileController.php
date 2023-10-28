@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PasswordUpdateRequest;
 use App\Http\Requests\PersonalInformationUpdateRequest;
 use App\Http\Requests\Profile\DetailsUpdateRequest;
-use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Requests\UpdateFeaturesRequest;
 use App\Models\Profile;
 use App\Models\User;
@@ -13,60 +11,62 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Storage;
 use ProtoneMedia\Splade\Facades\Toast;
 
 class ProfileController extends Controller
 {
 
-  public function updatePassword(PasswordUpdateRequest $request) {
-    $data = $request->validationData();
-    $user = Auth::user();
-    if(!Hash::check($data['current_password'], $user->password)) {
-      Toast::danger('Current password is not correct');
-      return redirect()->back()->withErrors(['current_password' => 'Current Password is not correct']);
+  public function updatePassword($user, string $password, string $currentPassword)
+  {
+    if (!Hash::check($currentPassword, $user->password)) {
+      return 'Current password is not correct';
     }
-    if(!User::query()->where('id', $user->id)->update(['password' => Hash::make($data['password'])])) {
-      Toast::danger('Failed to update the password');
+    if (!User::query()->where('id', $user->id)->update(['password' => Hash::make($password)])) {
+      return 'Failed to update the password';
     }
-    Toast::success('Password Updated Successfully');
-    return redirect()->route('profile.global');
+    return 'ok';
   }
 
   public function updatePersonalInformation(PersonalInformationUpdateRequest $request)
   {
     $profileData = $request->validationData();
     $email = $profileData['email'] ?? null;
+    $password = $profileData['password'];
+    $currentPassword = $profileData['current_password'];
 
-    unset($profileData['_method']);
-    unset($profileData['email']);
+    unset($profileData['_method'], $profileData['password'], $profileData['email'], $profileData['password_confirmation'], $profileData['current_password']);
 
     $user = Auth::user();
 
     $linkedinUrls = [$user->profile->linkedin, $user->profile->linkedin . '/'];
 
-    if(!in_array($user->profile->linkedin, $linkedinUrls) && Profile::query()->whereIn('linkedin', $linkedinUrls)->count()) {
+    if (!in_array($user->profile->linkedin, $linkedinUrls) && Profile::query()->whereIn('linkedin', $linkedinUrls)->count()) {
       Toast::danger('Linkedin url is already taken');
       return redirect()->back()->withErrors(['linkedin' => 'Linkedin url is already taken']);
     }
 
-    if($user->email !== $email && User::query()->where('email', $email)->count())
-    {
+    if ($user->email !== $email && User::query()->where('email', $email)->count()) {
       Toast::danger('Email is already taken');
       return redirect()->back()->withErrors(['email' => 'Email is already taken']);
     }
 
+
     if (!Profile::query()->where('user_id', $user->id)->update($profileData)) {
       Toast::danger('Failed to update the personal information');
       return redirect()->back();
-    } else
-      Toast::success('Personal Information updated successfully');
+    }
 
-    if ($email && !User::query()->where('id', $user->id)->update(['email' => $email]))
+    if ($email && !User::query()->where('id', $user->id)->update(['email' => $email])) {
       Toast::danger('Failed to update the email address');
-    else
-      Toast::success('Email updated successfully');
+      return redirect()->back();
+    }
+
+    if($currentPassword && !$this->updatePassword($user, $password, $currentPassword)) {
+      Toast::danger('Faild to update the passwords');
+      return redirect()->back();
+    }
+
+    Toast::success('Personal Information updated successfully');
     return redirect()->route('profile.global');
   }
 

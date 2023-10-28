@@ -8,7 +8,7 @@
   foreach(['avatar', 'pic_1', 'pic_2', 'pic_3'] as $collection) {
       $images[$collection] = auth()->user()->profile->getFirstMediaUrl($collection);
   }
-  $firstLogin = request()->cookie('first_login', true);
+  $firstLogin = request()->cookie('first_login', false);
 @endphp
 
 <div class="w-full h-max">
@@ -37,33 +37,20 @@
                      required/>
             <x-input id="email" type="email" name="email" v-model="form.email" placeholder="Email *"
                      required/>
-          </div>
-          <x-button>Save and continue</x-button>
-        </x-splade-form>
-      </x-accordion>
-      <x-accordion title="2- Change Password">
-        <x-splade-form
-          class="flex flex-col items-center gap-20"
-          action="{{route('profile.password.update')}}"
-          method="patch"
-          confirm
-        >
-          <div
-            class="w-full h-max grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-center place-items-start gap-y-6 gap-x-[105px]">
             <x-input id="current_password" type="text" name="current_password" v-model="form.current_password"
                      placeholder="Current Password *"
-                     required/>
+            />
             <x-input id="password" type="text" name="password" v-model="form.password" placeholder="Password *"
-                     required/>
+            />
             <x-input id="password_confirmation" type="text" name="password_confirmation"
                      v-model="form.password_confirmation" placeholder="Confirm Password *"
-                     required/>
+            />
           </div>
           <x-button>Save and continue</x-button>
         </x-splade-form>
       </x-accordion>
     @endif
-    <x-accordion title="{{$firstLogin ? '1' : '3'}} - Submit Minimum Details">
+    <x-accordion title="{{$firstLogin ? '1' : '2'}} - Submit Minimum Details">
       <x-splade-form default="{{$profile->toJson()}}" action="{{route('profile.details.update')}}" method="PATCH"
                      class="flex flex-col items-center gap-20">
         <div class="w-full h-max grid grid-cols-1 md:grid-cols-2 place-items-center gap-x-[105px]">
@@ -98,7 +85,7 @@
         <x-button>Save and continue</x-button>
       </x-splade-form>
     </x-accordion>
-    <x-accordion title="{{$firstLogin ? '2' : '4'}} - Tick the box and tell us more about your place">
+    <x-accordion title="{{$firstLogin ? '2' : '3'}} - Tick the box and tell us more about your place">
       <x-splade-data
         default="{options: ['Workstation', 'terrace', 'TV', 'Hair Dryer', 'Studio', 'Pool', 'AC', 'Towels', 'Ergonomic Chair', 'Garden', 'Oven', 'Shampoo', '2nd Screen', 'BBQ', 'Microwave', 'Bodywash', 'Co-working', 'Bicycle', 'Dishwasher', 'Coffee Machine']}">
         <x-splade-form default="{{json_encode(['features' => $profile->features])}}"
@@ -120,7 +107,7 @@
         </x-splade-form>
       </x-splade-data>
     </x-accordion>
-    <x-accordion title="{{$firstLogin ? '3' : '5'}} - Upload pictures of you and your place">
+    <x-accordion title="{{$firstLogin ? '3' : '4'}} - Upload pictures of you and your place">
       <x-splade-data
         default="{{json_encode($images)}}">
         <x-splade-form
