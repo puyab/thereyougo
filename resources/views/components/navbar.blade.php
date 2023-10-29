@@ -8,8 +8,8 @@
         <x-feathericon-user class="w-12 h-12 text-white bg-black rounded-full p-2"/>
       </Link>
     @else
-      <x-link class="font-bold text-xs sm:text-base text-black hidden md:block">The Dream Office</x-link>
-      <x-link :href="route('login')" class="font-bold text-xs sm:text-base text-black">Login</x-link>
+      <x-link class="font-bold text-xs sm:text-base text-black hidden md:block font-inter">The Dream Office</x-link>
+      <x-link :href="route('login')" class="font-bold text-xs sm:text-base text-black font-inter">Login</x-link>
       <x-link :href="route('register')">
         <x-button class="text-xs md:text-base py-1.5 px-2 md:py-3.5 md:px-7 md:rounded-full w-max rounded-md">Apply now</x-button>
       </x-link>
