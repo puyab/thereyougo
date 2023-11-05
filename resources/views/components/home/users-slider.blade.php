@@ -34,7 +34,8 @@ $breakpoints = [
         </figure>
         <div class="w-full pl-[8rem] flex flex-col items-start justify-start">
           <span class="font-light text-xl text-[#292D32]">{{$profile->first_name}} {{$profile->last_name}}.</span>
-          <span class="w-max max-w-[227px] text-base text-[#292D32]">{{$profile->role}}</span>
+          <span class="w-max max-w-[227px] text-base text-[#292D32]">{{$profile->role}}, {{$profile->company}}</span>
+          <span class="w-max max-w-[227px] text-base text-[#292D32]">{{$profile->location}}</span>
         </div>
         <figure
           class="absolute w-[97px] h-[100px] -bottom-0 left-6 rounded-full overflow-hidden border-[1px] border-white">
