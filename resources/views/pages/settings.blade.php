@@ -60,7 +60,7 @@
             <x-input id="company" type="text" name="company" v-model="form.company"
                      placeholder="Current Company *" required/>
             <x-input id="telephone" type="text" name="telephone" v-model="form.telephone"
-                     placeholder="+" required value="+"/>
+                     placeholder="Telephone" required/>
             <address-input :form="form" :data="data" placeholder="Location" name="location"></address-input>
           </div>
           <div class="w-full h-max flex flex-col justify-between gap-4">

@@ -4,7 +4,12 @@
   foreach(['avatar', 'pic_1', 'pic_2', 'pic_3'] as $collection) {
       $images[$collection] = $profile->getFirstMediaUrl($collection);
   }
-  $refs_count = Profile::query()->where('referred_from', $profile->referral_code)->count();
+  $refs_count = (string)Profile::query()->where('referred_from', $profile->referral_code)->count();
+  $refs_size = strlen($refs_count);
+  if($refs_size < 3)
+    for($i = 0; $i < 3 - $refs_size; $i++) {
+        $refs_count = '0'.$refs_count;
+    }
 @endphp
 
 <x-navbar/>
@@ -21,7 +26,7 @@
     <img class="w-full aspect-auto" src="{{asset('images/profile_cover.png')}}"/>
   </figure>
 </section>
-<section class="w-full px-7 lg:px-14 py-[102px] lg:py-[204px] flex flex-col gap-6 lg:gap-11">
+<section class="w-full px-7 lg:px-14 py-[20.5px] lg:py-[51px] flex flex-col gap-6 lg:gap-11 max-w-[1384px] lg:mx-auto">
   <h2 class="font-light text-[#292D32] text-2xl sm:text-3xl md:text-4xl lg:text-6xl">What happens now?</h2>
   <div class="w-full h-max flex flex-col gap-6 font-light text-xl md:text-2xl lg:text-3xl">
     <span>1- Wait for your profile to be verified and approved</span>
@@ -61,11 +66,6 @@
       <span>{{$profile->first_name}} {{$profile->last_name}}.</span>
       <span>{{$profile->role}}, {{$profile->company}}</span>
       <span>{{$profile->location}}</span>
-      <div data-status="{{$profile->status}}"
-           class="w-max flex items-center justify-center border-[1px] border-black rounded-full px-3.5 py-1.5 bg-amber-200 data-[status='rejected']:bg-red-400 data-[status='approved']:bg-[#B5DCAE] data-[status='pending']:bg-[#D7DC9C]">
-        <span class="text-black font-inter text-xs font-semibold"
-              v-text="{rejected: 'Rejected', approved: 'Approved', pending: 'Pending', 'not_sent' : 'Not Completed'}[@js($profile->status)]"></span>
-      </div>
     </div>
   </div>
   <div class="lg:mt-[11rem] w-full flex flex-col gap-4 lg:flex-row lg:gap-8 lg:items-center lg:justify-between">
@@ -93,6 +93,14 @@
                                target="_blank">Open</a></span>
         <span>Email: {{auth()->user()->email}}</span>
         <span>Password: ********</span>
+        <div class="w-max h-max flex items-center justify-center gap-4">
+          <span>Account Status:</span>
+          <div data-status="{{$profile->status}}"
+               class="w-max flex items-center justify-center border-[1px] border-black rounded-full px-4 py-1.5 bg-amber-200 data-[status='rejected']:bg-red-400 data-[status='approved']:bg-[#B5DCAE] data-[status='pending']:bg-[#D7DC9C]">
+          <span class="text-black font-inter text-xs font-semibold"
+                v-text="{rejected: 'Rejected', approved: 'Approved', pending: 'Pending', 'not_sent' : 'Not Completed'}[@js($profile->status)]"></span>
+          </div>
+        </div>
       </div>
     </div>
     <div class="w-full max-w-[410px] h-[408px] flex flex-col items-center justify-between gap-4">
