@@ -47,7 +47,7 @@ onMounted(() => {
     class="w-full h-max flex flex-col gap-2"
   >
     <input :id="name" :name="name" ref="input" type="text"
-           class='w-full bg-transparent border-0 border-b-[1px] border-b-black placeholder:text-black text-3xl font-light'
+           class='w-full h-[63px] bg-transparent border-0 border-b-[1px] border-b-black placeholder:text-black text-3xl font-light'
            :placeholder="placeholder"
            :value="form.location"
     />

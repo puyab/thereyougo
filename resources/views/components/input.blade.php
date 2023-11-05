@@ -2,15 +2,15 @@
 
 <x-splade-data
   default="{name: '{{$attributes->get('name')}}', type: '{{$attributes->get('type')}}', open: false, options: {{$options}}}">
-  <div class="w-full h-max flex flex-col gap-2"
+  <div class="w-full h-full flex flex-col gap-2 max-h-[63px]"
        v-click-outside="() => data.open ? data.open = false : undefined"
   >
     <div
       v-if="data.type === 'select'"
-      class='relative w-full bg-transparent box'
+      class='relative w-full h-full bg-transparent box'
     >
       <div
-        class="w-full bg-transparent border-0 border-b-[1px] border-b-black text-3xl font-light py-3 flex items-center justify-between cursor-pointer"
+        class="w-full h-[63px] bg-transparent border-0 border-b-[1px] border-b-black text-3xl font-light flex items-center justify-between cursor-pointer"
         @click="data.open=!data.open"
       >
         <div class="pl-2.5">
@@ -30,7 +30,7 @@
       </div>
     </div>
     <input
-      class='w-full bg-transparent border-0 border-b-[1px] border-b-black placeholder:text-black text-3xl font-light'
+      class='w-full bg-transparent h-[63px] border-0 border-b-[1px] border-b-black placeholder:text-black text-3xl font-light'
       style="outline: none"
       {{$attributes}}
       v-else
