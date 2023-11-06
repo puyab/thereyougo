@@ -24,17 +24,18 @@
 <x-navbar/>
 <section class="w-full h-max bg-[#D29A9A80] px-12 py-4 lg:py-9 lg:px-24 lg:pb-20 lg:pt-12 flex flex-col gap-16">
   <h2 class="font-normal text-xl sm:text-2xl md:text-4xl lg:text-6xl">The Home Exchange for LinkedIn Professionals.<br/>
-    Swap your house, apartment or room and travel the world for $0/night.</h2>
+    <span class="font-light text-sm sm:text-base text-left md:text-lg lg:text-3xl">
+    Swap your house, apartment or room and travel the world for $0/night.</span></h2>
   <img class="w-full aspect-auto" src="{{asset('images/youtube.png')}}"/>
-  <p class="font-light text-sm sm:text-base text-center md:text-lg lg:text-3xl">You’ve dreamt about it. We’ve made it
+  <p class="font-light text-sm sm:text-base text-left md:text-center md:text-lg lg:text-3xl">You’ve dreamt about it. We’ve made it
     possible.</p>
 </section>
-<section class="py-16 px-12 lg:px-24 flex flex-col gap-4 lg:flex-row items-center justify-between">
+<section class="py-16 px-12 lg:px-24 flex gap-4 flex-row items-center justify-between">
   <h2 class="font-normal text-3xl lg:text-6xl text-[#292D32]">Join your peers</h2>
   <Link href="{{route('register')}}">
   <x-button>Apply now</x-button>
   </Link>
-  <p class="font-light text-2xl text-[#292D32]">Worldwide, owners and renters welcome.</p>
+  <p class="font-light text-2xl text-[#292D32] hidden md:block">Worldwide, owners and renters welcome.</p>
 </section>
 <section class="w-full flex flex-col gap-8 relative">
   <x-home.users-slider :profiles="$profiles[0]"/>
@@ -43,11 +44,12 @@
 <section
   class="w-full bg-[#DEEBEC] mt-[57.5px] lg:mt-[115px] px-7 lg:px-14 py-[52.5px] lg:py-[105px] flex flex-col lg:flex-row-reverse items-center justify-center gap-10 lg:gap-8"
   id="dream">
+  <h2 class="font-normal text-3xl md:text-4xl text-[#292D32] lg:hidden self-start">The Dream Office</h2>
   <figure class="w-full max-w-[800px] aspect-auto">
     <img src="{{asset('images/dream.png')}}"/>
   </figure>
   <div class="w-full h-max flex flex-col gap-16">
-    <h2 class="font-light text-2xl sm:text-3xl md:text-4xl lg:text-6xl text-[#292D32]">The Dream Office</h2>
+    <h2 class="font-light text-2xl sm:text-3xl md:text-4xl lg:text-6xl text-[#292D32] hidden lg:block">The Dream Office</h2>
     <div class="font-normal text-sm sm:text-base lg:text-lg max-w-[500px] flex flex-col gap-4 lg:gap-8">
       <span>Stand a chance of winning a 2-weeks stay at this
 Villa in the middle of Italy, for 5 people.</span>
