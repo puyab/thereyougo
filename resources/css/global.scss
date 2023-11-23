@@ -1,11 +1,13 @@
-html, body {
-    width: 100vw;
-    min-height: 100vh;
-    overflow-x: hidden;
+html,
+body {
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 * {
-    font-family: 'Crimson Pro', serif;
-    box-sizing: border-box;
+  font-family: "Crimson Pro", serif;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 input::-webkit-outer-spin-button,
@@ -15,6 +17,6 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }

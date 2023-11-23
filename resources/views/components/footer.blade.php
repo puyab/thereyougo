@@ -1,8 +1,8 @@
-<footer class="w-full h-max flex flex-col gap-4 items-center justify-center bg-[#D29A9A80] text-[#717171] py-20 px-4 lg:px-0">
+<footer class="w-full h-max flex flex-col gap-4 items-center justify-center bg-[#D29A9A80] text-[#717171] py-20 px-4 lg:px-0 text-center">
   <figure>
     <img src="{{asset('images/logo.png')}}" alt="Logo"/>
   </figure>
-  <p>Privacy Policy | T&C | The Dream Office Campaing | Swap Guidelines</p>
+  <p>Privacy Policy | T&C | The Dream Office Campaign</p>
   <div class="w-full flex flex-row items-center justify-center gap-5 md:gap-10 flex-wrap mt-2">
     <a href="https://instagram.com/thereyougo.eu?igshid=MzRlODBiNWFlZA==" target="_blank">
       <x-feathericon-instagram class="w-6 h-6"/>
