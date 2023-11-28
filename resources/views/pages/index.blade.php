@@ -38,7 +38,7 @@
 @endphp
 
 <x-navbar />
-<section class="w-full h-max bg-[#D29A9A80] p-4 lg:py-9 lg:px-20 lg:pb-20 lg:pt-12 flex flex-col gap-16">
+<section class="w-full h-max bg-[#D29A9A80] p-4 lg:py-9 lg:px-20 lg:pb-20 lg:pt-12 flex flex-col gap-8 lg:gap-16">
     <h2 class="font-normal text-3xl sm:text-4xl md:text-5xl lg:text-6xl">The Home Exchange for LinkedIn
         Professionals.<br />
         <span class="font-normal text-xl text-left md:text-2xl lg:text-3xl lg:hidden mt-4">You’ve dreamt about it.
@@ -72,7 +72,7 @@
         about it.
         We’ve made it
         possible.</span>
-    <span class="font-normal text-xl text-left md:text-2xl lg:text-3xl lg:hidden mx-auto">
+    <span class="font-normal text-center text-xl text-left md:text-2xl lg:text-3xl lg:hidden mx-auto">
         Swap your house, apartment or room and travel the world for $0/night.</span>
 </section>
 <section class="py-4 md:py-16 px-10 md:px-20 lg:px-24 flex gap-4 flex-row items-center justify-between">
@@ -82,7 +82,7 @@
     </Link>
     <p class="font-light text-2xl text-[#292D32] hidden md:block">Worldwide, owners and renters welcome.</p>
 </section>
-<section class="w-full flex flex-col gap-8 relative">
+<section class="w-full flex flex-col gap-8 relative mt-3">
     <x-home.users-slider :profiles="$profiles[0]" />
     <x-home.users-slider :profiles="$profiles[1]" />
 </section>
@@ -117,7 +117,7 @@
             Office</h2>
         <div class="font-normal text-sm sm:text-base lg:text-xl max-w-[500px] flex flex-col gap-4 lg:gap-8">
             <span>Stand a chance of winning a 2-weeks stay at this
-                Villa in the middle of Italy, for 5 people.</span>
+                Villa in the middle of Italy, for 4 people.</span>
             <span>Apply before January 31st 2024.</span>
             <span>Refer your peers and friends.</span>
             <span>Don’t miss out.</span>

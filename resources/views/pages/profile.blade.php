@@ -20,19 +20,43 @@
 <section
   class="w-full h-max bg-[#D29A9A80] flex flex-col-reverse lg:flex-row items-center justify-between lg:gap-20 gap-5 px-10 lg:px-20 pb-[52.5px] lg:pb-[105px]">
   <div class="w-full h-max flex flex-col items-start justify-start gap-8 max-w-[600px]">
-    <h2 class="font-normal text-2xl sm:text-3xl md:text-4xl lg:text-6xl text-[#292D32]">Start referring your friends
+    <h2 class="font-normal text-2xl sm:text-3xl md:text-4xl lg:text-6xl text-[#292D32] hidden lg:block">Start referring
+      your friends
       to
       win the dream office.</h2>
     <Link href="{{ route('referral_code') }}">
     <x-button>Refer your friends now</x-button>
     </Link>
   </div>
-  <figure class="w-full max-w-[587px]">
-    <img class="w-full aspect-auto" src="{{ asset('images/profile_cover.png') }}"/>
-  </figure>
+  <x-splade-data default="{open: false}">
+    <div @click="data.open = true" class="relative w-full max-w-[587px]">
+      <figure class="w-full h-max">
+        <img class="w-full min-h-[250px] lg:min-h-none aspect-auto" src="{{ asset('images/dream.png') }}" />
+      </figure>
+      <div class="absolute w-full h-full inset-0 flex items-center justify-center cursor-pointer">
+        <div
+          class="w-max h-max bg-white rounded-[4999px] border-[1px] border-black py-1.5 px-3.5 md:py-3 md:px-7">
+                    <span class="text-black text-xs sm:text-lg md:text-xl lg:text-2xl font-semibold">Watch the
+                        video</span>
+        </div>
+      </div>
+    </div>
+    <div v-if="data.open" class="fixed inset-0 bg-black/30 z-50 flex items-center justify-center">
+      <iframe class="w-11/12 h-5/6 border-none outline-none rounded-xl z-10"
+              src="https://www.youtube.com/embed/1wLEL4w7Zuc?si=0hnMcOOhEoMI_Jmu&amp;controls=0"
+              title="YouTube video player" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+      <div class="absolute inset-0 bg-transparent z-0" @click="data.open = false"></div>
+    </div>
+  </x-splade-data>
+  <h2 class="font-normal text-3xl md:text-4xl lg:text-6xl text-[#292D32] lg:hidden max-w-[304px] mr-auto ml-0">Start referring
+    your friends
+    to
+    win the dream office.</h2>
 </section>
 <section class="w-full px-10 lg:px-20 py-[20.5px] lg:py-[51px] flex flex-col gap-6 lg:gap-11 lg:mx-auto">
-  <h2 class="font-light text-[#292D32] text-2xl sm:text-3xl md:text-4xl lg:text-6xl">What happens now?</h2>
+  <h2 class="font-normal text-[#292D32] text-3xl md:text-4xl lg:text-6xl">What happens now?</h2>
   <div class="w-full h-max flex flex-col gap-6 font-light text-xl md:text-2xl lg:text-3xl">
     <span>1- Complete any missing informations from your profile and wait our team to approve you.</span>
     <span>2- Refer your friends and check the tracker below to increase the chances of winning the Dream Office.       You will be notified via weekly emails in regards of who’s ahead in winning the 2-weeks stay in Italy.</span>
@@ -73,20 +97,20 @@
     </div>
   </div>
   <div class="#lg:mt-[11rem] w-full flex flex-col-reverse gap-4 lg:flex-row lg:gap-8 lg:items-center lg:justify-center">
-    <div class="w-max max-w-full h-max flex flex-col gap-12 lg:max-w-2xl">
-      <span class="text-[#292d32] font-light text-2xl sm:text-3xl md:text-4xl lg:text-6xl">Your Profile</span>
-      <div class="w-max max-w-full h-max flex flex-col gap-12 lg:pl-11">
+    <div class="w-max max-w-full h-max flex flex-col gap-6 lg:gap-12 lg:max-w-2xl">
+      <span class="text-[#292d32] font-normal text-3xl md:text-4xl lg:text-6xl">Your Profile</span>
+      <div class="w-max max-w-full h-max flex flex-col gap-6 lg:gap-12 lg:pl-11">
         <div class="w-full h-max flex flex-col items-start justify-start gap-8 mx-auto">
           <div class="w-max h-max flex items-center justify-center gap-4">
             <span class="text-2xl md:text-3xl">Account Status:</span>
             <div data-status="{{ $profile->status }}"
                  class="w-max flex items-center justify-center border-[1px] border-black rounded-full px-4 py-1.5 bg-amber-200 data-[status='rejected']:bg-red-400 data-[status='approved']:bg-[#B5DCAE] data-[status='pending']:bg-[#D7DC9C]">
-                            <span class="text-black font-inter text-xs font-semibold"
+                            <span class="text-black font-inter text-[8px] lg:text-xs font-semibold"
                                   v-text="{rejected: 'Rejected', approved: 'Approved', pending: 'Pending', 'not_sent' : 'Not Completed'}[@js($profile->status)]"></span>
             </div>
           </div>
           <div
-            class="w-full flex flex-col gap-2 mb-2 font-normal text-xl md:text-2xl lg:text-4xl text-[#292D32]">
+            class="w-full flex flex-col gap-2 mb-2 font-medium text-xl md:text-2xl lg:text-4xl text-[#292D32]">
             <span>{{ $profile->first_name }} {{ $profile->last_name }}.</span>
             <span>{{ $profile->role }}, {{ $profile->company }}</span>
             <span>{{ $profile->location }}</span>
@@ -94,7 +118,7 @@
           <iframe class="w-full h-[140px] lg:hidden"
                   src="https://maps.google.com/maps?key={{ config('google.key') }}&q={{ $profile->latitude }},{{ $profile->longitude }}&hl=es&z=14&amp;output=embed"></iframe>
         </div>
-        <div class="w-full h-max flex flex-col gap-4 font-light text-xl md:text-2xl lg:text-3xl text-[#292D32]">
+        <div class="w-full h-max flex flex-col gap-2 font-light text-xl md:text-2xl lg:text-3xl text-[#292D32]">
           <span>Type of accommodation: {{ ucfirst($profile->accommodation_type ?? '-') }}</span>
           <span>Number of bedrooms: {{ $profile->sleep_rooms ?? '-' }}</span>
           <span>Number of people: {{ $profile->bedrooms ?? '-' }}</span>
@@ -111,7 +135,7 @@
           </x-splade-data>
 
         </div>
-        <div class="w-full h-max flex flex-col gap-4 font-light text-xl md:text-2xl lg:text-3xl text-[#292D32]">
+        <div class="w-full h-max flex flex-col gap-2 font-light text-xl md:text-2xl lg:text-3xl text-[#292D32]">
           <span>Telephone Number: {{ $profile->telephone ?? '-' }}</span>
           <span>LinkedIn URL: <a class="underline text-lg md:text-xl lg:text-2xl"
                                  href="{{ $profile->linkedin }}" target="_blank">Open</a></span>
