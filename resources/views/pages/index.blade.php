@@ -39,7 +39,7 @@
 
 <x-navbar />
 <section class="w-full h-max bg-[#D29A9A80] p-4 lg:py-9 lg:px-20 lg:pb-20 lg:pt-12 flex flex-col gap-8 lg:gap-16">
-    <h2 class="font-normal text-3xl sm:text-4xl md:text-5xl lg:text-6xl">The Home Exchange for LinkedIn
+    <h2 class="font-medium text-3xl sm:text-4xl md:text-5xl lg:text-6xl">The Home Exchange for LinkedIn
         Professionals.<br />
         <span class="font-normal text-xl text-left md:text-2xl lg:text-3xl lg:hidden mt-4">You’ve dreamt about it.
             We’ve made it
@@ -49,12 +49,13 @@
     </h2>
     <x-splade-data default="{open: false}">
         <div @click="data.open = true" class="relative w-full h-max">
-            <img class="w-full min-h-[177px] aspect-auto md:hidden" style="border: 1px solid black" src="{{ asset('images/youtube.jpeg') }}"  alt=""/>
-          <img class="w-full min-h-[177px] hidden md:block " src="{{ asset('images/youtube.png') }}"  alt=""/>
+            <img class="w-full min-h-[177px] aspect-auto md:hidden" style="border: 1px solid black"
+                src="{{ asset('images/youtube.jpeg') }}" alt="" />
+            <img class="w-full min-h-[177px] hidden md:block " src="{{ asset('images/youtube.png') }}" alt="" />
             <div class="absolute w-full h-full inset-0 flex items-center justify-center cursor-pointer">
                 <div
                     class="w-max h-max bg-white rounded-[4999px] border-[1px] border-black py-1.5 px-3.5 md:py-3 md:px-7">
-                    <span class="text-black text-xs sm:text-lg md:text-xl lg:text-2xl font-semibold">Watch the
+                    <span class="text-black text-xs sm:text-sm lg:text-base font-semibold">Watch the
                         video</span>
                 </div>
             </div>
@@ -68,17 +69,17 @@
             <div class="absolute inset-0 bg-transparent z-0" @click="data.open = false"></div>
         </div>
     </x-splade-data>
-    <span class="font-normal text-xl text-left md:text-2xl lg:text-3xl hidden lg:block mx-auto">You’ve dreamt
+    <span class="font-normal text-xl text-left md:text-2xl lg:text-5xl hidden lg:block mx-auto">You’ve dreamt
         about it.
         We’ve made it
         possible.</span>
-    <span class="font-normal text-center text-xl text-left md:text-2xl lg:text-3xl lg:hidden mx-auto">
+    <span class="font-normal text-center text-xl md:text-2xl lg:text-3xl lg:hidden mx-auto">
         Swap your house, apartment or room and travel the world for $0/night.</span>
 </section>
 <section class="py-4 md:py-16 px-10 md:px-20 lg:px-24 flex gap-4 flex-row items-center justify-between">
     <h2 class="font-normal text-3xl lg:text-6xl text-[#292D32]">Join your peers</h2>
     <Link href="{{ route('register') }}">
-    <x-button>Apply now</x-button>
+    <x-button class="lg:text-base max-h-[50px]">Apply now</x-button>
     </Link>
     <p class="font-light text-2xl text-[#292D32] hidden md:block">Worldwide, owners and renters welcome.</p>
 </section>
@@ -98,7 +99,7 @@
             <div class="absolute w-full h-full inset-0 flex items-center justify-center cursor-pointer">
                 <div
                     class="w-max h-max bg-white rounded-[4999px] border-[1px] border-black py-1.5 px-3.5 md:py-3 md:px-7">
-                    <span class="text-black text-xs sm:text-lg md:text-xl lg:text-2xl font-semibold">Watch the
+                    <span class="text-black text-xs sm:text-sm lg:text-base font-semibold">Watch the
                         video</span>
                 </div>
             </div>
@@ -113,15 +114,16 @@
         </div>
     </x-splade-data>
     <div class="w-full h-max flex flex-col gap-16">
-        <h2 class="font-light text-2xl sm:text-3xl md:text-4xl lg:text-6xl text-[#292D32] hidden lg:block">The Dream
+        <h2 class="font-normal text-2xl sm:text-3xl md:text-4xl lg:text-6xl text-[#292D32] hidden lg:block">The Dream
             Office</h2>
-        <div class="font-normal text-sm sm:text-base lg:text-xl max-w-[500px] flex flex-col gap-4 lg:gap-8">
+        <div class="font-normal text-sm sm:text-base lg:text-2xl max-w-[500px] flex flex-col gap-4 lg:gap-8">
             <span>Stand a chance of winning a 2-weeks stay at this
                 Villa in the middle of Italy, for 4 people.</span>
             <span>Apply before January 31st 2024.</span>
             <span>Refer your peers and friends.</span>
             <span>Don’t miss out.</span>
         </div>
+        <a href="#faqs" class="text-[#4052FB] text-xl font-light underline">Read T&C</a>
         <Link href="{{ route('register') }}">
         <x-button>Apply now</x-button>
         </Link>
@@ -155,7 +157,7 @@
 <div class="w-11/12 max-w-6xl mx-auto my-[56px] lg:my-[112px] flex flex-col gap-14">
     @foreach ($faqs as $faq)
         <x-accordion title="{{ $faq['title'] }}">
-            <p class="w-full h-max text-left text-xl md:text-2xl lg:text-4xl font-normal">
+            <p class="w-full h-max text-left text-xl md:text-2xl lg:text-3xl font-normal">
                 {{ $faq['content'] }}
             </p>
         </x-accordion>
