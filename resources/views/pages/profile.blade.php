@@ -26,7 +26,7 @@
             to
             win the dream office.</h2>
         <Link href="{{ route('referral_code') }}">
-        <x-button>Refer your friends now</x-button>
+        <x-button class="mx-auto lg:mx-0">Refer your friends now</x-button>
         </Link>
     </div>
     <x-splade-data default="{open: false}">
@@ -147,7 +147,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-full max-w-[523px] h-max flex flex-col items-center justify-between gap-16">
+        <div class="w-full max-w-[523px] h-max flex flex-col items-center justify-between gap-16 ml-[15rem]">
             <div class="w-full h-max flex flex-col items-center justify-center gap-2 lg:g-[166px]">
                 <span class="font-light text-xl md:text-2xl lg:text-3xl text-[#292D32]">Referral's Tracker</span>
                 <div class="w-full h-[83px] lg:h-[166px] flex items-center justify-center border-[1px] border-black">
