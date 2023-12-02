@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
+use App\Jobs\RegisterUserToBrevo;
 use App\Mail\WelcomeUser;
 use App\Models\Profile;
 use App\Models\User;
@@ -55,7 +56,13 @@ class RegisteredUserController extends Controller
                 ->where('referral_code', $request->referred_from)
                 ->increment('referral_count');
 
+        $user->refresh();
+
+
+        dispatch(new RegisterUserToBrevo(User::query()->where('id', $user->id)->with('profile')->first()));
         Mail::to($user)->send(new WelcomeUser($request->first_name . ' ' . $request->last_name));
+
+
         event(new Registered($user));
 
         Auth::login($user);
