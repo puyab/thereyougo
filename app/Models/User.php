@@ -67,13 +67,6 @@ class User extends Authenticatable implements FilamentUser, HasName
   public static function boot()
   {
     parent::boot();
-
-    self::created(function (User $model) {
-      $user = User::query()->where('id', $model->id)->with('profile')->first();
-
-      dispatch(new RegisterUserToBrevo($user));
-      Mail::to($user)->send(new WelcomeUser($user->profile->first_name . ' ' . $user->profile->last_name));
-    });
   }
 
 }
