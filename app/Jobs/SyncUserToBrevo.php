@@ -2,17 +2,18 @@
 
 namespace App\Jobs;
 
-use App\Models\User;
+use App\Models\Profile;
+use Brevo\Client\Api\ContactsApi;
+use Brevo\Client\Configuration;
+use Brevo\Client\Model\UpdateContact;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Brevo\Client\Configuration;
-use Brevo\Client\Api\ContactsApi;
-use Brevo\Client\Model\CreateContact;
 
-class RegisterUserToBrevo implements ShouldQueue
+class SyncUserToBrevo implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -21,15 +22,15 @@ class RegisterUserToBrevo implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct(
-        public User $user
-    ) {
-
+    public function __construct(public string $email, public Profile $profile)
+    {
+        //
     }
 
     private function initializeClient()
     {
         $config = Configuration::getDefaultConfiguration()->setApiKey('api-key', config('brevo.key'));
+
         $this->apiInstance = new ContactsApi(
             new \GuzzleHttp\Client,
             $config,
@@ -43,23 +44,21 @@ class RegisterUserToBrevo implements ShouldQueue
     {
         $this->initializeClient();
 
-        $contact = new CreateContact([
-            'email' => $this->user->email,
+        $updatedContact = new UpdateContact([
             'attributes' => [
-                'FIRSTNAME' => $this->user->profile->first_name,
-                'LASTNAME' => $this->user->profile->last_name,
-                'SMS' => $this->user->profile->telephone,
-                'LOCATION' => '',
-                'COMPANY' => '',
-                'ROLE' => ''
+                'FIRSTNAME' => $this->profile->first_name,
+                'LASTNAME' => $this->profile->last_name,
+                'SMS' => $this->profile->telephone,
+                'LOCATION' => $this->profile->location,
+                'COMPANY' => $this->profile->company,
+                'ROLE' => $this->profile->role,
             ]
         ]);
 
         try {
-            $result = $this->apiInstance->createContact($contact);
-            $result['id'];
+            $this->apiInstance->updateContact($this->email, $updatedContact);
         } catch (\Exception $e) {
-            info('Exception when calling ContactsApi->createContact: ' . $e->getMessage());
+            info('Exception when calling ContactsApi->updateContact: ' . $e->getMessage());
         }
     }
 }

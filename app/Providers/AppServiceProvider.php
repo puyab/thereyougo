@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Profile;
+use App\Observers\ProfileObserver;
 use Illuminate\Support\ServiceProvider;
 use ProtoneMedia\Splade\Facades\Splade;
 

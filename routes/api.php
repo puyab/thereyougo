@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Mail, Route};
-use App\Jobs\{RegisterUserToBrevo};
+use App\Jobs\{SyncUserToBrevo};
 use App\Models\User;
 
 /*
@@ -17,8 +17,7 @@ use App\Models\User;
 */
 
 Route::get("queue", function () {
-  $user = User::query()->with('profile')->first();
-  dispatch(new RegisterUserToBrevo($user));
+  dispatch(new SyncUserToBrevo);
   return 'Hello World';
 });
 
