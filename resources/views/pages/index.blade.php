@@ -1,24 +1,12 @@
 @php
     use App\Models\Profile;
-    $count = Profile::query()->count() / 2;
-    $profiles = [
-        cache()->remember(
-            'index_profile_1',
-            now()->addMinute(),
-            fn() => Profile::query()
-                ->with('media')
-                ->where('id', '<=', $count)
-                ->get(),
-        ),
-        cache()->remember(
-            'index_profile_2',
-            now()->addMinute(),
-            fn() => Profile::query()
-                ->with('media')
-                ->where('id', '>', $count)
-                ->get(),
-        ),
-    ];
+    $raw_profiles = cache()->remember('home_profiles', now()->addMinute(), function () {
+        return Profile::query()
+            ->select(['id', 'first_name', 'last_name', 'company', 'role'])
+            ->with('media')
+            ->get();
+    });
+    $profiles = $raw_profiles->chunk(count($raw_profiles) / 2);
     $work_steps = [
         [
             'title' => 'Apply for membership',

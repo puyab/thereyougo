@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
+use App\Mail\WelcomeUser;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
+use Mail;
 use ProtoneMedia\Splade\Facades\Toast;
 
 class RegisteredUserController extends Controller
@@ -48,10 +50,12 @@ class RegisteredUserController extends Controller
             'referred_from' => $request->referred_from ?? null
         ]);
 
-        if($request->referred_from)
-          Profile::query()
-            ->where('referral_code', $request->referred_from)
-            ->increment('referral_count');
+        if ($request->referred_from)
+            Profile::query()
+                ->where('referral_code', $request->referred_from)
+                ->increment('referral_count');
+
+        Mail::to($user)->send(new WelcomeUser($request->first_name . ' ' . $request->last_name));
         event(new Registered($user));
 
         Auth::login($user);

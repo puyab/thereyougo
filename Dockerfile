@@ -24,7 +24,10 @@ RUN composer install --optimize-autoloader \
     && sed -i 's/protected \$proxies/protected \$proxies = "*"/g' app/Http/Middleware/TrustProxies.php \
     && echo "MAILTO=\"\"\n* * * * * www-data /usr/bin/php /var/www/html/artisan schedule:run" > /etc/cron.d/laravel \
     && cp .fly/entrypoint.sh /entrypoint \
-    && chmod +x /entrypoint
+    && chmod +x /entrypoint \
+    && apt update \
+    && apt install jpegoptim optipng pngquant gifsicle npm nodejs -y \
+    && npm i -g svgo
 
 # If we're using Octane...
 RUN if grep -Fq "laravel/octane" /var/www/html/composer.json; then \
