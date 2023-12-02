@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
-use App\Jobs\RegisterUserToBrevo;
-use App\Mail\WelcomeUser;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
@@ -14,7 +12,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
-use Mail;
 use ProtoneMedia\Splade\Facades\Toast;
 
 class RegisteredUserController extends Controller
@@ -59,8 +56,6 @@ class RegisteredUserController extends Controller
         $user->refresh();
 
 
-        dispatch(new RegisterUserToBrevo(User::query()->where('id', $user->id)->with('profile')->first()));
-        Mail::to($user)->send(new WelcomeUser($request->first_name . ' ' . $request->last_name));
 
 
         event(new Registered($user));
