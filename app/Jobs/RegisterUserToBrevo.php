@@ -24,7 +24,6 @@ class RegisterUserToBrevo implements ShouldQueue
     public function __construct(
         public User $user
     ) {
-
     }
 
     private function initializeClient()

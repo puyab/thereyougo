@@ -7,6 +7,7 @@ use App\Jobs\RegisterUserToBrevo;
 use Filament\Models\Contracts\{HasName, FilamentUser};
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -62,6 +63,11 @@ class User extends Authenticatable implements FilamentUser, HasName
   public function getFilamentName(): string
   {
     return $this->profile->first_name . ' ' . $this->profile->last_name;
+  }
+
+  public function reset_password_requests(): HasMany
+  {
+    return $this->hasMany(ResetPasswordRequest::class);
   }
 
   public static function boot()

@@ -1,5 +1,6 @@
 <?php
 
+use App\Mail\ResetPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Mail, Route};
 use App\Jobs\{SyncUserToBrevo};
@@ -16,9 +17,8 @@ use App\Models\User;
 |
 */
 
-Route::get("queue", function () {
-  dispatch(new SyncUserToBrevo);
-  return 'Hello World';
+Route::get("web-mail", function () {
+  return new ResetPassword('Mohammad Raufzahed', 'Hello');
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

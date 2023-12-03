@@ -61,7 +61,7 @@ class ProfileController extends Controller
       return redirect()->back();
     }
 
-    if($currentPassword && !$this->updatePassword($user, $password, $currentPassword)) {
+    if ($currentPassword && !$this->updatePassword($user, $password, $currentPassword)) {
       Toast::danger('Faild to update the passwords');
       return redirect()->back();
     }
@@ -75,12 +75,13 @@ class ProfileController extends Controller
     $data = $request->validationData();
     unset($data['_method']);
     $profile = Auth::user()->profile;
-    if (Profile::query()->where('id', $profile->id)->update($data)) {
+    if (Profile::find($profile->id)->update($data)) {
       if (!$profile->details_submitted)
         Profile::query()->where('id', $profile->id)->update(['details_submitted' => true]);
       $profile->refresh();
       Toast::success('Details updated successfully');
-    } else Toast::danger('Details not updated');
+    } else
+      Toast::danger('Details not updated');
     if (!$profile->canAccessProfile())
       return redirect()->back();
     return redirect()->route('profile.global');
@@ -91,9 +92,10 @@ class ProfileController extends Controller
     $data = $request->validationData();
     unset($data['_method']);
     $profile = Auth::user()->profile;
-    if (Profile::query()->where('id', $profile->id)->update($data)) {
+    if (Profile::find($profile->id)->update($data)) {
       Toast::success('Details updated successfully');
-    } else Toast::danger('Details not updated');
+    } else
+      Toast::danger('Details not updated');
     return redirect()->route('profile.global');
   }
 
