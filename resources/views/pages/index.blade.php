@@ -69,7 +69,7 @@ $faqs = config('faqs');
   <x-home.users-slider :profiles="$profiles[0]" />
   <x-home.users-slider :profiles="$profiles[1]" />
 </section>
-<section class="w-full bg-[#DEEBEC] mt-[57.5px] lg:mt-[115px] px-6 lg:px-20 py-10 lg:py-20 flex flex-col lg:flex-row-reverse items-center justify-center gap-10 lg:gap-8" id="dream">
+<section class="w-full bg-[#DEEBEC] mt-[1rem] lg:mt-[115px] px-6 lg:px-20 py-10 lg:py-20 flex flex-col lg:flex-row-reverse items-center justify-center gap-10 lg:gap-8" id="dream">
   <h2 class="font-normal text-3xl md:text-4xl text-[#292D32] lg:hidden self-start">The Dream Office</h2>
   <x-splade-data default="{open: false}">
     <div @click="data.open = true" class="relative w-full max-w-[800px]">
