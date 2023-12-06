@@ -26,7 +26,7 @@ $faqs = config('faqs');
 @endphp
 
 <x-navbar />
-<section class="w-full h-max bg-[#D29A9A80] p-4 lg:py-9 lg:px-20 lg:pb-20 lg:pt-12 flex flex-col gap-4 lg:gap-16">
+<section class="w-full h-max bg-[#D29A9A80] px-4 pt-4 pb-8 lg:py-9 lg:px-20 lg:pb-20 lg:pt-12 flex flex-col gap-8 lg:gap-16">
   <h2 class="font-medium text-3xl sm:text-4xl md:text-5xl lg:text-6xl">The Home Exchange for LinkedIn
     Professionals.<br />
     <span class="font-normal text-xl text-left md:text-2xl lg:text-3xl lg:hidden mt-4">You’ve dreamt about it.
@@ -40,8 +40,8 @@ $faqs = config('faqs');
       <img class="w-full min-h-[177px] aspect-auto md:hidden" style="border: 1px solid black" src="{{ asset('images/youtube.jpeg') }}" alt="" />
       <img class="w-full min-h-[177px] hidden md:block " src="{{ asset('images/youtube.png') }}" alt="" />
       <div class="absolute w-full h-full inset-0 flex items-center justify-center cursor-pointer">
-        <div class="w-max h-max bg-white rounded-[4999px] border-[1px] border-black py-1.5 px-3.5 md:py-3 md:px-7">
-          <span class="text-black text-xs sm:text-sm lg:text-base font-semibold">Watch the
+        <div class="w-max h-max flex items-center justify-center bg-white rounded-[4999px] border-[1px] border-black py-1.5 px-3.5 md:py-3 md:px-7">
+          <span class="text-black text-[8px] sm:text-sm font-inter lg:text-base font-semibold">Watch the
             video</span>
         </div>
       </div>
@@ -58,7 +58,7 @@ $faqs = config('faqs');
   <span class="font-normal text-center text-xl md:text-2xl lg:text-3xl lg:hidden mx-auto">
     Swap your house, apartment or room and travel the world for $0/night.</span>
 </section>
-<section class="py-4 md:py-16 px-10 md:px-20 lg:px-24 flex gap-4 flex-row items-center justify-between">
+<section class="pb-4 pt-8 md:py-16 px-10 md:px-20 lg:px-24 flex gap-4 flex-row items-center justify-between">
   <h2 class="font-normal text-3xl lg:text-6xl text-[#292D32]">Join your peers</h2>
   <Link href="{{ route('register') }}">
   <x-button class="lg:text-base max-h-[50px]">Apply now</x-button>
@@ -77,8 +77,8 @@ $faqs = config('faqs');
         <img class="w-full min-h-[250px] lg:min-h-none aspect-auto" src="{{ asset('images/dream.png') }}" />
       </figure>
       <div class="absolute w-full h-full inset-0 flex items-center justify-center cursor-pointer">
-        <div class="w-max h-max bg-white rounded-[4999px] border-[1px] border-black py-1.5 px-3.5 md:py-3 md:px-7">
-          <span class="text-black text-xs sm:text-sm lg:text-base font-semibold">Watch the
+        <div class="w-max h-max flex items-center justify-center bg-white rounded-[4999px] border-[1px] border-black py-1.5 px-3.5 md:py-3 md:px-7">
+          <span class="text-black text-[8px] font-inter sm:text-sm lg:text-base font-semibold">Watch the
             video</span>
         </div>
       </div>
@@ -91,7 +91,7 @@ $faqs = config('faqs');
   <div class="w-full h-max flex flex-col gap-16">
     <h2 class="font-normal text-2xl sm:text-3xl md:text-4xl lg:text-6xl text-[#292D32] hidden lg:block">The Dream
       Office</h2>
-    <div class="font-normal text-sm sm:text-base lg:text-2xl max-w-[500px] flex flex-col gap-4 lg:gap-8">
+    <div class="font-normal text-xl lg:text-2xl max-w-[500px] flex flex-col gap-4 lg:gap-8">
       <span>Stand a chance of winning a 2-weeks stay at this
         Villa in the middle of Italy, for 4 people.</span>
       <span>Apply before January 31st 2024.</span>
