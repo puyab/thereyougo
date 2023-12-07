@@ -3,7 +3,13 @@
     <figure>
         <img src="{{ asset('images/logo.png') }}" alt="Logo" />
     </figure>
-    <p>Privacy Policy | T&C | The Dream Office</p>
+    <p>
+        <Link href="{{ route('privacy') }}">Privacy Policy</Link>
+        |
+        <Link href="{{ route('terms') }}"> T&C</Link>
+        |
+        <Link href="{{ route('dream-contest') }}"> The Dream Office</Link>
+    </p>
     <div class="w-full flex flex-row items-center justify-center gap-5 md:gap-10 flex-wrap mt-2">
         <a href="https://instagram.com/thereyougo.eu?igshid=MzRlODBiNWFlZA==" target="_blank">
             <x-feathericon-instagram class="w-6 h-6" />

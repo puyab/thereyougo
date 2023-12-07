@@ -10,6 +10,5 @@
         <x-button class="mt-16 lg:mt-32">
             Continue
         </x-button>
-
     </x-splade-form>
 </x-layouts.auth>

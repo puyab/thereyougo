@@ -29,8 +29,11 @@ Route::middleware('splade')->group(function () {
   Route::spladeUploads();
 
   Route::view('/', 'pages.index')->name('home');
+  Route::view('/privacy', 'pages.privacy-and-policy')->name('privacy');
+  Route::view('/terms', 'pages.terms')->name('terms');
+  Route::view('/dream-contest', 'pages.dream-contest')->name('dream-contest');
 
-  Route::middleware(['auth',RedirectIfNotAuthenticated::class])->controller(ProfileController::class)->group(function () {
+  Route::middleware(['auth', RedirectIfNotAuthenticated::class])->controller(ProfileController::class)->group(function () {
     Route::view('/profile', 'pages.profile')->middleware(CanAccessProfile::class)->name('profile.global');
     Route::view('/settings', 'pages.settings')->name('profile');
     Route::view('/referral_code', 'pages.referral-code')->name('referral_code');
