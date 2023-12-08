@@ -29,6 +29,7 @@ class WelcomeUser extends Mailable implements ShouldQueue
     {
         return new Envelope(
             subject: 'Welcome User',
+            from: 'noreply@thereyougo.eu'
         );
     }
 
