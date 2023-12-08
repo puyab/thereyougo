@@ -2,8 +2,11 @@
 
 namespace App\Observers;
 
+use App\Jobs\RegisterUserToBrevo;
 use App\Jobs\SyncUserToBrevo;
+use App\Mail\WelcomeUser;
 use App\Models\Profile;
+use Mail;
 
 class ProfileObserver
 {
@@ -12,7 +15,9 @@ class ProfileObserver
      */
     public function created(Profile $profile): void
     {
-        //
+
+        Mail::to($profile->user)->send(new WelcomeUser($profile->first_name . ' ' . $profile->last_name));
+        dispatch(new RegisterUserToBrevo($profile->user->email, $profile));
     }
 
     /**

@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Models\User;
+use App\Models\Profile;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -22,7 +22,8 @@ class RegisterUserToBrevo implements ShouldQueue
      * Create a new job instance.
      */
     public function __construct(
-        public User $user
+        public string $email,
+        public Profile $profile
     ) {
     }
 
@@ -43,11 +44,11 @@ class RegisterUserToBrevo implements ShouldQueue
         $this->initializeClient();
 
         $contact = new CreateContact([
-            'email' => $this->user->email,
+            'email' => $this->email,
             'attributes' => [
-                'FIRSTNAME' => $this->user->profile->first_name,
-                'LASTNAME' => $this->user->profile->last_name,
-                'SMS' => $this->user->profile->telephone,
+                'FIRSTNAME' => $this->profile->first_name,
+                'LASTNAME' => $this->profile->last_name,
+                'SMS' => $this->profile->telephone,
                 'LOCATION' => '',
                 'COMPANY' => '',
                 'ROLE' => ''

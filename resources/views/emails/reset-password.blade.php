@@ -5,7 +5,7 @@
 
 Oops! If you've forgotten your Thereyougo password, don't worry. 
 
-<x-mail::button url="{{route('reset-password.handle', $reset_password_id)}}">Click Here</x-mail::button> to reset it and regain access to your account.
+<x-mail::button url="{{route('reset-password.confirm', $reset_password_id)}}">Click Here</x-mail::button> to reset it and regain access to your account.
 
  
 

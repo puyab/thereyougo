@@ -21,7 +21,7 @@ Route::middleware('guest')->group(function () {
         });
     Route::prefix('/reset-password')->group(function () {
         Route::view('/', 'auth.reset-password')->name('reset-password');
-        Route::view('/{id}', 'auth.confirm-reset-password')->name('reset-password.handle');
+        Route::view('/{id}', 'auth.confirm-reset-password')->name('reset-password.confirm');
         Route::controller(ResetPassswordLinkController::class)->group(function () {
             Route::post('/', 'sendResetLink')->name('reset-password.send_mail');
             Route::post('/{id}', 'resetPassword')->name('reset-password.handle');

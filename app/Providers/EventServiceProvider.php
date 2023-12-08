@@ -23,9 +23,6 @@ class EventServiceProvider extends ServiceProvider
     ];
 
     protected $observers = [
-        User::class => [
-            UserObserver::class,
-        ],
         Profile::class => [
             ProfileObserver::class,
         ],
