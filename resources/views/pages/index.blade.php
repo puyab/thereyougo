@@ -29,7 +29,7 @@ $faqs = config('faqs');
 <section class="w-full h-max bg-[#D29A9A80] px-4 pt-4 pb-8 lg:py-9 lg:px-20 lg:pb-20 lg:pt-12 flex flex-col gap-8 lg:gap-16">
   <h2 class="font-medium text-3xl sm:text-4xl md:text-5xl lg:text-6xl">The Home Exchange for LinkedIn
     Professionals.<br />
-    <span class="font-normal text-xl text-left md:text-2xl lg:text-3xl lg:hidden mt-4">You’ve dreamt about it.
+    <span class="font-normal text-xl text-left md:text-2xl lg:text-3xl lg:hidden mt-4">You’ve dreamt about it. <br />
       We’ve made it
       possible.</span>
     <span class="font-normal text-xl text-left md:text-2xl lg:text-3xl hidden lg:block mt-4">
@@ -69,7 +69,7 @@ $faqs = config('faqs');
   <x-home.users-slider :profiles="$profiles[0]" />
   <x-home.users-slider :profiles="$profiles[1]" />
 </section>
-<section class="w-full bg-[#DEEBEC] mt-[1rem] lg:mt-[115px] px-6 lg:px-20 py-10 lg:py-20 flex flex-col lg:flex-row-reverse items-center justify-center gap-10 lg:gap-8" id="dream">
+<section class="w-full bg-[#DEEBEC] mt-8 lg:mt-[115px] px-6 lg:px-20 py-10 lg:py-20 flex flex-col lg:flex-row-reverse items-center justify-center gap-10 lg:gap-8" id="dream">
   <h2 class="font-normal text-3xl md:text-4xl text-[#292D32] lg:hidden self-start">The Dream Office</h2>
   <x-splade-data default="{open: false}">
     <div @click="data.open = true" class="relative w-full max-w-[800px]">
@@ -98,7 +98,7 @@ $faqs = config('faqs');
       <span>Refer your peers and friends.</span>
       <span>Don’t miss out.</span>
     </div>
-    <a href="#faqs" class="text-[#4052FB] text-xl font-light underline">Read T&C</a>
+    <a href="{{ route('terms') }}" class="text-[#4052FB] text-xl font-light underline">Read T&C</a>
     <Link href="{{ route('register') }}">
     <x-button>Apply now</x-button>
     </Link>

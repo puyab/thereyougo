@@ -25,11 +25,11 @@ if ($refs_size
   <x-splade-data default="{open: false}">
     <div @click="data.open = true" class="relative w-full max-w-[670px]">
       <figure class="w-full h-max">
-        <img class="w-full min-h-[250px] lg:min-h-none aspect-auto" src="{{ asset('images/dream.png') }}" />
+        <img class="w-full min-h-[250px] max-w-[670px] lg:min-h-none aspect-auto" src="{{ asset('images/dream.png') }}" />
       </figure>
       <div class="absolute w-full h-full inset-0 flex items-center justify-center cursor-pointer">
         <div class="w-max h-max flex items-center justify-center bg-white rounded-[4999px] border-[1px] border-black py-1.5 px-3.5 md:py-3 md:px-7">
-          <span class="text-black text-[8px] font-inter sm:text-lg md:text-xl lg:text-2xl font-semibold">Watch the
+          <span class="text-black text-[8px] font-inter sm:text-sm lg:text-base font-semibold">Watch the
             video</span>
         </div>
       </div>
