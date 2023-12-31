@@ -1,4 +1,4 @@
-<x-navbar />
+{{--  <x-navbar />
 <section class="w-full h-max bg-[#D29A9A80] flex flex-col-reverse lg:flex-row items-center justify-between lg:gap-20 gap-5 px-10 lg:px-20 py-[62.5px] lg:py-[125px]">
   <div class="w-full h-max flex flex-col items-start justify-start gap-9 max-w-[800px]">
     <h2 class="font-semibold md:font-normal text-3xl md:text-4xl lg:text-6xl text-[#292D32]">Privacy
@@ -7,7 +7,19 @@
   </div>
 
   <img class="w-full max-w-[553px] aspect-auto" src="{{ asset('images/privacy.png') }}" />
-</section>
+</section>  --}}
+
+<div id="refer" class="ppo">
+  <x-navbar />
+	<div class="refer-text">
+    <h2>
+      Privacy Policy
+    </h2>
+
+	</div>
+</div>
+
+
 <div class="w-full h-max px-[65.5px] lg:px-[131px] py-[62.5px] lg:py-[125px] font-light text-xl md:text-2xl lg:text-3xl flex flex-col items-start justify-start gap-10">
   <p>
     Thereyougo Privacy Policy Last Updated: November 22, 2023
@@ -131,4 +143,7 @@
   </p>
   <p> If you have any questions or concerns about this Privacy Policy, please contact us at <a href="mailto:privacy@thereyougo.eu" class="underline"> privacy@thereyougo.eu</a>.</p>
 </div>
-<x-footer />
+<div class="brights">
+  <x-footer />
+
+</div>

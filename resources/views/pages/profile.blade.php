@@ -10,8 +10,18 @@ $refs_count = (string) Profile::query()
 ->count();
 $refs_size = strlen($refs_count);
 if ($refs_size
-< 3) { for ($i=0; $i < 3 - $refs_size; $i++) { $refs_count='0' . $refs_count; } } @endphp <x-navbar />
-<section class="w-full h-max bg-[#D29A9A80] flex flex-col-reverse lg:flex-row items-center justify-between lg:gap-20 gap-5 px-10 lg:px-20 pb-[52.5px] lg:pb-[105px]">
+< 3) { for ($i=0; $i < 3 - $refs_size; $i++) { $refs_count='0' . $refs_count; } } @endphp
+<div id="refer" class="refer">
+  <x-navbar />
+	<div class="refer-text">
+		<h2>Refer your friends <br>to win The Dream Office</h2>
+		<div class="buttons">
+			<a href="#" class="ref">Refer your friends now</a>
+			<a href="#" class="watch">Watch the video</a>
+		</div>
+	</div>
+</div>
+{{--  <section class="w-full h-max bg-[#D29A9A80] flex flex-col-reverse lg:flex-row items-center justify-between lg:gap-20 gap-5 px-10 lg:px-20 pb-[52.5px] lg:pb-[105px]">
   <div class="w-full h-max flex flex-col items-start justify-start gap-8 max-w-[600px]">
     <h2 class="font-normal text-2xl sm:text-3xl md:text-4xl lg:text-6xl text-[#292D32] hidden lg:block">Start
       referring
@@ -44,7 +54,7 @@ if ($refs_size
     your friends
     to
     win the dream office.</h2>
-</section>
+</section>  --}}
 <section class="w-full px-10 lg:px-20 py-[20.5px] lg:py-[51px] flex flex-col gap-6 lg:gap-11 lg:mx-auto">
   <h2 class="font-normal text-[#292D32] text-3xl md:text-4xl lg:text-6xl">What happens now?</h2>
   <div class="w-full h-max flex flex-col gap-6 font-light text-xl md:text-2xl lg:text-3xl">
@@ -137,4 +147,6 @@ if ($refs_size
   <x-button>Refer your friends now</x-button>
   </Link>
 </div>
+<div class="brights">
 <x-footer />
+</div>

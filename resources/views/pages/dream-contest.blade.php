@@ -1,12 +1,25 @@
-<x-navbar />
-<section class="w-full h-max bg-[#D29A9A80] flex flex-col-reverse lg:flex-row items-center justify-between lg:gap-20 gap-5 px-10 lg:px-20 py-[62.5px] lg:py-[125px]">
+{{--  <section class="w-full h-max bg-[#D29A9A80] flex flex-col-reverse lg:flex-row items-center justify-between lg:gap-20 gap-5 px-10 lg:px-20 py-[62.5px] lg:py-[125px]">
   <div class="w-full h-max flex flex-col items-start justify-start gap-9 max-w-[800px]">
     <h2 class="font-semibold md:font-normal text-3xl md:text-4xl lg:text-6xl text-[#292D32]">The Dream Office Contest</h2>
     <p class="w-full font-normal text-2xl lg:text-4xl">Discover T&C about how to win 1 week stay in Italy</p>
   </div>
 
   <img class="w-full max-w-[553px] aspect-auto" src="{{ asset('images/terms.png') }}" />
-</section>
+</section>  --}}
+
+<div id="refer" class="dream">
+  <x-navbar />
+	<div class="refer-text">
+    <h2>
+      The Dream Office Contest
+    </h2>
+<p>
+  Check the T&C of our application phase
+</p>
+	</div>
+</div>
+
+
 <div class="w-full h-max px-[65.5px] lg:px-[131px] py-[62.5px] lg:py-[125px] flex flex-col items-start justify-start gap-24">
   <div class="w-full h-max flex flex-col items-start justify-start gap-[38px] lg:gap-[76px]">
     <span class="font-bold text-xl md:text-2xl lg:text-3xl">Eligibility</span>
@@ -138,4 +151,6 @@
     </p>
   </div>
 </div>
-<x-footer />
+<div class="brights">
+  <x-footer />
+</div>

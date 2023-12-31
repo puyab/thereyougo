@@ -1,4 +1,4 @@
-<x-navbar />
+{{--  <x-navbar />
 <section class="w-full h-max bg-[#D29A9A80] flex flex-col-reverse lg:flex-row items-center justify-between lg:gap-20 gap-5 px-10 py-[62.5px] lg:py-[125px]">
   <div class="w-full h-max flex flex-col items-start justify-start gap-9 max-w-[800px]">
     <h2 class="font-semibold md:font-normal text-3xl md:text-4xl lg:text-6xl text-[#292D32]">Terms &
@@ -7,7 +7,22 @@
   </div>
 
   <img class="w-full max-w-[553px] aspect-auto" src="{{ asset('images/terms.png') }}" />
-</section>
+</section>  --}}
+
+<div id="term">
+  <x-navbar />
+	<div class="refer-text">
+    <h2>
+      Terms & Conditions
+    </h2>
+    <p>
+      Check the T&C of our application phase
+    </p>
+
+	</div>
+</div>
+
+
 <div class="w-full h-max px-[65.5px] lg:px-[131px] py-[62.5px] lg:py-[125px] font-light text-xl md:text-2xl lg:text-3xl flex flex-col items-start justify-start gap-10">
   <p>Thereyougo Website Application Phase Terms and Conditions</p>
 
@@ -61,4 +76,6 @@
     functionality as described in these Terms and Conditions.
   </p>
 </div>
-<x-footer />
+<div class="brights">
+  <x-footer />
+  </div>
