@@ -1,7 +1,7 @@
 <div id="top-nav">
     <div id="logo">
         <Link href="{{ route('home') }}">
-        <img src="images/logo.png" alt="Logo">
+        <img src="{{ asset('images/logo.png') }}" alt="Logo">
         </Link>
     </div>
     <nav>
