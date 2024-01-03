@@ -56,5 +56,4 @@
     <SwiperSlide>
         <a class="logo-item" href="#"><img src="images/logo5.png" alt=""></a>
     </SwiperSlide>
-
 </Swiper>
