@@ -15,11 +15,13 @@ if ($refs_size
   <x-navbar />
 	<div class="refer-text">
 		<h2>Refer your friends <br>to win The Dream Office</h2>
-		<div class="buttons">
+		<div style="display: flex; gap: 42px">
     <Link href="{{ route('referral_code') }}">
       <x-button>Refer your friends now</x-button>
     </Link>
-			<a href="#" class="watch">Watch the video</a>
+    <div class="link">
+        <x-home.win />
+    </div>
 		</div>
 	</div>
 </div>
