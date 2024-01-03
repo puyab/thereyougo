@@ -4,8 +4,11 @@
         <div class=" w-full h-full inset-0 flex items-center justify-center cursor-pointer">
             <div
                 class="w-max h-max flex items-center justify-center bg-white rounded-[4999px] border-[1px] border-black py-1.5 px-3.5 md:py-3 md:px-7">
-                <span class="text-black text-[8px] sm:text-sm font-inter lg:text-base font-semibold">Watch the
-                    video</span>
+                <!-- <span class="text-black text-[8px] sm:text-sm font-inter lg:text-base font-semibold">Watch the
+                    video</span> -->
+                    <x-button>Watch the
+                    video
+                    </x-button>
             </div>
         </div>
     </div>

@@ -28,8 +28,8 @@
     <x-navbar />
 
     <h1>The Home Exchange for LinkedIn Professionals </h1>
-    <p id="mobileText" class="after-title">You’ve dreamt about it. We’ve made it possible</p>
     <p id="desktopText" class="after-title">Swap your house, apartment or room and travel the world for $0/night</p>
+    <p id="mobileText" class="after-title">You’ve dreamt about it. We’ve made it possible</p>
 
     <div class="link">
         <x-home.watch />
