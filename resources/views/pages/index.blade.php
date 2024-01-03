@@ -148,7 +148,7 @@
         <div class="buttons">
             {{--  <a href="#" class="watch">Watch the video</a>  --}}
             <div class="link">
-                <x-home.watch />
+                <x-home.win />
             </div>
             <Link href="{{ route('register') }}">
             <x-button>Apply now</x-button>
