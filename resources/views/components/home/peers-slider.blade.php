@@ -40,21 +40,21 @@
     ];
 @endphp
 <Swiper class="w-full mx-auto max-w-[1920px]" :spaceBetween="24" :loop="true" :autoplay="@js(['delay' => rand(4000, 8000)])"
-    : v-bind:modules="SwiperModules" :breakpoints="@js($breakpoints)">
-        <SwiperSlide >
-          <a class="logo-item" href="#"><img src="images/logo1.png" alt=""></a>
-        </SwiperSlide>
-        <SwiperSlide >
-          <a class="logo-item" href="#"><img src="images/logo2.png" alt=""></a>
-        </SwiperSlide>
-        <SwiperSlide >
-          <a class="logo-item" href="#"><img src="images/logo3.png" alt=""></a>
-        </SwiperSlide>
-        <SwiperSlide >
-          <a class="logo-item" href="#"><img src="images/logo4.png" alt=""></a>
-        </SwiperSlide>
-        <SwiperSlide >
-          <a class="logo-item" href="#"><img src="images/logo5.png" alt=""></a>
-        </SwiperSlide>
-    
+    :v-bind:modules="SwiperModules" :breakpoints="@js($breakpoints)">
+    <SwiperSlide>
+        <a class="logo-item" href="#"><img src="images/logo1.png" alt=""></a>
+    </SwiperSlide>
+    <SwiperSlide>
+        <a class="logo-item" href="#"><img src="images/logo2.png" alt=""></a>
+    </SwiperSlide>
+    <SwiperSlide>
+        <a class="logo-item" href="#"><img src="images/logo3.png" alt=""></a>
+    </SwiperSlide>
+    <SwiperSlide>
+        <a class="logo-item" href="#"><img src="images/logo4.png" alt=""></a>
+    </SwiperSlide>
+    <SwiperSlide>
+        <a class="logo-item" href="#"><img src="images/logo5.png" alt=""></a>
+    </SwiperSlide>
+
 </Swiper>

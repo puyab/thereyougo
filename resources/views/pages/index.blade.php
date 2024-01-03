@@ -6,7 +6,7 @@
             ->with('media')
             ->get();
     });
-    $profiles = $raw_profiles->chunk(10 / 2);
+    $profiles = $raw_profiles->chunk(count($raw_profiles) / 2);
     $work_steps = [
         [
             'title' => 'Apply for membership',
@@ -25,24 +25,24 @@
     $faqs = config('faqs');
 @endphp
 <div id="slide">
-  <x-navbar />
+    <x-navbar />
 
-	<h1>The Home Exchange for LinkedIn Professionals </h1>
-	<p class="after-title">Swap your house, apartment or room and travel the world for $0/night</p>
+    <h1>The Home Exchange for LinkedIn Professionals </h1>
+    <p class="after-title">Swap your house, apartment or room and travel the world for $0/night</p>
 
-	<div class="link">
-		<a href="#">Watch the video</a>
-	</div>
+    <div class="link">
+        <a href="#">Watch the video</a>
+    </div>
 
 
-	<p class="after">You’ve dreamt about it. We’ve made it possible</p>
+    <p class="after">You’ve dreamt about it. We’ve made it possible</p>
 
 </div>
 <div id="logos">
-	<h3>Join your peers</h3>
-  <section class="w-full flex flex-col gap-8 relative mt-3">
-    <x-home.peers-slider />
-</section>
+    <h3>Join your peers</h3>
+    <section class="w-full flex flex-col gap-8 relative mt-3">
+        <x-home.peers-slider />
+    </section>
 </div>
 {{--  <section
     class="w-full h-max bg-[#D29A9A80] px-4 pt-4 pb-8 lg:py-9 lg:px-20 lg:pb-20 lg:pt-12 flex flex-col gap-8 lg:gap-16">
@@ -95,48 +95,48 @@
     <x-home.users-slider :profiles="$profiles[1]" />
 </section>
 <section class="pb-4 pt-8 md:py-16 px-10 md:px-20 lg:px-24 text-center ">
-  <Link href="{{ route('register') }}">
+    <Link href="{{ route('register') }}">
 
     <div class="buttons">
-      <x-button class="lg:text-base max-h-[50px]">Apply now</x-button>
+        <x-button class="lg:text-base max-h-[50px]">Apply now</x-button>
 
     </div>
     <br>
     <p class="font-light text-2xl text-[#292D32] hidden md:block">Worldwide, owners and renters welcome.</p>
 
-  </Link>
+    </Link>
 </section>
 
 <section>
-  <div id="win" class="win">
-    <h3>WIN The Dream Office</h3>
-    <p>
-      Apply before March 31st.<br>
+    <div id="win" class="win">
+        <h3>WIN The Dream Office</h3>
+        <p>
+            Apply before March 31st.<br>
 
-      Refer your peers and friends.<br>
+            Refer your peers and friends.<br>
 
-      Stand a chance of winning a 1-week stay<br>
+            Stand a chance of winning a 1-week stay<br>
 
-      at this villa in the middle of Italy, for 4 people.
+            at this villa in the middle of Italy, for 4 people.
 
 
 
-    </p>
-    <p class="after">
-      Don’t miss out.
-    </p>
-    <div class="buttons">
-      {{--  <a href="#" class="watch">Watch the video</a>  --}}
-      <div
-                    class="w-max h-max flex items-center justify-center bg-white rounded-[4999px] border-[1px] border-black py-1.5 px-3.5 md:py-3 md:px-7">
-                    <span class="text-black text-[8px] font-inter sm:text-sm lg:text-base font-semibold">Watch the
-                        video</span>
-                </div>
-      <Link href="{{ route('register') }}">
-        <x-button>Apply now</x-button>
-        </Link>
+        </p>
+        <p class="after">
+            Don’t miss out.
+        </p>
+        <div class="buttons">
+            {{--  <a href="#" class="watch">Watch the video</a>  --}}
+            <div
+                class="w-max h-max flex items-center justify-center bg-white rounded-[4999px] border-[1px] border-black py-1.5 px-3.5 md:py-3 md:px-7">
+                <span class="text-black text-[8px] font-inter sm:text-sm lg:text-base font-semibold">Watch the
+                    video</span>
+            </div>
+            <Link href="{{ route('register') }}">
+            <x-button>Apply now</x-button>
+            </Link>
+        </div>
     </div>
-  </div>
 </section>
 {{--  <section
     class="w-full bg-[#DEEBEC] mt-8 lg:mt-[115px] px-6 lg:px-20 py-10 lg:py-20 flex flex-col lg:flex-row-reverse items-center justify-center gap-10 lg:gap-8"
@@ -181,9 +181,9 @@
     </div>
 </section>  --}}
 <section class="w-full h-max px-6 lg:px-20 py-[45px] lg:py-[90px] flex flex-col gap-[81px] ">
-   <div class="win">
-    <h3 class="font-light text-3xl sm:text-3xl md:text-4xl lg:text-6xl">Three steps to get started</h3>
-   </div>
+    <div class="win">
+        <h3 class="font-light text-3xl sm:text-3xl md:text-4xl lg:text-6xl">Three steps to get started</h3>
+    </div>
     <div
         class="w-full h-max grid grid-cols-1 md:grid-cols-2 lg:flex lg:flex-row lg:items-center lg:justify-between place-items-center place-content-center gap-y-4">
         @foreach ($work_steps as $key => $step)
@@ -210,8 +210,9 @@
 </section>  --}}
 
 <div id="faqtop">
-	<h3>Frequently Asked Questions</h3>
-	<p>Check out what your peers are asking us. If you have more questions contact us at .<a href="#">info@thereyougo.eu</a></p>
+    <h3>Frequently Asked Questions</h3>
+    <p>Check out what your peers are asking us. If you have more questions contact us at .<a
+            href="#">info@thereyougo.eu</a></p>
 </div>
 <div class="w-11/12 max-w-6xl mx-auto my-[56px] lg:my-[112px] flex flex-col gap-14">
     @foreach ($faqs as $faq)
