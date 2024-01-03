@@ -206,7 +206,7 @@ letter-spacing: -0.6px!important;
     margin: 0 0 5px;
     bottom: 0px;
     text-align: center;
-    order: 4;
+    order: 1;
   }
   #slide .link {
     padding: 92px 0 76px;
@@ -219,10 +219,11 @@ letter-spacing: -0.6px!important;
     padding: 0 14px;
   }
   #slide .after {
-    order: 2;
+    order: 4;
     font-size: 15px;
     line-height: 33.9px;
     letter-spacing: -0.6px;
+    padding: 0px 25px;
   }
 }
 #logos {
