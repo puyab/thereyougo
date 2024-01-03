@@ -123,7 +123,7 @@
 
 
 
-            <<<<<<< HEAD </p>
+            <!-- <<<<<<< HEAD </p>
                 <p class="after">
                     Don’t miss out.
                 </p>
@@ -139,7 +139,7 @@
                     </Link>
                 </div>
                 =======
-        </p>
+        </p> -->
         <p class="after">
             Don’t miss out.
         </p>
@@ -151,7 +151,7 @@
             <Link href="{{ route('register') }}">
             <x-button>Apply now</x-button>
             </Link>
-            >>>>>>> 5d3b376cb8a57517880444d4de6c3c994658c382
+            <!-- >>>>>>> 5d3b376cb8a57517880444d4de6c3c994658c382 -->
         </div>
 </section>
 {{--  <section
@@ -196,16 +196,16 @@
         </Link>
     </div>
 </section>  --}}
-<<<<<<< HEAD <section class="w-full h-max px-6 lg:px-20 py-[45px] lg:py-[90px] flex flex-col gap-[81px] ">
+<!-- <<<<<<< HEAD <section class="w-full h-max px-6 lg:px-20 py-[45px] lg:py-[90px] flex flex-col gap-[81px] ">
     <div class="win">
         <h3 class="font-light text-3xl sm:text-3xl md:text-4xl lg:text-6xl">Three steps to get started</h3>
     </div>
-    =======
+    ======= -->
     <section id="stepsa" class="w-full h-max px-6 lg:px-20 py-[45px] lg:py-[90px] flex flex-col gap-[81px] ">
         <div class="win">
             <h3 class="font-light text-3xl sm:text-3xl md:text-4xl lg:text-6xl">Three steps to get started</h3>
         </div>
-        >>>>>>> 5d3b376cb8a57517880444d4de6c3c994658c382
+        <!-- >>>>>>> 5d3b376cb8a57517880444d4de6c3c994658c382 -->
         <div
             class="w-full h-max grid grid-cols-1 md:grid-cols-2 lg:flex lg:flex-row lg:items-center lg:justify-between place-items-center place-content-center gap-y-4">
             @foreach ($work_steps as $key => $step)
@@ -232,14 +232,14 @@
 </section>  --}}
 
     <div id="faqtop">
-        <<<<<<< HEAD <h3>Frequently Asked Questions</h3>
+        <!-- <<<<<<< HEAD <h3>Frequently Asked Questions</h3>
             <p>Check out what your peers are asking us. If you have more questions contact us at .<a
                     href="#">info@thereyougo.eu</a></p>
-            =======
+            ======= -->
             <h3>Frequently Asked Questions</h3>
             <p>Check out what your peers are asking us. If you have more questions contact us at . <a
                     href="#">info@thereyougo.eu</a></p>
-            >>>>>>> 5d3b376cb8a57517880444d4de6c3c994658c382
+            <!-- >>>>>>> 5d3b376cb8a57517880444d4de6c3c994658c382 -->
     </div>
     <div id="faqsnaser" class="w-11/12 max-w-6xl mx-auto my-[56px] lg:my-[112px] flex flex-col gap-14">
         @foreach ($faqs as $faq)
