@@ -1,5 +1,5 @@
 <x-splade-data default="{open: false}">
-    <div @click="data.open = true" class="relative w-full h-max">
+    <div @click="data.open = true">
     
         <div class="w-full h-full inset-0 flex items-center justify-center cursor-pointer">
             <div
