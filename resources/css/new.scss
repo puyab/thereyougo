@@ -1,5 +1,4 @@
 
-
 .lnone {
   list-style: none;
   padding: 0;
@@ -100,6 +99,7 @@ a {
   line-height: 67.8px;
   letter-spacing: -1.2px;
   margin: 0 0 0px;
+  font-weight: 700;
 }
 #slide .after-title {
   color: #FFF;
@@ -129,6 +129,27 @@ a {
   font-weight: 700;
   padding: 0 29px;
 }
+#slide .link > div.relative{
+  display: inline-block !important;
+  width: unset !important;
+}
+#slide .link > div > div > div span {
+  color: unset;
+  font-size: unset;
+  font-weight: unset;
+}
+#slide .link > div.relative > div > div{
+  display: inline-block;
+  border-radius: 25px;
+  border: 1px solid #000;
+  background: #FFF;
+  line-height: 48px;
+  color: #000;
+  font-family: Arial;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 0 29px;
+}
 #slide .after {
   margin: 0 0 0;
   color: #FFF;
@@ -140,6 +161,16 @@ a {
   letter-spacing: -1.2px;
 }
 @media only screen and (max-width: 768px) {
+  .win h3{
+    color: #292D32;
+
+font-family: Crimson Pro;
+font-size: 30px!important;
+font-style: normal!important;
+font-weight: 700!important;
+line-height: 33.9px!important; /* 113% */
+letter-spacing: -0.6px!important;
+  }
   #slide {
     padding: 16px 21px 32px;
     display: flex;
@@ -169,6 +200,7 @@ a {
     padding: 92px 0 76px;
     order: 3;
   }
+  #slide .link > div.relative > div > div,
   #slide .link a {
     line-height: 25px;
     font-size: 8px;
@@ -356,6 +388,25 @@ a {
   gap: 22px;
   justify-content: center;
 }
+#win .buttons .link > div > div >div span{
+  font-size: unset;
+  color: unset;
+  font-weight: unset;
+}
+#win .buttons .link > div > div >div{
+  padding: 0 29px;
+  line-height: 48px;
+  height: 50px;
+  border-radius: 25px;
+  border: 1px solid ;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  border-color: #000;
+  background: #fff;
+  color: #000;
+  font-family: Arial;
+}
 #win .buttons a {
   padding: 0 29px;
   line-height: 48px;
@@ -365,12 +416,23 @@ a {
   font-style: normal;
   font-weight: 600;
 }
+#win .buttons a,
 #win .buttons a.ref {
   border-color: #292D32;
   background: #292D32;
   color: #fff;
   font-family: Inter;
 }
+#win .buttons button{
+  background: unset;
+  color: unset;
+  padding: unset;
+  line-height: unset;
+  font-size: unset;
+  font-weight: unset;
+
+}
+
 #win .buttons a.watch {
   border-color: #000;
   background: #fff;
@@ -405,9 +467,15 @@ a {
     line-height: 17px;
     font-size: 6px;
   }
+  #win .buttons .link > div > div >div{
+    padding: 0 10px;
+    line-height: 17px;
+    font-size: 6px;
+    height: 19px;
+  }
 }
 #faqtop {
-  background: url('/images/refer.jpg') center center / cover;
+  background: url('/images/pp.png') center center / cover;
   text-align: center;
   padding: 83px 57px 65px;
 }
@@ -449,6 +517,48 @@ a {
     font-weight: 400;
     line-height: 33.9px;
     letter-spacing: -0.6px;
+    text-align: left;
+  }
+  #faqsnaser{
+    gap: 18px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  #faqsnaser >.w-full{
+    padding-bottom: 10px;
+  }
+  #faqsnaser >.w-full span{
+    font-size: 17px;
+    line-height: 20px;
+  }
+  #faqsnaser >.w-full svg{
+    flex-shrink: 0;
+    width: 8px;
+    height: auto;
+  }
+  #stepsa{
+    padding-top: 21px;
+    gap: 10px;
+  }
+  #stepsa .win{
+
+  }
+  #stepsa .win h3{
+
+  }
+  #stepsa .w-full h3{
+    font-size: 19.2px;
+    font-weight: 400;
+    line-height: 26.868px; 
+  }
+  
+  #stepsa .w-full p{
+font-size: 9.6px;
+font-weight: 400;
+line-height: 14.4px;  
+  }
+  #stepsa .w-full .gap-5{
+    gap: 10px;
   }
 }
 #footer {
@@ -536,7 +646,4 @@ a {
 }
 
 .ssssss{
-  background: red;
-  height: 100px;
-
 }
