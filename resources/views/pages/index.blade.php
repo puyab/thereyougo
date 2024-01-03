@@ -104,10 +104,11 @@
         <x-button class="lg:text-base max-h-[50px]">Apply now</x-button>
 
     </div>
+    </Link>
     <br>
     <p class="font-light text-2xl text-[#292D32] hidden md:block">Worldwide, owners and renters welcome.</p>
 
-    </Link>
+   
 </section>
 
 <section>
