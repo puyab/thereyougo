@@ -39,7 +39,7 @@
         ],
     ];
 @endphp
-<Swiper class="w-full mx-auto max-w-[1920px]" :spaceBetween="24" :loop="true"
+<Swiper class="w-full mx-auto max-w-[1920px]" :spaceBetween="12" :loop="true"
     :v-bind:modules="SwiperModules" :breakpoints="@js($breakpoints)" :speed="1000">
     <SwiperSlide>
         <a class="logo-item" href="#"><img src="images/logo1.png" alt=""></a>
