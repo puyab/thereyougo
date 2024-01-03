@@ -16,7 +16,9 @@ if ($refs_size
 	<div class="refer-text">
 		<h2>Refer your friends <br>to win The Dream Office</h2>
 		<div class="buttons">
-			<a href="#" class="ref">Refer your friends now</a>
+    <Link href="{{ route('referral_code') }}">
+      <x-button>Refer your friends now</x-button>
+    </Link>
 			<a href="#" class="watch">Watch the video</a>
 		</div>
 	</div>
