@@ -101,6 +101,8 @@
 <section class="pb-4 pt-8 md:py-16 px-10 md:px-20 lg:px-24 text-center ">
     <Link href="{{ route('register') }}">
 
+    <p class="font-light text-2xl text-[#292D32] block md:hidden">Worldwide, owners and renters welcome.</p>
+
     <div class="buttons">
         <x-button class="lg:text-base max-h-[50px]">Apply now</x-button>
 
