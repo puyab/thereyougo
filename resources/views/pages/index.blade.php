@@ -33,9 +33,9 @@
     <div class="link">
         <x-home.watch />
     </div>
-
-
-    <p class="after">You’ve dreamt about it. We’ve made it possible</p>
+    
+    <p id="desktopText" class="after">You’ve dreamt about it. We’ve made it possible</p>
+    <p id="mobileText" class="after">Swap your house, apartment or room and travel the world for $0/night</p>
 
 </div>
 <div id="logos">

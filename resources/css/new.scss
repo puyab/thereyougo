@@ -91,6 +91,12 @@ a {
 #slide #top-nav {
   margin-bottom: 65px;
 }
+#slide #mobileText {
+  display: none;
+}
+#slide #desktopText {
+  display: block;
+}
 #slide h1 {
   color: #FFF;
   font-family: Inter;
@@ -179,6 +185,12 @@ letter-spacing: -0.6px!important;
   #slide #top-nav {
     margin-bottom: 22px;
     order: 0;
+  }
+  #slide #mobileText {
+    display: block;
+  }
+  #slide #desktopText {
+    display: none;
   }
   #slide h1 {
     font-size: 30px;
