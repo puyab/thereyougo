@@ -28,7 +28,7 @@
 <div id="footer">
 	<div id="foot-logo">
 		<a href="#">
-			<img src="images/logo.png" alt="">
+			<img src="images/logo_m.png" alt="">
 		</a>
 	</div>
 	<p class="top">

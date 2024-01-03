@@ -1,20 +1,20 @@
 {
-  "_choices-eb6d3f4d.js": {
-    "file": "assets/choices-eb6d3f4d.js",
+  "_choices-2dbbc561.js": {
+    "file": "assets/choices-2dbbc561.js",
     "imports": [
       "resources/js/app.ts"
     ],
     "isDynamicEntry": true
   },
-  "_jodit.min-b64f0816.js": {
-    "file": "assets/jodit.min-b64f0816.js",
+  "_jodit.min-f8e54029.js": {
+    "file": "assets/jodit.min-f8e54029.js",
     "imports": [
       "resources/js/app.ts"
     ],
     "isDynamicEntry": true
   },
-  "_nprogress-fdc2c681.js": {
-    "file": "assets/nprogress-fdc2c681.js",
+  "_nprogress-f28c00d4.js": {
+    "file": "assets/nprogress-f28c00d4.js",
     "imports": [
       "resources/js/app.ts"
     ],
@@ -66,12 +66,12 @@
     "src": "node_modules/flatpickr/dist/esm/index.js"
   },
   "resources/js/app.css": {
-    "file": "assets/app-d6edaeda.css",
+    "file": "assets/app-cac460bf.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.ts": {
     "css": [
-      "assets/app-d6edaeda.css"
+      "assets/app-cac460bf.css"
     ],
     "dynamicImports": [
       "node_modules/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.esm.js",
@@ -81,15 +81,15 @@
       "node_modules/filepond-plugin-image-validate-size/dist/filepond-plugin-image-validate-size.esm.js",
       "node_modules/filepond/dist/filepond.esm.js",
       "node_modules/flatpickr/dist/esm/index.js",
-      "_jodit.min-b64f0816.js",
-      "_choices-eb6d3f4d.js",
+      "_jodit.min-f8e54029.js",
+      "_choices-2dbbc561.js",
       "node_modules/autosize/dist/autosize.esm.js",
       "node_modules/autosize/dist/autosize.esm.js",
       "node_modules/autosize/dist/autosize.esm.js",
-      "_nprogress-fdc2c681.js",
+      "_nprogress-f28c00d4.js",
       "node_modules/@protonemedia/laravel-splade/dist/CompilerErrorMessages-6b34f14b.js"
     ],
-    "file": "assets/app-eca9afea.js",
+    "file": "assets/app-e218e49d.js",
     "isEntry": true,
     "src": "resources/js/app.ts"
   }

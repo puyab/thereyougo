@@ -1,7 +1,7 @@
 <div id="top-nav">
     <div id="logo">
         <a href="https://thereyougo.eu">
-            <img src="images/logo.png" alt="Logo">
+            <img src="images/logo_m.png" alt="Logo">
         </a>
     </div>
   <nav>

@@ -31,7 +31,7 @@
 	<p class="after-title">Swap your house, apartment or room and travel the world for $0/night</p>
 
 	<div class="link">
-		<a href="#">Watch the video</a>
+        <x-home.watch />
 	</div>
 
 
@@ -91,9 +91,11 @@
     <p class="font-light text-2xl text-[#292D32] hidden md:block">Worldwide, owners and renters welcome.</p>
 </section>  --}}
 <section class="w-full flex flex-col gap-8 relative mt-3">
-    <x-home.users-slider :profiles="$profiles[0]" />
-    <x-home.users-slider :profiles="$profiles[1]" />
+    {{-- <x-home.users-slider :profiles="$profiles[0]" />
+    <x-home.users-slider :profiles="$profiles[1]" /> --}}
+    
 </section>
+
 <section class="pb-4 pt-8 md:py-16 px-10 md:px-20 lg:px-24 text-center ">
   <Link href="{{ route('register') }}">
 
@@ -127,11 +129,9 @@
     </p>
     <div class="buttons">
       {{--  <a href="#" class="watch">Watch the video</a>  --}}
-      <div
-                    class="w-max h-max flex items-center justify-center bg-white rounded-[4999px] border-[1px] border-black py-1.5 px-3.5 md:py-3 md:px-7">
-                    <span class="text-black text-[8px] font-inter sm:text-sm lg:text-base font-semibold">Watch the
-                        video</span>
-                </div>
+      <div class="link">
+        <x-home.watch />
+	</div>
       <Link href="{{ route('register') }}">
         <x-button>Apply now</x-button>
         </Link>
@@ -180,7 +180,7 @@
         </Link>
     </div>
 </section>  --}}
-<section class="w-full h-max px-6 lg:px-20 py-[45px] lg:py-[90px] flex flex-col gap-[81px] ">
+<section id="stepsa" class="w-full h-max px-6 lg:px-20 py-[45px] lg:py-[90px] flex flex-col gap-[81px] ">
    <div class="win">
     <h3 class="font-light text-3xl sm:text-3xl md:text-4xl lg:text-6xl">Three steps to get started</h3>
    </div>
@@ -211,9 +211,9 @@
 
 <div id="faqtop">
 	<h3>Frequently Asked Questions</h3>
-	<p>Check out what your peers are asking us. If you have more questions contact us at .<a href="#">info@thereyougo.eu</a></p>
+	<p>Check out what your peers are asking us. If you have more questions contact us at . <a href="#">info@thereyougo.eu</a></p>
 </div>
-<div class="w-11/12 max-w-6xl mx-auto my-[56px] lg:my-[112px] flex flex-col gap-14">
+<div id="faqsnaser" class="w-11/12 max-w-6xl mx-auto my-[56px] lg:my-[112px] flex flex-col gap-14">
     @foreach ($faqs as $faq)
         <x-accordion title="{{ $faq['title'] }}">
             <p class="w-full h-max text-left text-xl md:text-2xl lg:text-3xl font-normal">
