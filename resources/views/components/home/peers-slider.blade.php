@@ -40,7 +40,7 @@
     ];
 @endphp
 <Swiper class="w-full mx-auto max-w-[1920px]" :spaceBetween="24" :loop="true" :autoplay="@js(['delay' => rand(4000, 8000)])"
-    :v-bind:modules="SwiperModules" :breakpoints="@js($breakpoints)">
+    :v-bind:modules="SwiperModules" :breakpoints="@js($breakpoints)" :speed="1000">
     <SwiperSlide>
         <a class="logo-item" href="#"><img src="images/logo1.png" alt=""></a>
     </SwiperSlide>
