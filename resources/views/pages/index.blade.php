@@ -90,9 +90,10 @@
     </Link>
     <p class="font-light text-2xl text-[#292D32] hidden md:block">Worldwide, owners and renters welcome.</p>
 </section>  --}}
+
 <section class="w-full flex flex-col gap-8 relative mt-3">
-    {{-- <x-home.users-slider :profiles="$profiles[0]" />
-    <x-home.users-slider :profiles="$profiles[1]" /> --}}
+    <x-home.users-slider :profiles="$profiles[0]" />
+    <x-home.users-slider :profiles="$profiles[1]" /> 
 
 </section>
 
