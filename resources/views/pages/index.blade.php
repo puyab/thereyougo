@@ -27,16 +27,16 @@
 <div id="slide">
     <x-navbar />
 
-    <h1>The Home Exchange for LinkedIn Professionals </h1>
-    <p id="desktopText" class="after-title">Swap your house, apartment or room and travel the world for $0/night</p>
-    <p id="mobileText" class="after-title">You’ve dreamt about it. We’ve made it possible</p>
+    <h1>The Home Exchange for LinkedIn Professionals </h1> 
+    <p id="desktopText" class="after-title hidden md:block">Swap your house, apartment or room and travel the world for $0/night</p>
+    <p id="mobileText" class="after-title block md:hidden">You’ve dreamt about it. We’ve made it possible</p>
 
     <div class="link">
         <x-home.watch />
     </div>
     
-    <p id="desktopText" class="after">You’ve dreamt about it. We’ve made it possible</p>
-    <p id="mobileText" class="after">Swap your house, apartment or room and travel the world for $0/night</p>
+    <p id="desktopText" class="after hidden md:block">You’ve dreamt about it. We’ve made it possible</p>
+    <p id="mobileText" class="after block md:hidden">Swap your house, apartment or room and travel the world for $0/night</p>
 
 </div>
 <div id="logos">
