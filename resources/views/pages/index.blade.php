@@ -29,6 +29,7 @@
 
     <h1 class="block md:hidden">The Home Exchange <br> for LinkedIn Professionals </h1> 
     <h1 class="hidden md:block">The Home Exchange for LinkedIn Professionals </h1> 
+    
     <p class="after-title hidden md:block">You’ve dreamt about it. We’ve made it possible</p>
     <p class="after-title block md:hidden">Swap your house, apartment or room and travel the world for $0/night</p>
 
@@ -36,8 +37,8 @@
         <x-home.watch />
     </div>
     
-    <p class="after hidden md:block">You’ve dreamt about it. We’ve made it possible</p>
-    <p class="after block md:hidden">Swap your house, apartment or room and travel the world for $0/night</p>
+    <p class="after hidden md:block">Swap your house, apartment or room and travel the world for $0/night</p>
+    <p class="after block md:hidden">You’ve dreamt about it. We’ve made it possible</p>
 
 </div>
 <div id="logos">
