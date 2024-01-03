@@ -39,8 +39,8 @@
         ],
     ];
 @endphp
-<Swiper class="w-full mx-auto max-w-[1920px]" :spaceBetween="12" :loop="true"
-    :v-bind:modules="SwiperModules" :breakpoints="@js($breakpoints)" :speed="1000">
+<Swiper class="w-full mx-auto max-w-[1920px]" :spaceBetween="24" :loop="true" :autoplay="@js(['delay' => rand(4000, 8000)])"
+    :v-bind:modules="SwiperModules" :breakpoints="@js($breakpoints)" :speed="{2000}">
     <SwiperSlide>
         <a class="logo-item" href="#"><img src="images/logo1.png" alt=""></a>
     </SwiperSlide>
@@ -58,18 +58,3 @@
     </SwiperSlide>
 
 </Swiper>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var mySwiper = new Swiper('.swiper-container', {
-            speed: 1000, // Set the speed in milliseconds
-            loop: true,
-
-            // Optional: Add pagination
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-        });
-    });
-</script>
