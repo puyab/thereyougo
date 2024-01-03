@@ -1,4 +1,4 @@
-@props(['profiles'])
+<!-- @props(['profiles'])
 @php
     $breakpoints = [
         0 => [
@@ -38,7 +38,7 @@
             'spaceBetween' => 72,
         ],
     ];
-@endphp
+@endphp -->
 <Swiper class="w-full mx-auto max-w-[1920px]" :spaceBetween="6" :loop="true" :autoplay="@js(['delay' => rand(4000, 8000)])"
     :v-bind:modules="SwiperModules" :breakpoints="@js($breakpoints)" :speed="2000">
     <SwiperSlide>
