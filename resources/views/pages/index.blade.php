@@ -158,12 +158,11 @@
         <div class="buttons">
             {{--  <a href="#" class="watch">Watch the video</a>  --}}
             <div class="link">
-                <x-home.win />
+                <x-home.win class="lg:text-base max-h-[50px]" />
             </div>
             <Link href="{{ route('register') }}">
-            <x-button>Apply now</x-button>
+            <x-button class="lg:text-base max-h-[50px]">Apply now</x-button>
             </Link>
-            <!-- >>>>>>> 5d3b376cb8a57517880444d4de6c3c994658c382 -->
         </div>
 </section>
 {{--  <section
