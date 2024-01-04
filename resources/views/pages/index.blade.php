@@ -221,7 +221,7 @@
         <div
             class="w-full h-max grid grid-cols-1 md:grid-cols-2 lg:flex lg:flex-row lg:items-center lg:justify-between place-items-center place-content-center gap-y-4">
             @foreach ($work_steps as $key => $step)
-                <div class="w-full flex items-start justify-center gap-7 lg:gap-14 max-w-[550px]">
+                <div class="w-full flex items-start justify-center gap-7 max-w-[550px]">
                     <span class="font-medium text-2xl md:text-3xl lg:text-5xl text-black">{{ $key + 1 }}</span>
                     <div class="w-full h-max flex flex-col items-start justify-start gap-5">
                         <h3 class="font-medium text-2xl md:text-3xl lg:text-[38px]">{{ $step['title'] }}</h3>
