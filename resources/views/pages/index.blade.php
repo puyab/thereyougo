@@ -26,9 +26,11 @@
 @endphp
 <div id="slide">
     <x-navbar />
-
+    
+    <!-- mobile -->
     <h1 class="block md:hidden">The Home Exchange <br> for LinkedIn Professionals </h1> 
-    <h1 class="hidden md:block">The Home Exchange <br> for LinkedIn Professionals </h1> 
+     <!-- desktop -->
+    <h1 class="hidden md:block"><div>The Home Exchange</div> <br><div> for LinkedIn Professionals</div> </h1> 
     
     <!-- desktop -->
     <p class="after-title hidden md:block">Swap your house, apartment or room and travel the world for $0/night</p>
