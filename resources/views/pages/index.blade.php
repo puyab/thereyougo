@@ -161,12 +161,7 @@
                 <x-home.win class="lg:text-base max-h-[50px]" />
             </div>
             <Link href="{{ route('register') }}">
-            <div class="w-full h-full inset-0 flex items-center justify-center cursor-pointer">
-                <div
-                    class="w-max h-max flex items-center justify-center bg-white rounded-[4999px] border-[1px] border-black py-1.5 px-3.5 md:py-3 md:px-7">
-                        <x-button class="lg:text-base max-h-[50px]">Apply now</x-button>
-                </div>
-            </div>
+            <x-button class="lg:text-base max-h-[50px]">Apply now</x-button>
             </Link>
         </div>
 </section>
