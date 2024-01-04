@@ -256,7 +256,7 @@
     <div id="faqsnaser" class="w-11/12 max-w-6xl mx-auto my-[56px] lg:my-[112px] flex flex-col gap-14">
         @foreach ($faqs as $faq)
             <x-accordion title="{{ $faq['title'] }}">
-                <p class="w-full h-max text-left text-xl sm:text-xs md:text-2xl lg:text-3xl font-normal">
+                <p class="w-full h-max text-left sm:text-xs md:text-xl lg:text-2xl font-normal">
                     {{ $faq['content'] }}
                 </p>
             </x-accordion>
