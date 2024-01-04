@@ -366,7 +366,7 @@ letter-spacing: -0.6px!important;
     display: none;
   }
   #slide h1 {
-    font-size: 30px;
+    font-size: 27px;
     line-height: 33.9px;
     letter-spacing: -0.6px;
     margin: 0 0 2px;
@@ -656,9 +656,12 @@ letter-spacing: -0.6px!important;
   }
   #win .buttons .link > div > div >div{
     padding: 0 10px;
-    line-height: 17px;
-    font-size: 6px;
-    height: 19px;
+    // line-height: 17px;
+    // font-size: 6px;
+    // height: 19px;
+    line-height: 25px;
+    font-size: 8px;
+    padding: 0 14px;
   }
 }
 #faqtop {
@@ -814,7 +817,7 @@ letter-spacing: -0.6px!important;
     width: auto;
   }
   #footer p.top {
-    font-size: 9px;
+    font-size: 16px;
     line-height: 13px;
     margin: 0 0 4px;
   }
@@ -827,7 +830,7 @@ letter-spacing: -0.6px!important;
     height: auto;
   }
   #footer p.foot {
-    font-size: 16px;
+    font-size: 9px;
     line-height: 13px;
   }
 }
