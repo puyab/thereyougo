@@ -102,7 +102,7 @@ a {
   font-family: Inter;
   font-style: normal;
   font-size: 100px;
-  line-height: 67.8px;
+  line-height: 40px;
   letter-spacing: -1.2px;
   margin: 0 0 0px;
   font-weight: 700;
@@ -110,10 +110,10 @@ a {
 #slide .after-title {
   color: #FFF;
   font-family: Inter;
-  font-size: 40px;
+  font-size: 35px;
   font-style: normal;
   font-weight: 500;
-  line-height: 67.8px;
+  // line-height: 67.8px;
   letter-spacing: -1.2px;
   margin: 0 0 5px;
   position: relative;
@@ -166,6 +166,178 @@ a {
   /* 113% */
   letter-spacing: -1.2px;
 }
+
+@media only screen and (min-width: 1287px) {
+  #slide {
+    background: url('/images/slid.jpg') center center / cover;
+    padding: 38px 104px 111px;
+  }
+  #slide #top-nav {
+    margin-bottom: 65px;
+  }
+  #slide #mobileText {
+    display: none;
+  }
+  #slide #desktopText {
+    display: block;
+  }
+  #slide h1 {
+    color: #FFF;
+    font-family: Inter;
+    font-style: normal;
+    font-size: 100px;
+    line-height: 40px;
+    letter-spacing: -1.2px;
+    margin: 0 0 0px;
+    font-weight: 700;
+  }
+  #slide .after-title {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 500;
+    // line-height: 67.8px;
+    letter-spacing: -1.2px;
+    margin: 0 0 5px;
+    position: relative;
+    bottom: 3px;
+  }
+  #slide .link {
+    padding: 120px 0 127px;
+    text-align: center;
+  }
+  #slide .link a {
+    display: inline-block;
+    border-radius: 25px;
+    border: 1px solid #000;
+    background: #FFF;
+    line-height: 48px;
+    color: #000;
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 0 29px;
+  }
+  #slide .link > div.relative{
+    display: inline-block !important;
+    width: unset !important;
+  }
+  #slide .link > div > div > div span {
+    color: unset;
+    font-size: unset;
+    font-weight: unset;
+  }
+  #slide .link > div.relative > div > div{
+    display: inline-block;
+    border-radius: 25px;
+    border: 1px solid #000;
+    background: #FFF;
+    line-height: 48px;
+    color: #000;
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 0 29px;
+  }
+  #slide .after {
+    margin: 0 0 0;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 60px;
+    font-weight: 500;
+    line-height: 67.8px;
+    /* 113% */
+    letter-spacing: -1.2px;
+  }
+
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1286px) {
+  #slide {
+    background: url('/images/slid.jpg') center center / cover;
+    padding: 38px 104px 111px;
+  }
+  #slide #top-nav {
+    margin-bottom: 65px;
+  }
+  #slide #mobileText {
+    display: none;
+  }
+  #slide #desktopText {
+    display: block;
+  }
+  #slide h1 {
+    color: #FFF;
+    font-family: Inter;
+    font-style: normal;
+    font-size: 80px;
+    line-height: 40px;
+    letter-spacing: -1.2px;
+    margin: 0 0 0px;
+    font-weight: 700;
+  }
+  #slide .after-title {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 500;
+    // line-height: 67.8px;
+    letter-spacing: -1.2px;
+    margin: 0 0 5px;
+    position: relative;
+    bottom: 3px;
+  }
+  #slide .link {
+    padding: 120px 0 127px;
+    text-align: center;
+  }
+  #slide .link a {
+    display: inline-block;
+    border-radius: 25px;
+    border: 1px solid #000;
+    background: #FFF;
+    line-height: 48px;
+    color: #000;
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 0 29px;
+  }
+  #slide .link > div.relative{
+    display: inline-block !important;
+    width: unset !important;
+  }
+  #slide .link > div > div > div span {
+    color: unset;
+    font-size: unset;
+    font-weight: unset;
+  }
+  #slide .link > div.relative > div > div{
+    display: inline-block;
+    border-radius: 25px;
+    border: 1px solid #000;
+    background: #FFF;
+    line-height: 48px;
+    color: #000;
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 0 29px;
+  }
+  #slide .after {
+    margin: 0 0 0;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 60px;
+    font-weight: 500;
+    line-height: 67.8px;
+    /* 113% */
+    letter-spacing: -1.2px;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .win h3{
     color: #292D32;
