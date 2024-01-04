@@ -7,7 +7,7 @@
             <Link class="text-lg font-inter font-medium underline mt-2 lg:mt-4" href="{{ route('reset-password') }}">
             Reset Password</Link>
         </div>
-        <x-button class="mt-16 lg:mt-32">
+        <x-button class="mt-16">
             Continue
         </x-button>
     </x-splade-form>
