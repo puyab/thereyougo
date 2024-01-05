@@ -652,16 +652,22 @@ letter-spacing: -0.6px!important;
     gap: 8px;
   }
   #win .buttons a {
-    padding: 0 10px;
-    padding-top: 0.2rem;
-    line-height: 17px;
-    font-size: 9px;
+    // padding: 0 10px;
+    // padding-top: 0.2rem;
+    // line-height: 17px;
+    // font-size: 9px;
+    line-height: 25px;
+    font-size: 8px;
+    padding: 0 14px;
   }
   #win .buttons .link > div > div >div{
-    padding: 0 10px;
-    line-height: 17px;
-    font-size: 9px;
+    // padding: 0 10px;
+    // line-height: 17px;
+    // font-size: 9px;
     height: 25px;
+    line-height: 25px;
+    font-size: 8px;
+    padding: 0 14px;
   }
 }
 #faqtop {
