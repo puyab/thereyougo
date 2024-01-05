@@ -4,7 +4,7 @@
     <div class="w-full h-max flex items-center justify-end p-10 lg:p-20">
         <x-link href="{{route('home')}}"><x-feathericon-x class="w-8 h-8" /></x-link>
     </div>
-    <div class="w-full h-max flex flex-col gap-20 lg:gap-40 items-center">
+    <div class="w-full h-max flex flex-col gap-20 items-center">
         <span class="text-[#292D32] text-4xl lg:text-6xl font-normal">Insert your details here</span>
         <div class="w-full h-max max-w-[451px] px-3 sm:px-0">
             {{$slot}}
