@@ -842,12 +842,11 @@ letter-spacing: -0.6px!important;
   }
 }
 
-.flex-container {
-  display: flex;
-  overflow-x: hidden; /* Hides the content overflowing the flex container horizontally */
+.first-slide {
+  margin: 0 -1rem;
+  margin-right: 1rem;
 }
 
-.image-container {
-  flex: 0 0 auto; /* Ensures the container does not grow or shrink */
-  margin: 0 -50px; /* Negative margin to make the first and last images go outside the screen */
+.centers-slide {
+  margin-right: 1rem;
 }
