@@ -1,7 +1,7 @@
 @props(['type' => 'register'])
 
 <div data-page="{{$type}}" class="w-full h-max min-h-screen data-[page='register']:bg-[#d29a9a80] bg-[#DEEBEC] flex flex-col">
-    <div class="w-full h-max flex items-center justify-end p-10 lg:p-20">
+    <div class="w-full h-max flex items-center justify-end p-10">
         <x-link href="{{route('home')}}"><x-feathericon-x class="w-8 h-8" /></x-link>
     </div>
     <div class="w-full h-max flex flex-col gap-20 items-center">
