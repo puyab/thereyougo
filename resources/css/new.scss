@@ -653,14 +653,15 @@ letter-spacing: -0.6px!important;
   }
   #win .buttons a {
     padding: 0 10px;
+    padding-top: 0.2rem;
     line-height: 17px;
     font-size: 6px;
   }
   #win .buttons .link > div > div >div{
     padding: 0 10px;
     line-height: 17px;
-    font-size: 6px;
-    height: 19px;
+    font-size: 9px;
+    height: 25px;
   }
 }
 #faqtop {
@@ -822,10 +823,11 @@ letter-spacing: -0.6px!important;
   }
   #footer .social {
     gap: 12px;
-    margin-bottom: 2px;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
   }
   #footer .social svg {
-    width: 7px;
+    width: 12px;
     height: auto;
   }
   #footer p.foot {

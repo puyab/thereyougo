@@ -156,7 +156,6 @@
             Don’t miss out.
         </p>
         <div class="buttons">
-            {{--  <a href="#" class="watch">Watch the video</a>  --}}
             <div class="link">
                 <x-home.win class="lg:text-base max-h-[50px]" />
             </div>
