@@ -11,7 +11,7 @@
         <x-input id="referred_from" type="referred_from" name="referred_from" v-model="form.referred_from" hidden />
         <x-input id="password" type="password" name="password" v-model="form.password" placeholder="Password" required
             autocomplete="new-password" />
-        <x-button class="mt-10 lg:mt-20">
+        <x-button class="mt-10">
             Continue
         </x-button>
     </x-splade-form>
