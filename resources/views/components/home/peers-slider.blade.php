@@ -39,7 +39,7 @@
         ],
     ];
 @endphp -->
-<Swiper class="w-full mx-auto max-w-[1920px]" :spaceBetween="6" :loop="true" :autoplay="@js(['delay' => rand(4000, 8000)])"
+<!-- <Swiper class="w-full mx-auto max-w-[1920px]" :spaceBetween="6"
     :v-bind:modules="SwiperModules" :breakpoints="@js($breakpoints)" :speed="2000">
     <SwiperSlide>
         <a class="logo-item" href="#"><img src="images/logo1.png" alt=""></a>
@@ -56,4 +56,21 @@
     <SwiperSlide>
         <a class="logo-item" href="#"><img src="images/logo5.png" alt=""></a>
     </SwiperSlide>
-</Swiper>
+</Swiper> -->
+<div class="flex">
+    <div>
+        <img src="images/logo1.png" alt="">
+    </div>
+    <div>
+        <img src="images/logo2.png" alt="">
+    </div>
+    <div>
+        <img src="images/logo3.png" alt="">
+    </div>
+    <div>
+        <img src="images/logo4.png" alt="">
+    </div>
+    <div>
+        <img src="images/logo5.png" alt="">
+    </div>
+</div>

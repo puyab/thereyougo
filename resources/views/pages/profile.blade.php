@@ -14,7 +14,10 @@ if ($refs_size
 <div id="refer" class="refer">
   <x-navbar />
 	<div class="refer-text">
-		<h2>Refer your friends <br>to win The Dream Office</h2>
+      <!-- mobile -->
+    <h2 class="block md:hidden">Refer your friends <br>to win <br> The Dream Office </h2> 
+     <!-- desktop -->
+    <h2 class="hidden md:block">Refer your friends <br>to win The Dream Office </h2> 
     <div class="buttons">
 			<a href="{{ route('referral_code') }}" class="ref">Refer your friends now</a>
       <x-home.win-profile />
