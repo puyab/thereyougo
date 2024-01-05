@@ -221,7 +221,7 @@
             @foreach ($work_steps as $key => $step)
                 <div class="w-full flex items-start justify-center gap-7 max-w-[550px]">
                     <span class="font-medium text-2xl md:text-3xl lg:text-5xl text-black">{{ $key + 1 }}</span>
-                    <div class="w-full h-max flex flex-col items-start justify-start gap-5">
+                    <div class="w-full h-max flex flex-col items-start justify-start gap-5 {{ $key == 0 ? 'first-div-padd' : '' }}">
                         <h3 class="font-medium text-2xl md:text-3xl lg:text-[38px]">{{ $step['title'] }}</h3>
                         <p
                             class="w-full font-normal text-lg md:text-base lg:text-[19px] text-[#383838] leading-[28.8px] text-left">
