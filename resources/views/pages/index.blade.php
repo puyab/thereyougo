@@ -1,12 +1,12 @@
 @php
     use App\Models\Profile;
-    $raw_profiles = cache()->remember('home_profiles', now()->addMinute(), function () {
-        return Profile::query()
-            ->select(['id', 'first_name', 'last_name', 'company', 'role'])
-            ->with('media')
-            ->get();
-    });
-    $profiles = $raw_profiles->chunk(count($raw_profiles) / 2);
+ //   $raw_profiles = cache()->remember('home_profiles', now()->addMinute(), function () {
+   //     return Profile::query()
+      //      ->select(['id', 'first_name', 'last_name', 'company', 'role'])
+     //       ->with('media')
+     //       ->get();
+    //});
+  //  $profiles = $raw_profiles->chunk(count($raw_profiles) / 2);
     $work_steps = [
         [
             'title' => 'Apply for membership',
@@ -26,12 +26,12 @@
 @endphp
 <div id="slide">
     <x-navbar />
-    
+
     <!-- mobile -->
-    <h1 class="block md:hidden">The Home Exchange <br> for LinkedIn Professionals </h1> 
+    <h1 class="block md:hidden">The Home Exchange <br> for LinkedIn Professionals </h1>
      <!-- desktop -->
-    <h1 class="hidden md:block"><div>The Home Exchange</div> <br><div> for LinkedIn Professionals</div> </h1> 
-    
+    <h1 class="hidden md:block"><div>The Home Exchange</div> <br><div> for LinkedIn Professionals</div> </h1>
+
     <!-- desktop -->
     <p class="after-title hidden md:block">Swap your house, apartment or room and travel the world for $0/night</p>
     <!-- mobile -->
@@ -40,7 +40,7 @@
     <div class="link">
         <x-home.watch />
     </div>
-    
+
     <!-- desktop -->
     <p class="after hidden md:block">You’ve dreamt about it. We’ve made it possible</p>
     <!-- mobile -->
@@ -49,8 +49,26 @@
 </div>
 <div id="logos">
     <h3>Join your peers</h3>
-    <section class="w-full flex flex-col gap-8 relative mt-3">
-        <x-home.peers-slider />
+    <section class="">
+      <div class="d-flex justify-content-between">
+        <div class="">
+            <img src="images/logo1.png" alt="">
+        </div>
+        <div>
+            <img src="images/logo2.png" alt="">
+        </div>
+        <div>
+            <img src="images/logo3.png" alt="">
+        </div>
+        <div>
+            <img src="images/logo4.png" alt="">
+        </div>
+        <div>
+            <img src="images/logo5.png" alt="">
+        </div>
+    </div>
+
+        {{--  <x-home.peers-slider />  --}}
     </section>
 </div>
 {{--  <section
@@ -101,8 +119,8 @@
 </section>  --}}
 
 <section class="w-full flex flex-col gap-8 relative mt-3">
-    <x-home.users-slider :profiles="$profiles[0]" />
-    <x-home.users-slider :profiles="$profiles[1]" /> 
+    {{--  <x-home.users-slider :profiles="$profiles[0]" />
+    <x-home.users-slider :profiles="$profiles[1]" />  --}}
 
 </section>
 
@@ -118,7 +136,7 @@
     <br>
     <p class="font-light text-2xl text-[#292D32] hidden md:block">Worldwide, owners and renters welcome.</p>
 
-   
+
 </section>
 
 <section>

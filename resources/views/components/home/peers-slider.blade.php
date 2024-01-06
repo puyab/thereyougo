@@ -57,20 +57,3 @@
         <a class="logo-item" href="#"><img src="images/logo5.png" alt=""></a>
     </SwiperSlide>
 </Swiper>
-<!-- <div class="flex items-center">
-    <div class="first-slide">
-        <img src="images/logo1.png" alt="">
-    </div>
-    <div>
-        <img src="images/logo2.png" alt="">
-    </div>
-    <div>
-        <img src="images/logo3.png" alt="">
-    </div>
-    <div>
-        <img src="images/logo4.png" alt="">
-    </div>
-    <div>
-        <img src="images/logo5.png" alt="">
-    </div>
-</div> -->
