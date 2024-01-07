@@ -1,12 +1,12 @@
 @php
     use App\Models\Profile;
- //   $raw_profiles = cache()->remember('home_profiles', now()->addMinute(), function () {
-   //     return Profile::query()
-      //      ->select(['id', 'first_name', 'last_name', 'company', 'role'])
-     //       ->with('media')
-     //       ->get();
-    //});
-  //  $profiles = $raw_profiles->chunk(count($raw_profiles) / 2);
+    $raw_profiles = cache()->remember('home_profiles', now()->addMinute(), function () {
+        return Profile::query()
+            ->select(['id', 'first_name', 'last_name', 'company', 'role'])
+            ->with('media')
+            ->get();
+    });
+    $profiles = $raw_profiles->chunk(count($raw_profiles) / 2);
     $work_steps = [
         [
             'title' => 'Apply for membership',
@@ -47,23 +47,25 @@
     <p class="after block md:hidden">Swap your house, apartment or room and travel the world for $0/night</p>
 
 </div>
-<div id="logos">
+
+<section class="w-full h-max px-6 lg:px-20 py-[45px] lg:py-[90px] flex flex-col gap-[81px]">
+  <div id="logos">
     <h3>Join your peers</h3>
     <section class="">
       <div class="d-flex justify-content-between">
-        <div class="">
+        <div class="ite">
             <img src="images/logo1.png" alt="">
         </div>
-        <div>
+        <div class="ite">
             <img src="images/logo2.png" alt="">
         </div>
-        <div>
+        <div class="ite">
             <img src="images/logo3.png" alt="">
         </div>
-        <div>
+        <div class="ite">
             <img src="images/logo4.png" alt="">
         </div>
-        <div>
+        <div class="ite">
             <img src="images/logo5.png" alt="">
         </div>
     </div>
@@ -71,6 +73,8 @@
         {{--  <x-home.peers-slider />  --}}
     </section>
 </div>
+</section>
+
 {{--  <section
     class="w-full h-max bg-[#D29A9A80] px-4 pt-4 pb-8 lg:py-9 lg:px-20 lg:pb-20 lg:pt-12 flex flex-col gap-8 lg:gap-16">
     <h2 class="font-medium text-3xl sm:text-4xl md:text-5xl lg:text-6xl">The Home Exchange for LinkedIn
@@ -119,8 +123,8 @@
 </section>  --}}
 
 <section class="w-full flex flex-col gap-8 relative mt-3">
-    {{--  <x-home.users-slider :profiles="$profiles[0]" />
-    <x-home.users-slider :profiles="$profiles[1]" />  --}}
+    <x-home.users-slider :profiles="$profiles[0]" />
+    <x-home.users-slider :profiles="$profiles[1]" />
 
 </section>
 
