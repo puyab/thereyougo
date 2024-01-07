@@ -48,7 +48,7 @@
 
 </div>
 
-<section class="w-full h-max px-6">
+<section class="w-full h-max">
   <div id="logos">
     <h3>Join your peers</h3>
     <section class="">
