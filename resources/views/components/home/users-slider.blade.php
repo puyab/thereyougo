@@ -77,21 +77,3 @@
         </SwiperSlide>
     @endforeach
 </Swiper>
-
-<!-- Set up your HTML -->
-<div class="owl-carousel">
-  <div> Your Content </div>
-  <div> Your Content </div>
-  <div> Your Content </div>
-  <div> Your Content </div>
-  <div> Your Content </div>
-  <div> Your Content </div>
-  <div> Your Content </div>
-</div>
-
-    <!-- Initialize Owl Carousel -->
-<script>
-        $(document).ready(function(){
-            $(".owl-carousel").owlCarousel();
-        });
-</script>

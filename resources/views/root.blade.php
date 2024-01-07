@@ -7,12 +7,6 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
-        <link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
-
-        <script src="jquery.min.js"></script>
-        <script src="owlcarousel/owl.carousel.min.js"></script>
-
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
