@@ -15,7 +15,7 @@
                 <x-feathericon-user class="w-8 h-8 lg:w-12 lg:h-12 text-white bg-black rounded-full p-2" />
                 </Link>
             @else
-                <a href="#faqs" class="font-bold text-xs sm:text-base text-black hidden md:block font-inter">FAQs</a>
+                <a href="#faqsnaser" class="font-bold text-xs sm:text-base text-black hidden md:block font-inter">FAQs</a>
                 <x-link :href="route('login')" class="font-bold text-xs sm:text-base text-black font-inter">Login</x-link>
                 <x-link :href="route('register')">
                     <x-button>Apply
