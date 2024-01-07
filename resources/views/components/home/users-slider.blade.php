@@ -39,8 +39,8 @@
         ],
     ];
 @endphp
-<Swiper class="w-full mx-auto max-w-[1920px]" :spaceBetween="24" :loop="true" :autoplay="@js(['delay' => rand(4000, 8000)])"
-    : v-bind:modules="SwiperModules" :breakpoints="@js($breakpoints)">
+<Swiper class="w-full mx-auto max-w-[1920px]" :slidesPerView="4" :spaceBetween="16" :loop="true" :autoplay="@js(['delay' => rand(4000, 8000)])"
+    :v-bind:modules="SwiperModules" :breakpoints="@js($breakpoints)">
     @foreach ($profiles as $profile)
         @php
             $pic_1 = $profile->getFirstMediaUrl('pic_1');
