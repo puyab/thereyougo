@@ -148,7 +148,7 @@
         <p>Check out what your peers are asking us. If you have more questions contact us at . <a
                 href="#">info@thereyougo.eu</a></p>
 </div>
-<div id="faqsnaser" class="w-11/12 max-w-6xl mx-auto my-[56px] lg:my-[112px] flex flex-col gap-14">
+<div id="faqs" class="w-11/12 max-w-6xl mx-auto my-[56px] lg:my-[112px] flex flex-col gap-14">
     @foreach ($faqs as $faq)
         <x-accordion title="{{ $faq['title'] }}">
             <p class="w-full h-max text-left sm:text-xs md:text-xl lg:text-2xl font-normal">
