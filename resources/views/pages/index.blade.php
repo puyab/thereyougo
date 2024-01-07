@@ -48,7 +48,7 @@
 
 </div>
 
-<section class="w-full h-max px-6 lg:px-20 py-[45px] lg:py-[90px] flex flex-col gap-[81px]">
+<section class="w-full h-max px-6">
   <div id="logos">
     <h3>Join your peers</h3>
     <section class="">
@@ -122,7 +122,7 @@
     <p class="font-light text-2xl text-[#292D32] hidden md:block">Worldwide, owners and renters welcome.</p>
 </section>  --}}
 
-<section class="w-full flex flex-col gap-8 relative mt-3">
+<section class="w-full flex flex-col gap-8 relative">
     <x-home.users-slider :profiles="$profiles[0]" />
     <x-home.users-slider :profiles="$profiles[1]" />
 
