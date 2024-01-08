@@ -872,3 +872,12 @@ letter-spacing: -0.6px!important;
     align-items: center;
   }
 }
+
+@media only screen and (min-width: 1024px) {
+  .swiper-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+  }
+}
