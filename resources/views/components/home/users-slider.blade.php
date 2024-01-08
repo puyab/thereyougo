@@ -4,7 +4,7 @@
         0 => [
             'centerMode' => true,
             'slidesPerView' => 2
-            'centeredSlides' => true,
+            'centeredSlides' => true
         ],
         420 => [
             'slidesPerView' => 2.3,
