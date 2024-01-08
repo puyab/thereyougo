@@ -50,7 +50,6 @@
             }
         @endphp
         <SwiperSlide key="{{ $profile->id }} ">
-        <div class="centered-slides">
                 <div class="w-[187px] lg:w-[375px] relative pb-[48p] flex flex-col gap-1">
                     <figure class="relative w-full h-[102px] lg:h-[205px]">
                         <img class="w-full h-full object-fill" loading="lazy"
@@ -74,7 +73,6 @@
                         </div>
 
                     </div>
-                </div>
                 </div>
         </SwiperSlide>
     @endforeach
