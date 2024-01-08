@@ -864,3 +864,11 @@ letter-spacing: -0.6px!important;
 .first-div-padd {
   padding-left: 4px;
 }
+
+@media only screen and (max-width: 430px) {
+  .centered-slides {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
