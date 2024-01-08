@@ -5,7 +5,7 @@
             'slidesPerView' => 2,
         ],
         420 => [
-            'slidesPerView' => 2.3,
+            'slidesPerView' => 1.2,
             'spaceBetween' => 38,
         ],
         600 => [
@@ -39,7 +39,7 @@
         ],
     ];
 @endphp
-<Swiper class="w-full mx-auto max-w-[1920px]" :slidesPerView="4" :loop="true" :autoplay="@js(['delay' => rand(4000, 8000)])"
+<Swiper class="w-full mx-auto max-w-[1920px]" :loop="true" :autoplay="@js(['delay' => rand(4000, 8000)])"
     :v-bind:modules="SwiperModules" :breakpoints="@js($breakpoints)">
     @foreach ($profiles as $profile)
         @php
