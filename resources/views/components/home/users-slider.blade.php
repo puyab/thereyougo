@@ -3,6 +3,7 @@
     $breakpoints = [
         0 => [
             'slidesPerView' => 2
+            'centeredSlides' => true
         ],
         420 => [
             'slidesPerView' => 2.3,
