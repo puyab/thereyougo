@@ -19,23 +19,18 @@
         ],
         1024 => [
             'slidesPerView' => 2.5,
-            'spaceBetween' => 72,
         ],
         1200 => [
-            'slidesPerView' => 3,
-            'spaceBetween' => 72,
+            'slidesPerView' => 4,
         ],
         1500 => [
             'slidesPerView' => 4,
-            'spaceBetween' => 72,
         ],
         1700 => [
             'slidesPerView' => 4.3,
-            'spaceBetween' => 72,
         ],
         1840 => [
             'slidesPerView' => 5,
-            'spaceBetween' => 72,
         ],
     ];
 @endphp
