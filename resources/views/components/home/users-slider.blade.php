@@ -2,10 +2,10 @@
 @php
     $breakpoints = [
         0 => [
-            'slidesPerView' => 2,
+            'slidesPerView' => 1.2,
         ],
         420 => [
-            'slidesPerView' => 1.2,
+            'slidesPerView' => 2.3,
             'spaceBetween' => 38,
         ],
         600 => [
