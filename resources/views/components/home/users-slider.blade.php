@@ -2,8 +2,8 @@
 @php
     $breakpoints = [
         0 => [
+            'centerMode' => true,
             'slidesPerView' => 2
-            'centeredSlides' => true
         ],
         420 => [
             'slidesPerView' => 2.3,
